@@ -1,0 +1,755 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ROBERT the PATRICK - Home</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+/* ROBERT the PATRICK site, v2. One look by design: yellow, cream and black are the brand, so there is no dark scheme.
+   Registers: landing (yellow, heavy), about (cream, light), night (black). Role tokens only below this block.
+   Type runs 140px display to 12px index labels, after the reference (247studio.co): display, gray echo line, 48/35 heads, body, micro. */
+:root{
+  --brand-yellow:#ffbd38;--brand-black:#000000;--brand-white:#ffffff;--brand-cream:#efebe1;--brand-green:#015432;--brand-dusk:#4c5f7f;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-300:#b3b3b3;--gray-400:#999999;--gray-500:#767676;--gray-600:#595959;--gray-700:#333333;--gray-800:#4d4d4d;--gray-900:#1f1f1f;
+  --font-display:"Graphik","Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  --font-text:"Domaine Text","Newsreader",Georgia,"Times New Roman",serif;
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;--space-9:80px;--space-10:112px;--space-11:128px;--space-12:184px;
+  --page-max:1440px;--measure:68ch;--header-h:91px;
+  --ease-out:cubic-bezier(.16,1,.3,1);--ease:cubic-bezier(.4,0,.2,1);--ease-wipe:cubic-bezier(.77,0,.18,1);
+  --gutter:clamp(16px,4vw,56px);
+  /* landing roles are the base */
+  --surface:var(--brand-yellow);--surface-raised:var(--brand-cream);
+  --ink:var(--brand-black);--ink-muted:var(--gray-700);--ink-soft:#666666;
+  --accent:var(--brand-green);--rule:#00000040;--rule-strong:var(--brand-black);
+  --fill:var(--brand-black);--on-fill:var(--brand-yellow);--focus:var(--brand-black);
+  --shadow-button:4px 4px 0 0 var(--brand-green);--shadow-button-hover:2px 2px 0 0 var(--brand-green);--shadow-button-pressed:0 0 0 0 var(--brand-green);
+  --pattern-line:#00000014;
+  color-scheme:light;
+}
+[data-reg="landing"]{
+  --surface:var(--brand-yellow);--surface-raised:var(--brand-cream);
+  --ink:var(--brand-black);--ink-muted:var(--gray-700);--ink-soft:#666666;
+  --accent:var(--brand-green);--rule:#00000040;--rule-strong:var(--brand-black);
+  --fill:var(--brand-black);--on-fill:var(--brand-yellow);--focus:var(--brand-black);
+  --shadow-button:4px 4px 0 0 var(--brand-green);--shadow-button-hover:2px 2px 0 0 var(--brand-green);--shadow-button-pressed:0 0 0 0 var(--brand-green);
+  --pattern-line:#00000014;
+}
+[data-reg="about"]{
+  --surface:var(--brand-cream);--surface-raised:var(--brand-white);
+  --ink:var(--brand-black);--ink-muted:var(--gray-600);--ink-soft:var(--gray-500);
+  --accent:var(--brand-green);--rule:#0000002e;--rule-strong:var(--gray-500);
+  --fill:var(--brand-black);--on-fill:var(--brand-cream);--focus:var(--brand-black);
+  --shadow-button:4px 4px 0 0 var(--brand-green);--shadow-button-hover:2px 2px 0 0 var(--brand-green);--shadow-button-pressed:0 0 0 0 var(--brand-green);
+  --pattern-line:#00000012;
+}
+[data-reg="night"]{
+  --surface:var(--brand-black);--surface-raised:var(--gray-900);
+  --ink:var(--brand-white);--ink-muted:var(--gray-300);--ink-soft:var(--gray-400);
+  --accent:var(--brand-yellow);--rule:#ffffff33;--rule-strong:var(--gray-400);
+  --fill:var(--brand-yellow);--on-fill:var(--brand-black);--focus:var(--brand-yellow);
+  --shadow-button:4px 4px 0 0 var(--brand-dusk);--shadow-button-hover:2px 2px 0 0 var(--brand-dusk);--shadow-button-pressed:0 0 0 0 var(--brand-dusk);
+  --pattern-line:#ffbd3826;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:120px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--page-bg,var(--brand-yellow));color:var(--brand-black);font:400 18px/1.6 var(--font-text);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--page-bg,var(--brand-yellow));z-index:60}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3,h4{margin:0;font-family:var(--font-display);text-wrap:balance}
+ul,ol{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.wrap{width:100%;max-width:var(--page-max);margin-inline:auto;padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+.band{position:relative;background:var(--surface);color:var(--ink);padding-block:clamp(56px,7vw,96px)}
+.band>.wrap{position:relative}
+.band.raised{background:var(--surface-raised)}
+.tex{--o:.35;position:absolute;inset:-4%;pointer-events:none;opacity:var(--o);background:url("img/texture-black.png") center/cover no-repeat}
+.hero .tex{--o:.576}
+.foot .tex{--o:.49}
+[data-reg="night"] .tex,.tex.white{background-image:url("img/texture-white.png")}
+
+/* ---------- type scale ---------- */
+.d1{font:700 clamp(56px,8.4vw,128px)/.94 var(--font-display);letter-spacing:-.045em;color:var(--ink)}
+.d1b{font:700 clamp(40px,7.2vw,112px)/.98 var(--font-display);letter-spacing:-.04em;color:var(--ink)}
+.d2{font:700 clamp(40px,5.6vw,80px)/1.02 var(--font-display);letter-spacing:-.03em;color:var(--ink)}
+.h35{font:600 clamp(24px,2.5vw,35px)/1.14 var(--font-display);letter-spacing:-.015em}
+.ln{display:block}
+.echo{font:inherit;letter-spacing:inherit;color:inherit} /* no light italic echo styling anywhere */
+.cta-band .k{color:var(--brand-black)}
+.cta-band .d1b{max-width:60%}
+@media (max-width:600px){.cta-band .d1b{max-width:none}}
+.lead{font:500 clamp(20px,1.8vw,26px)/1.4 var(--font-text)}
+.body{font:400 18px/1.6 var(--font-text);max-width:var(--measure)}
+.scope{--surface:var(--brand-cream);--ink:var(--brand-black);--ink-muted:var(--gray-600);--ink-soft:var(--gray-500);--accent:var(--brand-green);--rule:#0000002e}
+.scope .wrap{display:flex;flex-direction:column;gap:var(--space-5);max-width:var(--measure);text-align:left}
+.scope .lead,.scope .body{font-family:var(--font-display)}
+.scope .lead{font-size:clamp(24px,2.2vw,32px);font-weight:600;color:var(--brand-green)}
+@media (min-width:739px){.scope .wrap{max-width:min(80vw,100%);margin-left:0}}
+.audience{font:600 14px/1.4 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.label{font:600 12px/1.3 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.end{display:inline-block;width:.97em;height:1em;margin-left:.35em;vertical-align:-.3em;fill:var(--ink)}
+.nb{white-space:nowrap}
+
+/* word masks and scrubbed words (JS splits headings; nothing changes without JS) */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:.08em .1em .16em 0;margin:-.08em -.1em -.16em 0}
+.wi{display:inline-block;will-change:transform}
+.sw{transition:color 420ms var(--ease)}
+
+/* ---------- skip link, header ---------- */
+.skip{position:absolute;left:var(--space-4);top:-120px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 var(--space-5);border:2px solid var(--brand-black);background:var(--brand-cream);color:var(--brand-black);font:600 14px/1.3 var(--font-display);letter-spacing:.06em;text-transform:uppercase;text-decoration:underline;text-underline-offset:5px}
+.skip:focus-visible{top:calc(var(--space-4) + env(safe-area-inset-top,0px));outline:3px solid var(--brand-black);outline-offset:3px}
+.site{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:70;height:var(--header-h);background:transparent;color:var(--ink);border-bottom:1px solid transparent;transition:background-color 200ms var(--ease),border-color 200ms var(--ease),transform 160ms var(--ease-out)}
+.site.scrolled,.site.nav-open{background:var(--surface);border-bottom-color:var(--rule)}
+.site.hide:not(:focus-within):not(.nav-open){transform:translateY(-101%)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:100%;gap:var(--space-5)}
+.logo{display:block;line-height:0}
+.logo img{width:170px;height:auto}
+.navlist{display:flex;align-items:center;gap:var(--space-6)}
+.nav-a,.work-btn{display:inline-flex;align-items:center;gap:var(--space-2);min-height:44px;padding:0 var(--space-1);border:0;background:none;color:var(--ink);font:600 14px/1.3 var(--font-display);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.roll{display:block;height:1.3em;overflow:hidden}
+.roll>span{display:block;position:relative;height:1.3em;transition:transform 520ms var(--ease-out)}
+.roll>span::after{content:attr(data-t);content:attr(data-t) / "";position:absolute;left:0;top:100%;white-space:nowrap}
+.nav-a:hover .roll>span,.nav-a:focus-visible .roll>span,.work-btn:hover .roll>span,.work-btn:focus-visible .roll>span{transform:translateY(-100%)}
+.nav-a[aria-current="page"]::before{content:"▸";content:"▸" / ""}
+.work-btn::after{content:"▾";content:"▾" / "";font-size:11px}
+.nav-a .arr{display:inline-block;transition:transform 320ms var(--ease)}
+.nav-a:hover .arr{transform:translateX(4px)}
+.in-link{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;color:inherit}
+.in-link svg{display:block;width:24px;height:24px;fill:currentColor}
+.has-menu{position:relative}
+.menu{display:none;position:absolute;top:calc(100% - 2px);left:calc(var(--space-3) * -1);min-width:248px;padding:var(--space-2) 0;background:var(--surface-raised);border:1px solid var(--rule-strong);z-index:5}
+.has-menu.open .menu{display:block}
+.menu .nav-a{display:flex;width:100%;padding:0 var(--space-5)}
+.nav-toggle{display:none;align-items:center;min-height:44px;padding:0 var(--space-4);border:2px solid var(--rule-strong);background:transparent;color:var(--ink);font:600 14px/1.3 var(--font-display);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--space-5);border:2px solid var(--fill);background:var(--fill);color:var(--on-fill);box-shadow:var(--shadow-button);font:600 14px/1.3 var(--font-display);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform 120ms var(--ease),box-shadow 120ms var(--ease)}}
+.btn:hover,.btn:focus-visible{transform:translate(2px,2px);box-shadow:var(--shadow-button-hover)}
+.btn:active{transform:translate(4px,4px);box-shadow:var(--shadow-button-pressed)}
+.btn:focus-visible{outline:3px solid var(--focus);outline-offset:6px}
+.btn-outline{background:transparent;color:var(--ink);border-color:var(--rule-strong);box-shadow:none}
+.btn-outline:hover,.btn-outline:focus-visible{transform:none;box-shadow:none}
+.btn-outline:hover span{text-decoration:underline;text-underline-offset:5px}
+.btn-row{display:flex;flex-wrap:wrap;gap:var(--space-5)}
+
+/* hairlines that draw: any element with .rd gets a 1px top rule whose width animates */
+.rd{background-image:linear-gradient(var(--rule),var(--rule));background-repeat:no-repeat;background-position:0 0;background-size:100% 1px}
+
+/* ---------- Home: hero ---------- */
+.hero{position:relative;overflow:hidden;min-height:min(70svh,756px);max-height:75svh;display:flex;align-items:flex-end;padding-top:var(--header-h);background:var(--surface);color:var(--ink)}
+.hero>.wrap{position:relative;padding-block:var(--space-9) clamp(32px,4vw,var(--space-8))}
+.hero-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-6);margin-top:clamp(32px,4vw,var(--space-8));padding-top:var(--space-5)}
+.hero-meta .audience{max-width:26em;text-align:right;font-size:21px;margin-left:auto}
+.hero .d1.all .ln{max-width:7em}
+.hero .d1{font-size:clamp(56px,min(8.4vw,calc((75svh - 392px) / 3.46)),120px)}
+/* below 600px the floor above (56px) is too big for this headline's own words to fit one .ln
+   per line; each .ln would wrap internally, tripping the JS "all" class and compounding into
+   uneven multi-line spacing. Shrink the floor so each .ln fits its own line again. */
+@media (max-width:600px){.hero .d1{font-size:clamp(32px,9.5vw,56px)}}
+.hero .d1 .ln{display:block;white-space:nowrap}
+.hero .d1 .ln+.ln{margin-top:.384em}
+@media (orientation:portrait) and (max-width:900px){.hero{min-height:50svh}}
+.cue{font:500 28px/1 var(--font-display);color:var(--ink)}
+
+/* ---------- Home: what I bring ---------- */
+.bring .d2{margin-bottom:clamp(40px,5vw,var(--space-9));color:var(--brand-yellow)}
+.bring-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-8) var(--space-7);counter-reset:bc}
+.bring-col{counter-increment:bc}
+.bring-col::before{content:none;display:none;margin-bottom:var(--space-5);font:500 12px/1 var(--font-display);letter-spacing:.1em;color:var(--ink-muted)}
+.bring-col .h35{padding-bottom:var(--space-6)}
+.bring-col li{padding:var(--space-3) 0;font:400 15px/1.4 var(--font-text);letter-spacing:.01em;color:var(--ink-muted)}
+.bring-col li:last-child{border-bottom:1px solid var(--rule)}
+.bring-grid.two .tw{display:block}
+
+/* ---------- Home: bridge ---------- */
+.bridge{overflow:hidden;padding-block:clamp(72px,10vw,144px)}
+.bridge .d2{font-size:clamp(28px,6.2vw,90px);line-height:1.02;max-width:80%}
+
+/* ---------- Home: case study index ---------- */
+.work{padding-top:clamp(48px,6vw,80px)}
+.work::before{content:"";position:absolute;left:0;right:0;top:0;height:clamp(40px,5vw,72px);background-image:linear-gradient(var(--pattern-line) 1px,transparent 1px),linear-gradient(90deg,var(--pattern-line) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(56px,7vw,var(--space-10)) var(--space-5);counter-reset:case}
+.card{position:relative;display:flex;flex-direction:column;gap:var(--space-5);min-width:0;counter-increment:case;transition:opacity 500ms var(--ease)}
+.card.wide{grid-column:1/-1}
+@media (hover:hover){.grid:has(.card:hover) .card:not(:hover){opacity:.4}}
+.fig{position:relative;display:block;overflow:hidden;background:var(--surface-raised);aspect-ratio:var(--ar,16/9)}
+.fig.bare{background:transparent}
+.pxl{position:absolute;left:0;top:0;width:100%;height:100%}
+.px .pxl{top:-4%;height:108%;will-change:transform}
+.pxl img{width:100%;height:100%;object-fit:cover}
+.card-text{display:grid;grid-template-columns:minmax(0,1fr) 32px;text-align:left;column-gap:var(--space-4);row-gap:var(--space-2);align-items:start}
+.wide .card-text{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) 32px;column-gap:var(--space-5)}
+.card .idx{display:none;padding-top:1.1em;font:500 12px/1 var(--font-display);letter-spacing:.08em;color:var(--ink-muted);font-variant-numeric:tabular-nums}
+.card .idx::before{content:counter(case,decimal-leading-zero);content:counter(case,decimal-leading-zero) / ""}
+.card .t{font:600 clamp(26px,2.7vw,38px)/1.12 var(--font-display);letter-spacing:-.02em}
+.wide .t{font-size:clamp(30px,3.6vw,52px);font-weight:500}
+.card .t a{color:inherit;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:.14em;text-decoration-thickness:2px;transition:text-decoration-color 320ms var(--ease)}
+.card .t a::after{content:"";position:absolute;inset:0;z-index:1}
+.card .t a:focus-visible{outline:none}
+.card .t a:focus-visible::after{outline:3px solid var(--focus);outline-offset:6px}
+.card:hover .t a,.card .t a:focus-visible{text-decoration-color:currentColor}
+.card .out{grid-column:1;font:400 17px/1.5 var(--font-text);letter-spacing:.01em;color:var(--ink-muted);max-width:34em}
+.wide .out{grid-column:2;grid-row:1;padding-top:.7em}
+.card .arrow{grid-column:2;grid-row:1;justify-self:end;font:500 24px/1.2 var(--font-display);color:var(--ink);transition:transform 420ms var(--ease-out)}
+.wide .arrow{grid-column:3}
+.card:hover .arrow,.card:has(.t a:focus-visible) .arrow{transform:translateX(10px)}
+.lock{display:inline-block;vertical-align:-3px;margin-left:var(--space-3);width:22px;height:22px}
+.work-more{display:flex;justify-content:center;margin-top:var(--space-10)}
+
+/* custom cursor (fine pointers only; JS creates it and adds .cc to <html>): a dot in the opposite of the section color, a circle with an arrow over case images */
+html.cc,html.cc *{cursor:none!important}
+.cur{position:fixed;left:0;top:0;z-index:200;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--cc,#000);color:var(--cc-on,#ffbd38);pointer-events:none;opacity:0;transition:opacity 200ms var(--ease),background-color 220ms var(--ease),color 220ms var(--ease);will-change:transform}
+.cur.on{opacity:1}
+.cur svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:square;opacity:0;transition:opacity 200ms var(--ease)}
+.cur.big svg{opacity:1}
+
+/* ---------- Home: clients ---------- */
+.clients{padding-block:clamp(48px,6vw,80px);background:var(--surface-raised)}
+.clients-h{margin-bottom:clamp(24px,3vw,var(--space-6));text-align:center;font-size:clamp(29px,3vw,42px);color:var(--brand-green)}
+.logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:748px;margin-inline:auto}
+.logos li{display:flex;align-items:center;justify-content:center;min-height:clamp(100px,11.2vw,146px);padding:var(--space-4)}
+.logos img{width:auto;height:auto;max-width:70%;max-height:40px;filter:grayscale(1);mix-blend-mode:multiply;transform:translateY(var(--ty,0)) scale(var(--s,1))}
+/* per-logo optical sizing */
+.logos img[alt="GE"],.logos img[alt^="NYC"]{--s:1.1}
+.logos img[alt="Starbucks"],.logos img[alt="Pepsi"],.logos img[alt="Adobe"]{--s:1.2}
+.logos img[alt="Nike"]{--s:1.1}
+.logos img[alt="Honda"]{--s:1.15;--ty:5px}
+.logos li:hover img{filter:none}
+
+/* ---------- Home: positioning ---------- */
+.pos-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--space-8) clamp(32px,6vw,96px);align-items:start}
+.pos-lead{font:500 clamp(26px,3.3vw,48px)/1.14 var(--font-display);letter-spacing:-.03em;color:var(--ink)}
+.pos-lead .g{color:var(--brand-green)}
+.pos-h .g{color:var(--brand-green)}
+.pos-side{display:flex;flex-direction:column;gap:var(--space-5);max-width:28em;padding-top:.7em}
+.pos-side p{font:400 17px/1.6 var(--font-text)}
+.pos-h{margin-bottom:clamp(32px,4vw,var(--space-8))}
+.pos-lead,.pos-side,.insight p{width:90%}
+.insight-wrap{margin-top:clamp(64px,8vw,112px)}
+.insight-list{counter-reset:ins}
+.insight{display:grid;grid-template-columns:48px minmax(0,4fr) minmax(0,6fr);gap:var(--space-5) clamp(24px,4vw,64px);padding-block:var(--space-6);counter-increment:ins}
+.insight::before{content:counter(ins,decimal-leading-zero);content:counter(ins,decimal-leading-zero) / "";grid-column:1;grid-row:1;font:500 12px/2 var(--font-display);letter-spacing:.08em;color:var(--ink-muted)}
+.insight h3{grid-column:2;grid-row:1}
+.insight p{grid-column:3;grid-row:1;font:400 17px/1.6 var(--font-text);max-width:38em;color:var(--ink)}
+.insight:last-child{border-bottom:1px solid var(--rule)}
+
+/* ---------- call to action band ---------- */
+.cta-band{--surface:var(--brand-dusk);--ink:var(--brand-white);--ink-soft:var(--gray-300);--fill:var(--brand-yellow);--on-fill:var(--brand-black);--shadow-button:4px 4px 0 0 var(--brand-black);--shadow-button-hover:2px 2px 0 0 var(--brand-black);--shadow-button-pressed:0 0 0 0 var(--brand-black);--focus:var(--brand-white);overflow:hidden;padding-block:clamp(72px,10vw,136px)}
+.cta-band .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-7)}
+
+/* ---------- footer ---------- */
+.foot{overflow:hidden;padding-block:clamp(72px,9vw,128px) clamp(48px,6vw,88px)}
+.foot-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:var(--space-8) var(--space-7);align-items:end;padding-top:var(--space-7)}
+.foot .label{margin-bottom:var(--space-6)}
+.email{display:block;font:700 clamp(30px,5vw,72px)/1.02 var(--font-display);letter-spacing:-.04em;color:var(--accent);white-space:nowrap;text-decoration:none}
+.email:hover{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:.12em}
+.foot-side{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-5)}
+.info .foot-cta{margin-top:var(--space-7);color:var(--brand-white);border-color:var(--brand-white)}
+.info .meta{margin-top:var(--space-4);font:600 12px/1.3 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--brand-yellow)}
+.foot-side .body{color:var(--ink);max-width:30em;font-size:17px}
+.foot-side .in-link svg{width:30px;height:30px}
+
+/* ---------- About ---------- */
+.about-hero{position:relative;display:block;padding-top:var(--header-h);background:var(--surface)}
+.about-hero .fig{--ar:2500/1406;max-height:88svh;width:100%}
+.about-main{padding-top:clamp(56px,7vw,96px)}
+.about-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--space-8) clamp(32px,6vw,96px);align-items:start}
+.about-left{position:sticky;top:calc(var(--header-h) + var(--space-6))}
+.about-h{font:400 clamp(36px,6.6vw,96px)/1 var(--font-display);letter-spacing:-.03em;color:var(--ink)}
+.about-h .echo{display:block}
+.about-right{min-width:0}
+.intro-copy{display:flex;flex-direction:column;gap:var(--space-5);max-width:var(--measure);padding-bottom:var(--space-9)}
+.intro-copy .lead{font-size:clamp(22px,2.1vw,30px);line-height:1.38}
+.arow{padding-block:var(--space-7)}
+.arow>.h35{font-weight:400;letter-spacing:-.01em;margin-bottom:var(--space-6)}
+.skills{columns:2;column-gap:var(--space-7);counter-reset:sk}
+.skills li{display:grid;grid-template-columns:40px minmax(0,1fr);align-items:baseline;padding:var(--space-3) 0;font:400 18px/1.4 var(--font-text);color:var(--ink);break-inside:avoid;counter-increment:sk}
+.skills li::before{content:counter(sk,decimal-leading-zero);content:counter(sk,decimal-leading-zero) / "";font:500 12px/1 var(--font-display);letter-spacing:.08em;color:var(--ink-muted)}
+.statement{overflow:hidden;padding-block:clamp(88px,12vw,160px)}
+.statement .pre{font:500 clamp(18px,1.6vw,22px)/1.3 var(--font-display);color:var(--ink-muted);margin-bottom:var(--space-6)}
+.statement .d1b{font-size:clamp(52px,10.2vw,160px);line-height:.95;font-weight:300;letter-spacing:-.045em}
+.feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--space-8) clamp(32px,6vw,96px);align-items:center}
+.feature .fig{--ar:4/3;max-width:650px;width:100%}
+.feature.flip .fig{--ar:3/2;margin-left:auto;order:2}
+.feature.flip .feature-text{order:1}
+.feature-text{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-5);max-width:var(--measure)}
+.feature-text h3{font:400 clamp(36px,3.8vw,56px)/1 var(--font-display);letter-spacing:-.02em}
+.feature-text h3 a{color:inherit;text-decoration:none}
+.feature-text h3 a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.12em}
+
+/* ---------- motion (JS adds .js only when the visitor has not asked for reduced motion) ---------- */
+.js [data-split]:not(.sp){visibility:hidden}
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity 1000ms var(--ease-out) var(--d,0ms),transform 1000ms var(--ease-out) var(--d,0ms)}
+.js .rv.in{opacity:1;transform:none}
+.js [data-split] .wi{transform:translateY(112%)}
+.js [data-split].in .wi{transform:none;transition:transform 1200ms var(--ease-out);transition-delay:calc(var(--wi,0) * 55ms)}
+.js [data-scrub] .sw:not(.on){color:#666666}
+.js .rd{background-size:0 1px;transition:background-size 1500ms var(--ease-out) var(--d,0ms)}
+.js .rd.in{background-size:100% 1px}
+.js .clip{clip-path:inset(0 0 100% 0)}
+.js .clip.in{clip-path:inset(0 0 0 0);transition:clip-path 1400ms var(--ease-wipe) var(--d,0ms)}
+.js .clip .pxl img{transform:scale(1.28)}
+.js .clip.in .pxl img{transform:none;transition:transform 2000ms var(--ease-out) var(--d,0ms)}
+.js .logos li{opacity:0;transition:opacity 900ms var(--ease-out) var(--d,0ms)}
+.js .logos.in li{opacity:1}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1.04)}to{transform:translate3d(-2.5%,-2%,0) scale(1.04)}}
+@keyframes sharpen{from{filter:blur(14px);opacity:0}to{filter:blur(0);opacity:var(--o)}}
+.js .hero .tex{animation:sharpen 1600ms var(--ease-out) both,drift 48s var(--ease) 1600ms infinite alternate}
+.js .bridge .tex{animation:drift 56s var(--ease) infinite alternate}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0ms!important;scroll-behavior:auto!important}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .foot-grid,.pos-top{grid-template-columns:1fr}
+  .pos-lead,.pos-side{width:min(90vw,100%);max-width:none}
+  .insight{grid-template-columns:40px minmax(0,1fr)}
+  .insight p{grid-column:2;grid-row:2}
+}
+@media (max-width:900px){
+  .skills{columns:1}
+}
+@media (max-width:860px){
+  :root{--header-h:61px}
+  .logo img{width:139px}
+  .bar{gap:0}
+  .nav-toggle{display:inline-flex;margin-left:auto}
+  .navlist{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:var(--space-3) max(var(--gutter),env(safe-area-inset-right,0px)) var(--space-5) max(var(--gutter),env(safe-area-inset-left,0px));background:var(--surface);border-bottom:1px solid var(--rule)}
+  .site.nav-open .navlist{display:flex}
+  .navlist{--ink:var(--brand-black);--rule:#00000033;--rule-strong:var(--gray-500);--focus:var(--brand-yellow);--surface-raised:var(--brand-cream);background:var(--brand-cream);color:var(--brand-black)}
+  .site.scrolled .navlist{--ink:var(--brand-black);--rule:#00000033;--rule-strong:var(--gray-500);--surface-raised:var(--brand-cream);background:var(--brand-cream);color:var(--brand-black)}
+  .nav-a,.work-btn{width:100%;min-height:48px}
+  .menu{position:static;min-width:0;padding:0 0 0 var(--space-5);border:0;background:transparent}
+  .menu .nav-a{padding:0}
+  .card-text,.wide .card-text{grid-template-columns:minmax(0,1fr) 32px}
+  .wide .out,.card .out{grid-column:1;grid-row:auto;padding-top:0}
+  .wide .arrow,.card .arrow{grid-column:2;grid-row:1}
+  .card:not(.wide) .t{font-size:clamp(20px,3vw,26px)}
+  .bring-grid{gap:var(--space-7) var(--space-5)}
+  .bring-col .h35{font-size:clamp(20px,3.2vw,28px);padding-bottom:var(--space-5)}
+  .feature{grid-template-columns:1fr}
+  .feature.flip .fig,.feature.flip .feature-text{order:0}
+  .hero-meta{flex-direction:column;align-items:flex-start;gap:var(--space-4)}
+  .hero-meta .audience{text-align:left;margin-left:0}
+}
+@media (max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .card:not(.wide) .t{font-size:clamp(26px,7vw,32px)}
+  .bring-grid{grid-template-columns:1fr;gap:var(--space-8)}
+  .bring-col .h35{font-size:clamp(24px,6.4vw,30px)}
+  .bring-grid.two .tw{display:inline}
+  .logos img{max-height:32px}
+  .about-grid{grid-template-columns:1fr}
+  .about-left{position:static}
+  .about-h{font-size:48px}
+}
+@media (max-width:480px){
+  .btn-row{flex-direction:column;gap:var(--space-4)}
+  .btn-row .btn{width:100%}
+  .work-more .btn{width:100%}
+  .insight{grid-template-columns:32px minmax(0,1fr)}
+}
+
+body{--page-bg:var(--brand-yellow)}
+.nav-a[aria-label="Studio"],.nav-a[aria-label="Studio"]:hover,.nav-a[aria-label="Studio"]:focus-visible{text-decoration:none}
+/* menu colour rule: pick a colour different from the header colour under it */
+.menu{background:var(--brand-green);--ink:var(--brand-white)}
+.site.scrolled .menu{background:var(--brand-cream);--ink:var(--brand-black)}
+/* logo: yellow on black whenever the menu is green (header not scrolled) */
+.logo .wm-yellow{display:none}
+.site:not(.scrolled) .logo .wm-yellow{display:block}
+.site:not(.scrolled) .logo .wm-cream{display:none}
+</style>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js');</script>
+<a class="skip" href="#page">Skip to Content</a>
+<div id="page">
+<header class="site" id="top" data-reg="landing">
+  <div class="wrap bar">
+    <a class="logo" href="index.html"><img class="wm-cream" src="img/wordmark.png" width="570" height="104" alt="ROBERT the PATRICK, home"><img class="wm-yellow" src="img/wordmark-yellow.png" width="570" height="104" alt="ROBERT the PATRICK, home"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlist">Menu</button>
+    <nav aria-label="Main">
+      <ul class="navlist" id="navlist">
+        <li><a class="nav-a" href="/case-studies/"><span class="roll"><span data-t="Case Studies">Case Studies</span></span></a></li>
+        <li><a class="nav-a" href="/about/"><span class="roll"><span data-t="About">About</span></span></a></li>
+        <li><a class="nav-a" href="#contact"><span class="roll"><span data-t="Contact">Contact</span></span></a></li>
+        <li><a class="in-link" href="https://www.linkedin.com/in/robert-the-patrick/" aria-label="LinkedIn profile"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero" data-reg="landing" aria-labelledby="hero-h">
+    <div class="tex" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1 class="d1" id="hero-h" data-split data-now><span class="ln">Turning Brand</span> <span class="ln">Complexity Into</span> <span class="ln">Business Impact</span></h1>
+      <div class="hero-meta rd" data-now style="--d:700ms">
+        <p class="audience">For customer-centric organizations, agency leaders, the brands they serve</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band bring" data-reg="night" aria-labelledby="bring-h">
+    <div class="wrap">
+      <h2 class="d2" id="bring-h" data-split>What I bring</h2>
+      <div class="bring-grid">
+        <div class="bring-col">
+          <h3 class="h35 rv" style="--d:0ms"><span class="tw">Experience Design</span> <span class="tw">Leadership</span></h3>
+          <ul>
+            <li class="rd" style="--d:90ms">Experience vision/strategy</li>
+            <li class="rd" style="--d:180ms">Touchpoint ecosystems</li>
+            <li class="rd" style="--d:270ms">Service blueprints</li>
+            <li class="rd" style="--d:360ms">Cross-channel CX design</li>
+          </ul>
+        </div>
+        <div class="bring-col">
+          <h3 class="h35 rv" style="--d:140ms"><span class="tw">Creative</span> <span class="tw">Direction</span></h3>
+          <ul>
+            <li class="rd" style="--d:230ms">Brand strategy/design</li>
+            <li class="rd" style="--d:320ms">Product design</li>
+            <li class="rd" style="--d:410ms">Campaign design</li>
+            <li class="rd" style="--d:500ms">Activation/spatial design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band scope" data-reg="about" aria-label="Why this matters">
+    <div class="wrap">
+      <p class="lead rv">You invest in a great brand. Then it has to work across more touchpoints, more stakeholders, a new product, a retail refresh, an app ecosystem that keeps growing. I bring the system-level thinking and the brand creative that turn that complexity into products, activations, and campaigns that tie business impact to brand opportunity.</p>
+      <p class="body rv" style="--d:120ms">I've spent 15+ years in agencies as an Experience Design Lead and Creative Director, partnering with business leaders and leading brands to make sure the work holds together, from the first idea to the last launch.</p>
+    </div>
+  </section>
+
+  <section class="band bridge" data-reg="landing" aria-labelledby="bridge-h">
+    <div class="tex" aria-hidden="true"></div>
+    <div class="wrap">
+      <h2 class="d2" id="bridge-h" data-split><span class="ln">My work spans business and brand outcomes,</span> <span class="ln">for commercial clients and civic ones alike.</span></h2>
+    </div>
+  </section>
+
+  <section class="band work" data-reg="night" aria-label="Case studies">
+    <div class="wrap">
+      <div class="grid">
+      <article class="card wide">
+        <div class="fig clip px" style="--ar:16/5.4"><div class="pxl"><img src="img/case-honda.jpg" width="1920" height="1080" alt="Aerial view of a freeway interchange at night, traffic lit in long trails"></div></div>
+        <div class="card-text rv">
+          <span class="idx" aria-hidden="true"></span>
+          <h3 class="t"><a href="/honda/">Honda</a></h3>
+          <p class="out">Developed product and service ecosystem strategies for a changing world of transportation</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="fig clip px" style="--ar:16/9"><div class="pxl"><img src="img/case-nikelab.jpg" width="1995" height="890" alt="Mood collage of retail spaces: a faceted concrete interior, stacked timber, a red stair, a glass arcade" loading="lazy"></div></div>
+        <div class="card-text rv">
+          <span class="idx" aria-hidden="true"></span>
+          <h3 class="t"><a href="/nikelab/">NikeLab</a></h3>
+          <p class="out">Brand evolution, retail strategy and design</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="fig clip px" style="--ar:16/9"><div class="pxl"><img src="img/case-lpn.jpg" width="1108" height="638" alt="A fisherman beside a forced-labor statistic" loading="lazy"></div></div>
+        <div class="card-text rv">
+          <span class="idx" aria-hidden="true"></span>
+          <h3 class="t"><a href="/lpn/">Labour Protection Network Thailand</a></h3>
+          <p class="out">Built capacity and developed brand strategies to combat slavery at sea</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="fig clip px" style="--ar:16/9"><div class="pxl"><img src="img/case-wired.jpg" width="1000" height="750" alt="The WIRED storefront window in Soho, neon wordmark over a grid of interactive product screens" loading="lazy"></div></div>
+        <div class="card-text rv">
+          <span class="idx" aria-hidden="true"></span>
+          <h3 class="t"><a href="/wired-store/">WIRED Store</a></h3>
+          <p class="out">A first of its kind retail experience merging window shopping with digital purchasing</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="fig clip px" style="--ar:16/9"><div class="pxl"><img src="img/case-ge-rio.jpg" width="1004" height="668" alt="A large LED wall reading 7 BILLION inside the GE industrial exhibit in Rio" loading="lazy"></div></div>
+        <div class="card-text rv">
+          <span class="idx" aria-hidden="true"></span>
+          <h3 class="t"><a href="/ge/">GE at the Rio Olympics</a></h3>
+          <p class="out">Welcoming the world with industrial vision</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+      </article>
+      <article class="card wide">
+        <div class="fig clip bare" style="--ar:1548/520"><div class="pxl"><img src="img/case-articlegroup.png" width="1548" height="520" alt="re:MARS banner: a presenter on stage in front of a collage of presentation slides" loading="lazy"></div></div>
+        <div class="card-text rv">
+          <span class="idx" aria-hidden="true"></span>
+          <h3 class="t"><a href="/article-group-25m/">Article Group</a></h3>
+          <p class="out">Transformed a small player into a multi-million dollar category leader</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+      </article>
+      </div>
+      <div class="work-more rv"><a class="btn" href="/case-studies/"><span>More work</span></a></div>
+    </div>
+  </section>
+
+  <section class="band clients" data-reg="landing" aria-labelledby="clients-h">
+    <div class="wrap">
+      <h2 class="h35 clients-h rv" id="clients-h">Past Clients</h2>
+      <ul class="logos">
+        <li style="--d:0ms"><img src="img/logo-honda.webp" alt="Honda" loading="lazy"></li>
+        <li style="--d:35ms"><img src="img/logo-adobe.png" alt="Adobe" loading="lazy"></li>
+        <li style="--d:70ms"><img src="img/logo-verizon.png" alt="Verizon" loading="lazy"></li>
+        <li style="--d:105ms"><img src="img/logo-herman-miller.png" alt="Herman Miller" loading="lazy"></li>
+        <li style="--d:140ms"><img src="img/logo-google.png" alt="Google" loading="lazy"></li>
+        <li style="--d:175ms"><img src="img/logo-nike.png" alt="Nike" loading="lazy"></li>
+        <li style="--d:210ms"><img src="img/logo-nyc-hpd.png" alt="NYC Department of Housing Preservation &amp; Development" loading="lazy"></li>
+        <li style="--d:245ms"><img src="img/logo-infiniti.png" alt="Infiniti" loading="lazy"></li>
+        <li style="--d:280ms"><img src="img/logo-pepsi.png" alt="Pepsi" loading="lazy"></li>
+        <li style="--d:315ms"><img src="img/logo-ge.png" alt="GE" loading="lazy"></li>
+        <li style="--d:350ms"><img src="img/logo-starbucks.png" alt="Starbucks" loading="lazy"></li>
+        <li style="--d:385ms"><img src="img/logo-amazon.png" alt="Amazon" loading="lazy"></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" data-reg="landing" aria-labelledby="pos-h">
+    <div class="wrap">
+      <h2 class="d2 pos-h" id="pos-h" data-split>Creative <span class="g">&amp;</span> Insight</h2>
+      <div class="pos-top">
+        <p class="pos-lead" data-split>I design with systems in mind and people at heart. <span class="g">My work lives at the intersection of research, storytelling, experience, and product.</span> I am committed to shaping things that make experiences more compelling, more meaningful, and more equitable.</p>
+        <div class="pos-side">
+          <p class="rv">What drives me is solving real problems with clarity, creativity, and care. I've led design strategy and creative direction for global brands, early-stage ventures, NGOs, and civic institutions, moving from insight to impact across physical and digital platforms.</p>
+          <p class="rv" style="--d:120ms">Human-centered design, for me, isn't just a method. It's a way to bridge disciplines, pulling together culture, aesthetics, systems logic, and empathy to connect human need to long-term value. Increasingly, that work is accelerated by custom AI-integrated workflows I've built into my practice. Not as a shortcut, but as a way to hold more complexity, move faster between insight and concept, and spend more time on the thinking that actually requires a human.</p>
+          <p class="rv" style="--d:240ms">I thrive in complex collaborative spaces where ideas get tested, strategy gets tangible, and design earns its place by delivering on <span class="nb">business goals.<svg class="end" viewBox="0 0 94 97" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M0 0V97H94ZM10 48.5a37 37 0 1 0 74 0a37 37 0 1 0 -74 0Z"/></svg></span></p>
+        </div>
+      </div>
+      <div class="insight-wrap">
+        <div class="insight-list">
+        <div class="insight rd">
+          <h3 class="h35 rv">Problem Identification</h3>
+          <p class="rv" style="--d:120ms">Most teams already know something's wrong. The hard part is finding the actual problem underneath the loudest symptom. I come in as an outside observer with no stake in the existing answer, pull in perspectives that aren't usually in the room, and reframe the challenge until the right question becomes obvious. A well-framed problem is already half-solved.</p>
+        </div>
+        <div class="insight rd">
+          <h3 class="h35 rv">Brand Worlds Worth Loving</h3>
+          <p class="rv" style="--d:120ms">A brand isn't a logo stretched across every surface, it's a world people want to spend time in. I build the aesthetic and the system underneath it together, so a brand doesn't just look consistent, it feels like somewhere worth being. Recognition is cheap. Love is the thing that actually moves business.</p>
+        </div>
+        <div class="insight rd">
+          <h3 class="h35 rv">Client-Facing Problem Solving</h3>
+          <p class="rv" style="--d:120ms">Most strategy dies in the handoff, a deck gets delivered and the client has to translate it into decisions alone. I work directly with the client's own leadership, solving the actual business problem in the room, not presenting a point of view on it after the fact. The thinking and the decision happen together, or the thinking doesn't count.</p>
+        </div>
+        <div class="insight rd">
+          <h3 class="h35 rv">Cross-Disciplinary Collaboration</h3>
+          <p class="rv" style="--d:120ms">Strategy, design, technology, research, community, and business logic don't naturally speak the same language. Most projects fail in the translation. I've spent 20 years working at the joints between disciplines, helping teams that think differently actually build together. The work is better when the people making it trust each other. Getting there is the job.</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band cta-band" data-reg="night" aria-labelledby="cta-h">
+    <div class="wrap">
+      <h2 class="d1b" id="cta-h" data-split><span class="ln">Explore more <span class="k">projects &amp;</span></span> <span class="ln k">case studies</span></h2>
+      <div class="rv"><a class="btn" href="/case-studies/"><span>See the work</span></a></div>
+    </div>
+  </section>
+</main>
+<footer class="band foot" id="contact" data-reg="night">
+  <div class="tex" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="foot-grid rd">
+      <div class="info rv">
+        <h2 class="label">Contact</h2>
+        <a class="email" href="mailto:robertthepatrick@gmail.com">ROBERTthe<br>PATRICK@gmail.com</a>
+        <p class="meta">Working in Amsterdam &amp; NYC</p>
+        <a class="btn btn-outline foot-cta" href="/book-a-meeting/"><span>Schedule a chat</span></a>
+      </div>
+      <div class="foot-side rv" style="--d:160ms">
+        <a class="in-link" href="https://www.linkedin.com/in/robert-the-patrick/" aria-label="LinkedIn profile"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <p class="body">Available for embedded consulting and creative leadership roles with agencies, brands, and civic organizations.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</div>
+<script>
+(function(){
+  var d=document,de=d.documentElement,W=window;
+  de.lang='en';
+  var site=d.getElementById('top');
+  var motion=de.classList.contains('js');
+  var lastY=0,ticking=false,scrubs=[],pxs=[];
+
+  /* menus */
+  var tog=d.querySelector('.nav-toggle');
+  tog.addEventListener('click',function(){var o=tog.getAttribute('aria-expanded')!=='true';tog.setAttribute('aria-expanded',o);site.classList.toggle('nav-open',o);});
+  var wb=d.querySelector('.work-btn'),hm=wb&&wb.parentNode;
+  function setW(o){if(!wb)return;wb.setAttribute('aria-expanded',o?'true':'false');hm.classList.toggle('open',o);}
+  if(wb)wb.addEventListener('click',function(){setW(wb.getAttribute('aria-expanded')!=='true');});
+  d.addEventListener('click',function(e){if(hm&&!hm.contains(e.target))setW(false);});
+  d.addEventListener('keydown',function(e){if(e.key==='Escape'){if(hm&&hm.classList.contains('open')){setW(false);wb.focus();}if(site.classList.contains('nav-open')){tog.setAttribute('aria-expanded','false');site.classList.remove('nav-open');tog.focus();}}});
+
+  /* split a heading into words; text nodes only, so markup, marks and echo spans survive */
+  function split(el,mode){
+    var idx=0;
+    (function walk(n){
+      [].slice.call(n.childNodes).forEach(function(c){
+        if(c.nodeType===3){
+          var frag=d.createDocumentFragment();
+          c.nodeValue.split(/(\s+)/).forEach(function(p){
+            if(!p)return;
+            if(/^\s+$/.test(p)){frag.appendChild(d.createTextNode(' '));return;}
+            var s=d.createElement('span');
+            if(mode==='mask'){s.className='w';var i=d.createElement('span');i.className='wi';i.style.setProperty('--wi',idx++);i.textContent=p;s.appendChild(i);}
+            else{s.className='sw';s.textContent=p;idx++;}
+            frag.appendChild(s);
+          });
+          c.parentNode.replaceChild(frag,c);
+        }else if(c.nodeType===1&&c.tagName.toLowerCase()!=='svg'){walk(c);}
+      });
+    })(el);
+  }
+  function show(e){e.classList.add('in');}
+  function clamp(v){return Math.max(0,Math.min(1,v));}
+
+  function frame(){
+    ticking=false;
+    var y=W.pageYOffset||de.scrollTop,vh=W.innerHeight;
+    site.classList.toggle('scrolled',y>8);
+    if(motion){
+      if(y>lastY+3&&y>240)site.classList.add('hide');
+      else if(y<lastY-3||y<=240)site.classList.remove('hide');
+      scrubs.forEach(function(s){
+        var r=s.el.getBoundingClientRect();
+        var p=clamp((vh*.92-r.top)/(vh*.3+r.height));
+        var k=Math.round(p*s.w.length);
+        if(k!==s.k){s.k=k;s.w.forEach(function(w,i){w.classList.toggle('on',i<k);});}
+      });
+      pxs.forEach(function(el){
+        var r=el.getBoundingClientRect();
+        if(r.bottom<-60||r.top>vh+60)return;
+        var p=Math.max(-1,Math.min(1,((r.top+r.height/2)-vh/2)/(vh/2+r.height/2)));
+        el.firstElementChild.style.transform='translate3d(0,'+(-p*.04*r.height).toFixed(1)+'px,0)';
+      });
+    }
+    lastY=y;
+  }
+  function onScroll(){if(!ticking){ticking=true;W.requestAnimationFrame(frame);}}
+
+  try{
+    if(motion){
+      [].slice.call(d.querySelectorAll('[data-split]')).forEach(function(el){split(el,'mask');el.classList.add('sp');});
+      [].slice.call(d.querySelectorAll('[data-scrub]')).forEach(function(el){split(el,'scrub');scrubs.push({el:el,w:[].slice.call(el.querySelectorAll('.sw')),k:-1});});
+      pxs=[].slice.call(d.querySelectorAll('.px'));
+
+      /* a clipped element is invisible to IntersectionObserver, so clips are watched through their parent */
+      var t=[].slice.call(d.querySelectorAll('.rv,[data-split],.rd,.logos')),clips=[].slice.call(d.querySelectorAll('.clip'));
+      if(!('IntersectionObserver' in W)){t.concat(clips).forEach(show);}
+      else{
+        var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);(e.target._clips||[]).forEach(show);io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.05});
+        t.forEach(function(e){if(e.hasAttribute('data-now')){W.setTimeout(function(){show(e);},120);}else{io.observe(e);}});
+        clips.forEach(function(c){
+          if(c.hasAttribute('data-now')){W.setTimeout(function(){show(c);},120);return;}
+          var p=c.parentNode;if(!p._clips){p._clips=[];io.observe(p);}p._clips.push(c);
+        });
+        W.setTimeout(function(){t.concat(clips).forEach(function(e){if(!e.classList.contains('in')){var r=(e.classList.contains('clip')?e.parentNode:e).getBoundingClientRect();if(r.top<W.innerHeight*.9&&r.bottom>0)show(e);}});},1500);
+      }
+
+    }
+  }catch(err){de.classList.remove('js');motion=false;}
+
+  /* the 3 "What I bring" titles stay level: if any one would wrap, all 3 break to one word per line */
+  var bg=d.querySelector('.bring-grid');
+  if(bg){
+    var hs=[].slice.call(bg.querySelectorAll('.h35')),tk=0;
+    var level=function(){
+      tk=0;
+      bg.classList.remove('two');
+      var wraps=hs.some(function(h){var cs=W.getComputedStyle(h),lh=parseFloat(cs.lineHeight)||h.offsetHeight;var ch=h.offsetHeight-(parseFloat(cs.paddingTop)||0)-(parseFloat(cs.paddingBottom)||0);return ch>lh*1.5;});
+      bg.classList.toggle('two',wraps);
+    };
+    var queue=function(){if(!tk)tk=W.requestAnimationFrame(level);};
+    W.addEventListener('resize',queue);
+    if(d.fonts&&d.fonts.ready)d.fonts.ready.then(level);
+    level();
+  }
+
+  /* the hero headline: one line each on wide screens; if any line wraps, all three wrap */
+  var hero=d.querySelector('.hero .d1');
+  if(hero){
+    var hls=[].slice.call(hero.querySelectorAll('.ln')),ht=0;
+    var hlevel=function(){
+      ht=0;
+      hero.classList.remove('all','measure');
+      var wraps=hls.some(function(l){var lh=parseFloat(W.getComputedStyle(l).lineHeight)||l.offsetHeight;return l.offsetHeight>lh*1.5;});
+      hero.classList.toggle('all',wraps);
+    };
+    var hqueue=function(){if(!ht)ht=W.requestAnimationFrame(hlevel);};
+    W.addEventListener('resize',hqueue);
+    if(d.fonts&&d.fonts.ready)d.fonts.ready.then(hlevel);
+    hlevel();
+  }
+
+  W.addEventListener('scroll',onScroll,{passive:true});
+  W.addEventListener('resize',onScroll);
+  frame();
+})();
+</script>
+<script>
+/* custom cursor: dot takes the opposite of the section color (yellow/cream -> black, black -> tan, dusk -> yellow); grows into an arrow circle over case images */
+(function(){
+  var W=window,d=document;
+  if(!W.matchMedia||!W.matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  var cur=d.createElement('div');cur.className='cur';cur.setAttribute('aria-hidden','true');
+  cur.innerHTML='<svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg>';
+  d.body.appendChild(cur);d.documentElement.classList.add('cc');
+  var DOT=14/84,BIG=1,tx=-100,ty=-100,cx=-100,cy=-100,cs=DOT,big=false,raf=0,last='';
+  function rgb(c){var m=c.match(/[\d.]+/g);return m?m.map(Number):null;}
+  function pick(x,y){
+    var els=d.elementsFromPoint(x,y);
+    for(var i=0;i<els.length;i++){var el=els[i];if(el===cur||cur.contains(el))continue;
+      var v=rgb(getComputedStyle(el).backgroundColor);if(!v||(v.length>3&&v[3]<.5))continue;
+      var r=v[0],g=v[1],b=v[2],l=(.2126*r+.7152*g+.0722*b)/255;
+      if(r>200&&g>140&&b<120)return['#000000','#ffbd38'];
+      if(l<.2)return['#efebe1','#000000'];
+      if(b>r+20&&l<.6)return['#ffbd38','#4c5f7f'];
+      return l>.5?['#000000','rgb('+r+','+g+','+b+')']:['#efebe1','rgb('+r+','+g+','+b+')'];
+    }
+    return['#000000','#ffbd38'];
+  }
+  function loop(){
+    cx+=(tx-cx)*.35;cy+=(ty-cy)*.35;cs+=((big?BIG:DOT)-cs)*.2;
+    cur.style.transform='translate3d('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px,0) scale('+cs.toFixed(3)+')';
+    raf=(Math.abs(tx-cx)>.3||Math.abs(ty-cy)>.3||Math.abs((big?BIG:DOT)-cs)>.002)?W.requestAnimationFrame(loop):0;
+  }
+  function clickImg(x,y){
+    var hit=d.elementFromPoint(x,y);if(hit&&hit.closest){if(hit.closest('.site,.menu'))return false;}
+    var ns=d.querySelectorAll('.fig,.ph,.figs,.bleed');
+    for(var i=0;i<ns.length;i++){
+      var n=ns[i],r=n.getBoundingClientRect();
+      if(x<r.left||x>r.right||y<r.top||y>r.bottom)continue;
+      if(n.closest('a[href],button,[onclick]'))return true;
+      var card=n.closest('.card');
+      if(card&&card.querySelector('a[href],button,[onclick]'))return true;
+    }
+    return false;
+  }
+  function update(){
+    var c=pick(tx,ty),k=c[0]+c[1];
+    if(k!==last){cur.style.setProperty('--cc',c[0]);cur.style.setProperty('--cc-on',c[1]);last=k;}
+    var on=clickImg(tx,ty);
+    if(on!==big){big=on;cur.classList.toggle('big',on);}
+    if(!raf)raf=W.requestAnimationFrame(loop);
+  }
+  d.addEventListener('mousemove',function(e){
+    if(!cur.classList.contains('on')){cx=e.clientX;cy=e.clientY;cur.classList.add('on');}
+    tx=e.clientX;ty=e.clientY;update();
+  },{passive:true});
+  W.addEventListener('scroll',function(){if(cur.classList.contains('on'))update();},{passive:true});
+  d.documentElement.addEventListener('mouseleave',function(){cur.classList.remove('on');});
+  W.addEventListener('blur',function(){cur.classList.remove('on');});
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}</style></head><body>
+<title>RTP site — canonical reference</title>
+<style>
+:root{
+  --brand-white:#ffffff;--brand-black:#000000;--brand-green:#015432;--brand-cream:#efebe1;
+  --gray-50:#f2f2f2;--gray-200:#cccccc;--gray-500:#767676;--gray-600:#595959;
+  --font-display:"Graphik","Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  --font-text:"Domaine Text","Newsreader",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--brand-cream);color:var(--brand-black);font:400 18px/1.6 var(--font-text)}
+.wrap{max-width:860px;margin-inline:auto;padding:clamp(32px,6vw,80px) clamp(16px,4vw,56px)}
+h1{font:600 clamp(32px,4vw,52px)/1.1 var(--font-display);letter-spacing:-.02em;margin:0 0 8px}
+h2{font:600 22px/1.3 var(--font-display);letter-spacing:-.01em;margin:40px 0 12px}
+p{margin:0 0 16px;max-width:66ch}
+.label{font:600 12px/1.3 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--brand-green);margin:0 0 20px;display:block}
+.files{display:flex;flex-direction:column;gap:12px;margin:16px 0 0;padding:0;list-style:none}
+.files li{background:var(--brand-white);border:1px solid var(--gray-200);padding:16px 20px;border-radius:2px}
+.files a{font:600 15px var(--font-display);color:var(--brand-black);text-decoration:none}
+.files a:hover{text-decoration:underline}
+.files .meta{display:block;margin-top:4px;font:400 14px var(--font-text);color:var(--gray-600)}
+.note{background:var(--brand-white);border-left:3px solid var(--brand-green);padding:16px 20px;margin-top:40px}
+.note p{margin:0;font-size:15px;color:var(--gray-600)}
+code{font-family:ui-monospace,Menlo,monospace;background:var(--gray-50);padding:1px 5px;border-radius:2px;font-size:.92em}
+</style>
+
+<div class="wrap">
+  <span class="label">Reference, not a live page</span>
+  <h1>robertthepatrick.com — canonical CSS/JS</h1>
+  <p>This is the single source of truth for the shared template patterns across the 26 published pages: header, nav, buttons, type scale, hero/band/section primitives, footer, the custom cursor, and the header-tone script. It is assembled from the confirmed common core found across the site on 15 Nov 2026, plus three fixes that were drift on most pages but should be universal.</p>
+  <p>No live page points at these files directly — each artifact is a standalone document and can't include another one's files. This exists so any future build or audit has a fixed baseline to build from or diff against, instead of re-deriving "what's canonical" from majority vote across the whole site again.</p>
+
+  <h2>Files</h2>
+  <ul class="files">
+    <li><a href="css/site.css">css/site.css</a><span class="meta">Shared CSS core: tokens, layout, header/nav, buttons, hero/band/sec primitives, type scale, footer, cursor CSS, the AGO-standard/global-nav/no-grey-placeholder blocks, and the promoted mobile-nav-dropdown text-color fix.</span></li>
+    <li><a href="js/site.js">js/site.js</a><span class="meta">Nav-toggle, scroll-hide header, header-tone script, the pixel-sampling custom cursor (with background-color fallback), the clip-path reveal observer, and the gallery lightbox script (no-ops on pages with no gallery grid).</span></li>
+    <li><a href="audit-report.md">audit-report.md</a><span class="meta">Full site-wide audit, 15 Nov 2026: per-page drift table, confirmed duplication, and the punch list this reference was built to resolve.</span></li>
+  </ul>
+
+  <div class="note">
+    <p>Last synced against the live site: 15 Nov 2026, after the Honda catch-up and the AGO/Adobe cursor fix. LPN's cream header-tone variant was reviewed and deliberately kept as a one-off, not folded in here.</p>
+  </div>
+</div>
+</body></html>
