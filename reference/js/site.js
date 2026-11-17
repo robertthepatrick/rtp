@@ -240,11 +240,13 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     lb.classList.add('open');lb.setAttribute('aria-hidden','false');
     requestAnimationFrame(function(){lb.classList.add('on');});
     d.documentElement.style.overflow='hidden';
+    d.documentElement.classList.add('lb-open');
     lb.querySelector('.lightbox-close').focus();
   }
   function close(){
     lb.classList.remove('on');lb.setAttribute('aria-hidden','true');
     d.documentElement.style.overflow='';
+    d.documentElement.classList.remove('lb-open');
     setTimeout(function(){lb.classList.remove('open');},200);
     if(lastFocus)lastFocus.focus();
   }

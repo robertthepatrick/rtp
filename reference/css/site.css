@@ -185,6 +185,8 @@ ul{margin:0;padding:0;list-style:none}
 /* custom cursor (fine pointers only; JS creates it and adds .cc to <html>): a dot in the opposite of the section color, a circle with an arrow over case images */
 html.cc,html.cc *{cursor:none!important}
 .cur{position:fixed;left:0;top:0;z-index:200;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--cc,#000);color:var(--cc-on,#ffbd38);pointer-events:none;opacity:0;transition:opacity 200ms var(--ease),background-color 220ms var(--ease),color 220ms var(--ease);will-change:transform}
+/* custom cursor interferes with lightbox usability (sampling pixels under the overlay); suppress it while a lightbox is open (lb-open set on <html> by site.js) */
+.lb-open .cur{opacity:0 !important}
 .cur.on{opacity:1}
 .cur svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:square;opacity:0;transition:opacity 200ms var(--ease)}
 .cur.big svg{opacity:1}
