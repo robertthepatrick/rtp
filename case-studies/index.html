@@ -90,7 +90,8 @@ footer.foot{padding-block:clamp(72px,9vw,128px);background:var(--brand-black);co
 @media (max-width:600px){
   .grid{grid-template-columns:1fr}
   .card.wide,.card{grid-column:1/-1}
-  .headline{font-size:48px}
+  .headline{font-size:48px;font-weight:700;margin-top:clamp(16px,6vw,32px)}
+  .headline br.mobile-break{display:block}
   .navlist{display:none}
 }
 /* custom cursor (fine pointers only; JS creates it and adds .cc to <html>): a dot in the opposite of the section color, a circle with an arrow over case images */
@@ -175,7 +176,7 @@ footer.foot .body{color:var(--brand-white);max-width:30em;font:400 17px/1.5 var(
   <section class="band intro">
     <div class="wrap intro-grid">
       <div>
-        <h1 class="headline">Selected Work</h1>
+        <h1 class="headline">Selected<br class="mobile-break" style="display:none">Work</h1>
       </div>
       <div style="display:flex;flex-direction:column;gap:24px">
         <p class="lead">My work crosses innovation, experience design, and creative direction. I am looking to find agencies and project-based work that will allow me to deliver across my wide set of skills and experiences while building teams and deepening relationships with clients.</p>
@@ -265,7 +266,7 @@ footer.foot .body{color:var(--brand-white);max-width:30em;font:400 17px/1.5 var(
         <article class="card">
           <a class="fig" href="/adobe-malala/" aria-hidden="true" tabindex="-1"><img src="img/case-adobe.jpg" width="2000" height="1167" alt="The #withMalala installation: a red-lit room with a large portrait panel" loading="lazy"></a>
           <div class="meta">
-            <h2 class="title"><a href="/adobe-malala/">Adobe #withMalala</a></h2>
+            <h2 class="title"><a href="/adobe-malala/">Adobe: #withMalala</a></h2>
             <ul class="activities">
               <li>Creative direction</li>
               <li>Experience design</li>

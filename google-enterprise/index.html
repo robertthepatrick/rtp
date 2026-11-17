@@ -205,6 +205,7 @@ html.cc,html.cc *{cursor:none!important}
 .tri-grid .stat,.tri-grid .caption,.tri-grid .body{min-width:0;overflow-wrap:anywhere}
 .tri-grid .figs{font-size:clamp(18px,2.2vw,30px);overflow-wrap:anywhere}
 @media (max-width:600px){.tri-grid{grid-template-columns:1fr !important}.tri-grid .phase{font-size:16px}.tri-grid .project{gap:10px}}
+@media (max-width:600px){.gaw-drive-sec .gaw-yellow-strip{height:220px}.gaw-band .wrap.gaw-row3 img{height:clamp(170px,32vw,400px)}.gaw-band .wrap.gaw-row3 img:nth-child(2){height:clamp(195px,37vw,460px)}}
 
 /* Global nav refinements: shorter header, dynamic tone, no arrow on Contact */
 @media (min-width:861px){.menu{background:var(--menu-bg,var(--brand-cream)) !important}.menu .nav-a{color:var(--menu-ink,var(--ink)) !important}}
@@ -252,7 +253,7 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
 /* Reader comment: collateral labels use the site's eyebrow (.label) style, left-justified. */
 .gaw-collateral-label{font:600 12px/1.3 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-align:left;margin:0}
 /* Reader comment: stack the collateral images in a single column (instead of 2-up rows) so each can be larger, with roughly even gaps between every item. */
-.gaw-collateral-stack{display:flex;flex-direction:column;gap:24px}
+.gaw-collateral-stack{display:flex;flex-direction:column;gap:24px;align-items:center}
 /* Reader comment: the info sheet and ebook get their own section, side by side above 740px, so they read larger and more legibly than inside the pinned split column. */
 .gaw-collateral-section{display:grid;grid-template-columns:1fr;gap:32px;max-width:900px;margin:0 auto}
 @media (min-width:740px){.gaw-collateral-section{grid-template-columns:1fr 1fr}}
@@ -283,22 +284,12 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
    TOP edge up into the subhead) to a fixed top position (so the image's TOP edge stays put and
    any extra height grows downward instead, clipped by the figure's overflow:hidden). */
 @media (min-width:1000px){.gaw-hero-overlay img{bottom:auto;top:38%}}
-/* Reader comment: break the standard hero convention for this page — much taller, with the logo, headline and subhead overlaid directly on the illustration (matching the source), instead of in a separate section below. */
-/* Reader comment: the header (hero) reduces in height a bit on narrower widths rather than staying flat. */
-.gaw-hero-tall figure{height:56vh;min-height:420px}
-@media (min-width:600px){.gaw-hero-tall figure{height:60vh;min-height:450px}}
-@media (min-width:860px){.gaw-hero-tall figure{height:64vh;min-height:480px}}
-.gaw-hero-content{position:absolute;top:0;left:0;width:100%;max-width:92vw;padding:32px var(--gutter) 0;z-index:2}
-@media (min-width:600px){.gaw-hero-content{max-width:75vw;padding-top:56px}}
-@media (min-width:860px){.gaw-hero-content{max-width:75vw;padding-top:64px}}
-.gaw-hero-content img{margin-bottom:12px!important}
-.gaw-hero-content .lead{margin-top:12px!important}
-/* Reader comment: the headline/lead clamp() floors (40px / 31px) don't shrink any further past their minimum, so on very small viewports the hero copy can outgrow the hero's own fixed/clamped height and get clipped by its overflow:hidden. Scale both down further below 420px. */
-@media (max-width:420px){
-  .gaw-hero-content .headline{font-size:clamp(26px,9vw,40px)}
-  .gaw-hero-content .lead{font-size:clamp(16px,4.6vw,20px)}
-  .gaw-hero-content img{width:104px!important}
-}
+/* Design intent changed: logo/headline/lead moved into the standard text section below the hero
+   (they used to sit overlaid on the illustration here). The hero stays taller than the template
+   default so the brand pattern + floating illustration still get real presence. */
+.hero figure{height:44vh;min-height:320px}
+@media (min-width:600px){.hero figure{height:48vh;min-height:360px}}
+@media (min-width:860px){.hero figure{height:52vh;min-height:400px}}
 /* Reader comment: the body copy below the hero becomes a single column capped at 65% of viewport width. */
 .gaw-body-copy{max-width:65vw}
 /* Reader comment: the Cloud Identity section's 2 images sit in a right column above 740px; below that they stack full-width above the text, as before. */
@@ -346,16 +337,11 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
 
 <div id="page">
 
-<section class="hero gaw-hero-tall" aria-label="Header image">
+<section class="hero" aria-label="Header image">
   <figure>
     <img class="clip" src="img/gaw-hero-bg.png" width="1649" height="1280" alt="Abstract Google brand pattern illustration" style="object-position:top">
     <div class="gaw-hero-overlay">
       <img src="img/gaw-cover-illustration.png" alt="Illustration of a person reaching up into a collage of enterprise app icons">
-    </div>
-    <div class="gaw-hero-content">
-      <img src="img/gaw-google-logo.png" alt="Google logo" style="width:140px;height:auto;margin-bottom:24px">
-      <h1 class="headline" id="headline-h" style="margin:0">Creating the Most Powerful Digital Ecosystem for Work</h1>
-      <p class="lead" style="margin:20px 0 0">Partnering with Google to revamp its approach to enterprise strategy, content, &amp; collaboration.</p>
     </div>
   </figure>
 </section>
@@ -365,7 +351,10 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
   <section class="sec sec-white" aria-labelledby="headline-h">
     <div class="wrap">
       <div class="gaw-body-copy">
-        <p class="body lede">Most of the world knows Google as a global technology company that dominates the consumer search market. But in the enterprise world, Google is a challenger.</p>
+        <img src="img/gaw-google-logo.png" alt="Google logo" style="width:140px;height:auto;margin-bottom:24px">
+        <h1 class="headline" id="headline-h">Creating the Most Powerful Digital Ecosystem for Work</h1>
+        <p class="lead" style="margin-top:20px">Partnering with Google to revamp its approach to enterprise strategy, content, &amp; collaboration.</p>
+        <p class="body lede" style="margin-top:32px">Most of the world knows Google as a global technology company that dominates the consumer search market. But in the enterprise world, Google is a challenger.</p>
         <p class="body">To compete with entrenched brands, Google needed more than better technology&mdash;they needed powerful messaging and effective marketing that spoke to the fears and ambitions of their enterprise audience.</p>
         <p class="body">That&rsquo;s where we came in.</p>
         <p class="body">We began working across Google&rsquo;s enterprise products to create messaging rooted in their buyer&rsquo;s journey. That work has required us to connect the dots between internal orgs and across go-to-market strategies to make Google&rsquo;s enterprise marketing smarter, more human, and more effective.</p>

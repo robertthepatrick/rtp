@@ -205,6 +205,8 @@ html.cc,html.cc *{cursor:none!important}
 .tri-grid .stat,.tri-grid .caption,.tri-grid .body{min-width:0;overflow-wrap:anywhere}
 .tri-grid .figs{font-size:clamp(18px,2.2vw,30px);overflow-wrap:anywhere}
 @media (max-width:600px){.tri-grid{grid-template-columns:1fr !important}.tri-grid .phase{font-size:16px}.tri-grid .project{gap:10px}}
+@media (max-width:600px){.credits[style*="flex-direction:row"]{gap:32px !important}}
+@media (max-width:600px){.stack+.phase{margin-top:16px}}
 
 /* Global nav refinements: shorter header, dynamic tone, no arrow on Contact */
 @media (min-width:861px){.menu{background:var(--menu-bg,var(--brand-cream)) !important}.menu .nav-a{color:var(--menu-ink,var(--ink)) !important}}

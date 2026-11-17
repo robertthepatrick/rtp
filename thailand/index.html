@@ -213,8 +213,13 @@ html.cc,html.cc *{cursor:none!important}
 
 /* A Bloody Night in Thailand gallery additions */
 .gallery-pair{display:grid;grid-template-columns:1fr;gap:12px}
-@media (min-width:600px){.gallery-pair{grid-template-columns:1fr 1fr}}
 .gallery-pair .ph{aspect-ratio:1/1}
+/* Tablet/desktop: single column, staggered left/right rather than a plain 2-up grid */
+@media (min-width:600px){
+  .gallery-pair{gap:32px}
+  .gallery-pair .ph{width:68%;max-width:560px}
+  .gallery-pair .ph:nth-child(even){margin-left:auto}
+}
 /* Reader comment: the fixed header hides on scroll, but .hero's margin-top (from the shared
    template) reserved that space permanently, leaving a blank gap once the header slides away.
    Removing the reserve lets the header overlay the top of the hero instead. */

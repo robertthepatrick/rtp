@@ -147,7 +147,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 /* below 600px the floor above (56px) is too big for this headline's own words to fit one .ln
    per line; each .ln would wrap internally, tripping the JS "all" class and compounding into
    uneven multi-line spacing. Shrink the floor so each .ln fits its own line again. */
-@media (max-width:600px){.hero .d1{font-size:clamp(32px,9.5vw,56px)}}
+@media (max-width:600px){.hero .d1{font-size:clamp(38px,10.8vw,56px)}}
 .hero .d1 .ln{display:block;white-space:nowrap}
 .hero .d1 .ln+.ln{margin-top:.384em}
 @media (orientation:portrait) and (max-width:900px){.hero{min-height:50svh}}
@@ -184,7 +184,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .card .idx{display:none;padding-top:1.1em;font:500 12px/1 var(--font-display);letter-spacing:.08em;color:var(--ink-muted);font-variant-numeric:tabular-nums}
 .card .idx::before{content:counter(case,decimal-leading-zero);content:counter(case,decimal-leading-zero) / ""}
 .card .t{font:600 clamp(26px,2.7vw,38px)/1.12 var(--font-display);letter-spacing:-.02em}
-.wide .t{font-size:clamp(30px,3.6vw,52px);font-weight:500}
+.wide .t{font-size:clamp(30px,3.6vw,52px)}
 .card .t a{color:inherit;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:.14em;text-decoration-thickness:2px;transition:text-decoration-color 320ms var(--ease)}
 .card .t a::after{content:"";position:absolute;inset:0;z-index:1}
 .card .t a:focus-visible{outline:none}
@@ -333,11 +333,16 @@ html.cc,html.cc *{cursor:none!important}
   .feature{grid-template-columns:1fr}
   .feature.flip .fig,.feature.flip .feature-text{order:0}
   .hero-meta{flex-direction:column;align-items:flex-start;gap:var(--space-4)}
-  .hero-meta .audience{text-align:left;margin-left:0}
+  .hero-meta{margin-top:clamp(24px,7vw,var(--space-7))}
+  .hero-meta .audience{text-align:left;margin-left:0;font-size:14px}
 }
 @media (max-width:600px){
   .grid{grid-template-columns:1fr}
   .card:not(.wide) .t{font-size:clamp(26px,7vw,32px)}
+  /* Honda thumbnail: the 16/5.4 bar is too short on mobile; give it more height */
+  .card .fig:has(img[alt^="Aerial view of a freeway interchange"]){aspect-ratio:16/9}
+  /* Article Group thumbnail: crop more off the left so the subject reads larger */
+  .card .fig:has(img[alt^="re:MARS banner"]) img{object-position:75% center}
   .bring-grid{grid-template-columns:1fr;gap:var(--space-8)}
   .bring-col .h35{font-size:clamp(24px,6.4vw,30px)}
   .bring-grid.two .tw{display:inline}
@@ -358,10 +363,11 @@ body{--page-bg:var(--brand-yellow)}
 /* menu colour rule: pick a colour different from the header colour under it */
 .menu{background:var(--brand-green);--ink:var(--brand-white)}
 .site.scrolled .menu{background:var(--brand-cream);--ink:var(--brand-black)}
-/* logo: yellow on black whenever the menu is green (header not scrolled) */
+/* logo: this page's header stays yellow in every state (.scrolled only changes the
+   shadow/border here, not --surface), so the wordmark needs the dark green asset
+   (wm-cream, despite its name) for contrast at all times. wm-yellow was showing
+   instead, yellow-on-yellow and effectively invisible. */
 .logo .wm-yellow{display:none}
-.site:not(.scrolled) .logo .wm-yellow{display:block}
-.site:not(.scrolled) .logo .wm-cream{display:none}
 </style>
 <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js');</script>
 <a class="skip" href="#page">Skip to Content</a>
@@ -384,6 +390,7 @@ body{--page-bg:var(--brand-yellow)}
   <section class="hero" data-reg="landing" aria-labelledby="hero-h">
     <div class="tex" aria-hidden="true"></div>
     <div class="wrap">
+      <p class="label rd" data-now style="--d:0ms">You invest in great brands</p>
       <h1 class="d1" id="hero-h" data-split data-now><span class="ln">Turning Brand</span> <span class="ln">Complexity Into</span> <span class="ln">Business Impact</span></h1>
       <div class="hero-meta rd" data-now style="--d:700ms">
         <p class="audience">For customer-centric organizations, agency leaders, the brands they serve</p>

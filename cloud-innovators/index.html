@@ -221,12 +221,13 @@ html.cc,html.cc *{cursor:none!important}
 }
 .pair{display:grid;grid-template-columns:1fr;gap:12px}
 @media (min-width:860px){.pair{grid-template-columns:1fr 1fr}}
-.badge-grid{display:grid;grid-template-columns:1fr;gap:40px;text-align:center}
+.badge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;text-align:center}
 @media (min-width:600px){.badge-grid{grid-template-columns:repeat(3,1fr)}}
 .badge-grid img{width:160px;height:160px;margin:0 auto 16px}
 .badge-grid p{font-weight:600;margin:0}
 /* Reader comment: hero 20% shorter, background top-justified */
 .hero figure{height:20.8vh}
+@media (min-width:600px){.hero figure{height:28vh}}
 @media (min-width:860px){.hero figure{height:31.2vh}}
 @media (min-width:1280px){.hero figure{height:41.6vh}}
 @media (min-width:1700px){.hero figure{height:52vh}}
