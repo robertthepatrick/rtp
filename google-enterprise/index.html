@@ -274,7 +274,7 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
 .gaw-hero-overlay{position:absolute;inset:0;z-index:1}
 /* Illustration sits just below the vertical midline of the hero and stays mostly in frame at every breakpoint. The figure is a size container, so the illustration scales to the figure's height as well as its width: 105% of the figure's width, capped at 180% of its height (about 80% of the height once the image's aspect ratio is applied). The top is at the midline, pulled up by 40% of the image's own height, which puts its centre a little under the middle. */
 .hero figure{position:relative;container-type:size}
-.gaw-hero-overlay img{position:absolute;right:0;top:50%;transform:translateY(-40%);width:min(105cqw,180cqh);max-width:none;height:auto}
+.gaw-hero-overlay img{position:absolute;right:0;top:50%;transform:translateY(-40%);width:105cqw;max-width:none;height:auto}
 /* Phone widths: the illustration runs 30% larger and stays right-aligned, so it can crop at the left edge. The subheadline drops to a smaller size and a heavier weight than body copy (400), without the chunk of the desktop lead. */
 @media (max-width:600px){
   .gaw-hero-overlay img{width:min(136.5cqw,234cqh)}
