@@ -41,6 +41,8 @@ ul{margin:0;padding:0;list-style:none}
 .nav-a:hover{text-decoration:underline;text-underline-offset:5px}
 .nav-a.current{text-decoration:underline;text-underline-offset:5px}
 .nav-a[aria-current="page"]{text-decoration:underline;text-underline-offset:5px}
+/* the .roll clips anything below its line box, so the current-page underline is a 1px rule drawn inside the text block */
+.nav-a[aria-current="page"] .roll>span{background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat}
 
 /* intro */
 .intro{position:relative;overflow:hidden;padding-top:calc(var(--header-h) + clamp(60px,7.5vw,120px));padding-bottom:clamp(35px,4.4vw,60px)}
