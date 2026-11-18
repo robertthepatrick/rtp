@@ -355,6 +355,8 @@ html.cc,html.cc *{cursor:none!important}
   .card:not(.wide) .t{font-size:clamp(26px,7vw,32px)}
   /* Honda thumbnail: the 16/5.4 bar is too short on mobile; give it more height */
   .card .fig:has(img[alt^="Aerial view of a freeway interchange"]){aspect-ratio:16/9}
+  /* Article Group thumbnail: a 4:3 frame on phones, filled by the image and anchored right, so the presenter and the slides read at a usable size */
+  .card .fig:has(img[alt^="re:MARS banner"]){aspect-ratio:4/3}
   .bring-grid{grid-template-columns:1fr;gap:var(--space-8)}
   .bring-col .h35{font-size:clamp(24px,6.4vw,30px)}
   .bring-grid.two .tw{display:inline}
