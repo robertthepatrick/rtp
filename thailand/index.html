@@ -226,9 +226,11 @@ html.cc,html.cc *{cursor:none!important}
 .gallery-pair .ph{aspect-ratio:1/1}
 /* Tablet/desktop: single column, staggered left/right rather than a plain 2-up grid */
 @media (min-width:600px){
-  .gallery-pair{gap:32px}
+  .gallery-pair{gap:0}
   .gallery-pair .ph{width:68%;max-width:560px}
-  .gallery-pair .ph:nth-child(even){margin-left:auto}
+  .gallery-pair .ph:nth-child(odd){margin-left:auto}
+  .gallery-pair .ph:nth-child(even){margin-left:0}
+  .gallery-pair .ph + .ph{margin-top:calc(-1 * clamp(16px,3vw,48px))}
 }
 /* Reader comment: the fixed header hides on scroll, but .hero's margin-top (from the shared
    template) reserved that space permanently, leaving a blank gap once the header slides away.
