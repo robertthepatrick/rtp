@@ -84,9 +84,9 @@ ul{margin:0;padding:0;list-style:none}
 .btn-outline:hover,.btn-outline:focus-visible{transform:none;box-shadow:none;text-decoration:underline;text-underline-offset:5px}
 
 /* full-bleed header image, under the fixed header */
-.hero{margin-top:var(--header-h);background:var(--surface-white);height:26vh;overflow:hidden}
+.hero{margin-top:var(--header-h);background:var(--surface-white);height:36.4vh;overflow:hidden}
 .hero figure{margin:0;width:100%;height:100%;background:var(--placeholder)}
-.hero img{width:100%;height:100%;object-fit:cover}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 100%}
 /* image motion, as on home: every real image takes class "clip". Image wipes in top to bottom, then settles from 1.28. */
 .js .clip{clip-path:inset(0 0 100% 0)}
 .js .clip.in{clip-path:inset(0 0 0 0);transition:clip-path 1400ms cubic-bezier(.77,0,.18,1) var(--d,0ms)}
@@ -102,9 +102,9 @@ ul{margin:0;padding:0;list-style:none}
 /* full-width image bands carry their own vertical padding */
 .band.full{padding-block:clamp(32px,4.03vw,55px)}
 /* full width always; the height grows with the viewport, never past 50% of its height */
-@media (min-width:860px){ .hero{height:39vh} }
-@media (min-width:1280px){ .hero{height:52vh} }
-@media (min-width:1700px){ .hero{height:65vh} }
+@media (min-width:860px){ .hero{height:54.6vh} }
+@media (min-width:1280px){ .hero{height:72.8vh} }
+@media (min-width:1700px){ .hero{height:91vh} }
 
 /* full-width white bands: a single bleed image, and a three-column row with padding */
 .band{background:var(--surface-white)}
@@ -228,12 +228,12 @@ html.cc,html.cc *{cursor:none!important}
 .ago-top-arrow{width:clamp(64px,16vw,128px);height:clamp(7.84px,1.96vw,15.68px);margin-left:clamp(12px,5vw,76px)}
 @media (max-width:600px){
   .ago-top-row{display:flex !important;justify-content:space-between;align-items:center}
-  .ago-top-old-wrap{display:contents}
+  .ago-top-old-wrap{display:contents !important}
   .ago-top-logo{height:56px !important}
-  .ago-top-arrow{width:56px;height:6.86px;margin-left:0}
+  .ago-top-arrow{width:72.8px;height:10.98px;margin-left:0;margin-inline:auto}
 }
 @media (min-width:450px) and (max-width:600px){
-  .ago-top-arrow{width:clamp(56px,14vw,88px);height:clamp(6.86px,1.715vw,10.78px)}
+  .ago-top-arrow{width:clamp(72.8px,18.2vw,114.4px);height:clamp(10.98px,2.744vw,17.25px);margin-inline:auto}
   .ago-top-row>.ago-top-logo:last-child{padding-right:clamp(8px,4vw,24px)}
 }
 .ago-fromto{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:0 clamp(32px,5vw,80px);align-items:start}
@@ -278,7 +278,7 @@ html.cc,html.cc *{cursor:none!important}
   <section class="sec sec-dusk" aria-labelledby="headline-h">
     <div class="wrap split">
       <div class="rail">
-        <img src="img/ago-monogram.png" width="80" height="176" alt="" style="width:40px;height:auto;margin-bottom:8px">
+        <img src="img/ago-monogram.png" width="80" height="176" alt="" style="width:28px;height:auto;margin-bottom:8px">
         <h1 class="headline" id="headline-h">From Presentation Shop to $25M Product Marketing Powerhouse</h1>
       </div>
       <div class="copy" style="max-width:var(--measure)">
