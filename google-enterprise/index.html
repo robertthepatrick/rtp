@@ -248,8 +248,8 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
 .gaw-band .wrap.gaw-row3 img:nth-child(2){height:clamp(178px,34vw,460px)}
 /* Mobile: devices run larger than the row and crop slightly at the left and right edges; they spill past the yellow band, which keeps its original height */
 @media (max-width:600px){
-  .gaw-band .wrap.gaw-row3 img{flex:0 0 auto;max-width:none;height:40vw}
-  .gaw-band .wrap.gaw-row3 img:nth-child(2){height:46vw}
+  .gaw-band .wrap.gaw-row3 img{flex:0 0 auto;max-width:none;height:42vw}
+  .gaw-band .wrap.gaw-row3 img:nth-child(2){height:48vw}
 }
 .gaw-band{padding:clamp(40px,6vw,80px) var(--gutter)}
 /* Reader comment: the screen-recording video plays inside the Chrome assessment-tool mockup's
@@ -258,6 +258,7 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
    reads as content actually running on the mocked-up monitor rather than floating over the frame. */
 .gaw-video-spot{position:relative;display:inline-block;width:100%;line-height:0}
 .gaw-video-spot img{display:block;width:100%;height:auto}
+@media (min-width:1100px){.gaw-video-spot{flex:none;width:min(130%,calc(100vw - 2*var(--gutter)))}}
 .gaw-video-spot .gaw-screen-video{position:absolute;left:13.194%;top:9.862%;width:73.565%;height:57.522%;object-fit:cover}
 /* Reader comment: cut this section's height by 25%, mockups stay centered (flex align-items:center already does this). */
 .gaw-drive-sec{padding-top:clamp(16px,2.5vw,33px);padding-bottom:clamp(16px,2.5vw,33px)}
@@ -320,7 +321,7 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
   .gaw-fit img{position:absolute;display:block;max-width:none;height:auto;margin:0}
   .gaw-fit-desktop{aspect-ratio:2081/1130}
   .gaw-fit-desktop img{width:120.13%;left:-18.88%;top:-9.29%}
-  .gaw-fit-phone{aspect-ratio:505/1106}
+  .gaw-fit-phone{aspect-ratio:505/1106;width:54%;margin:0 auto}
   .gaw-fit-phone img{width:193.8%;left:-4.70%;top:-4.43%}
 }
 @media (min-width:740px){.gaw-fit{display:contents}.gaw-fit img{width:auto;max-width:100%;height:auto;margin:0 auto}}
@@ -472,7 +473,7 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
   </section>
 
   <section class="gaw-band" style="background:#F8F9FA">
-    <div class="wrap" style="max-width:1400px">
+    <div class="wrap" style="overflow:visible">
       <div class="gaw-video-spot" aria-label="Chrome Enterprise interactive assessment tool, recorded in use">
         <img src="img/gaw-chrome-desktop.png" alt="Chrome Enterprise interactive assessment tool mockup: What’s more important to you in a browser?">
         <video class="gaw-screen-video" src="img/gaw-chrome-assessment.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
