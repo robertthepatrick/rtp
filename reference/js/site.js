@@ -272,3 +272,27 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     touchX=null;
   },{passive:true});
 })();
+
+/* Fit a headline to a fixed number of lines on phone widths. Pages mark the headline with data-fit-lines="N". On screens wider than 600px the original size is restored; on phones the size starts at 44px and steps down until the text fits in N lines (never below 22px). */
+(function(){
+  var MAX=44, MIN=22;
+  var els=[].slice.call(document.querySelectorAll('[data-fit-lines]'));
+  if(!els.length)return;
+  function fit(){
+    els.forEach(function(el){
+      if(el.dataset.origSize===undefined)el.dataset.origSize=el.style.fontSize;
+      if(window.innerWidth>600){el.style.fontSize=el.dataset.origSize;return;}
+      var lines=+el.dataset.fitLines||2;
+      var size=MAX;
+      el.style.fontSize=size+'px';
+      while(size>MIN){
+        var lh=parseFloat(getComputedStyle(el).lineHeight);
+        if(el.getBoundingClientRect().height/lh<=lines+0.2)break;
+        size--;el.style.fontSize=size+'px';
+      }
+    });
+  }
+  fit();
+  window.addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+})();
