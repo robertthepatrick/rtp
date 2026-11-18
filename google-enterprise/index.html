@@ -246,6 +246,11 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
 .gaw-band .wrap.gaw-row3 img{width:auto;max-width:42%;height:clamp(155px,29vw,400px);object-fit:contain;flex:0 1 auto;min-width:0;display:block;margin:0 auto}
 /* Reader comment: the desktop mockup (2nd of the 3) should be the tallest of the group — it's a wide/short screenshot, so giving it the same height cap as the others still renders it shortest; set its height explicitly taller instead. */
 .gaw-band .wrap.gaw-row3 img:nth-child(2){height:clamp(178px,34vw,460px)}
+/* Mobile: devices run larger than the row and crop slightly at the left and right edges; they spill past the yellow band, which keeps its original height */
+@media (max-width:600px){
+  .gaw-band .wrap.gaw-row3 img{flex:0 0 auto;max-width:none;height:40vw}
+  .gaw-band .wrap.gaw-row3 img:nth-child(2){height:46vw}
+}
 .gaw-band{padding:clamp(40px,6vw,80px) var(--gutter)}
 /* Reader comment: the screen-recording video plays inside the Chrome assessment-tool mockup's
    device screen. The mockup PNG's screen rectangle was measured directly (284,155 to 1874,1066
@@ -309,6 +314,16 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
 .gaw-split-images .gaw-split-imgs.gaw-split-content{align-items:stretch;order:0}
 /* Reader comment: center each mockup at its own natural width instead of stretching every image to the full column (which threw them out of alignment with each other). */
 .gaw-split-imgs:not(.gaw-split-content) > img{width:auto;max-width:100%;height:auto;margin:0 auto}
+/* Mobile: the visible graphic is centred in the column. Each wrapper crops its PNG to the artwork, so the art (not the transparent frame) sits in the middle. */
+@media (max-width:739px){
+  .gaw-fit{position:relative;overflow:hidden;width:100%}
+  .gaw-fit img{position:absolute;display:block;max-width:none;height:auto;margin:0}
+  .gaw-fit-desktop{aspect-ratio:2081/1130}
+  .gaw-fit-desktop img{width:120.13%;left:-18.88%;top:-9.29%}
+  .gaw-fit-phone{aspect-ratio:505/1106}
+  .gaw-fit-phone img{width:193.8%;left:-4.70%;top:-4.43%}
+}
+@media (min-width:740px){.gaw-fit{display:contents}.gaw-fit img{width:auto;max-width:100%;height:auto;margin:0 auto}}
 @media (min-width:740px){
   /* Reader comment: give the image column more room so the mockups render larger. */
   .gaw-split-images{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:48px;align-items:start}
@@ -432,8 +447,8 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
         <p class="body">The campaign struck a balance between pragmatic and transformative, with ads that placed feature-rich language (read: buzzwords) inside real world scenarios that would make the audience feel as though we understood their world (we do!) and cared about their problems (again, we do!). The product came off as a solution that could be implemented easily today, show positive results tomorrow, and evolve with the customer’s organization to provide value for years to come.</p>
       </div>
       <div class="gaw-split-imgs">
-        <img src="img/gaw-identity-desktop.png" alt="Cloud Identity website mockup: Stay ahead of threats with user security powered by machine learning">
-        <img src="img/gaw-identity-phone.png" alt="Cloud Identity social media mockup on a phone">
+        <div class="gaw-fit gaw-fit-desktop"><img src="img/gaw-identity-desktop.png" alt="Cloud Identity website mockup: Stay ahead of threats with user security powered by machine learning"></div>
+        <div class="gaw-fit gaw-fit-phone"><img src="img/gaw-identity-phone.png" alt="Cloud Identity social media mockup on a phone"></div>
       </div>
     </div>
   </section>
@@ -457,7 +472,7 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
   </section>
 
   <section class="gaw-band" style="background:#F8F9FA">
-    <div class="wrap">
+    <div class="wrap" style="max-width:1400px">
       <div class="gaw-video-spot" aria-label="Chrome Enterprise interactive assessment tool, recorded in use">
         <img src="img/gaw-chrome-desktop.png" alt="Chrome Enterprise interactive assessment tool mockup: What’s more important to you in a browser?">
         <video class="gaw-screen-video" src="img/gaw-chrome-assessment.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
