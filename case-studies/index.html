@@ -47,9 +47,8 @@ ul{margin:0;padding:0;list-style:none}
 .intro::before{content:"";position:absolute;inset:0;background:url("../assets/img/texture-black.png") center/cover no-repeat;opacity:.32;pointer-events:none}
 .intro .wrap{position:relative}
 .intro-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:32px clamp(32px,6vw,96px);align-items:end}
-.headline{font:500 clamp(36px,8vw,110px)/1 var(--font-display);letter-spacing:-.03em;color:var(--ink)}
+.headline{font:500 clamp(44px,12vw,200px)/1 var(--font-display);letter-spacing:-.03em;color:var(--ink)}
 .headline .echo{display:block;font-style:italic;color:var(--ink-soft)}
-.headline br.mobile-break{display:none}
 .lead{font:500 clamp(20px,1.8vw,26px)/1.4 var(--font-text);max-width:68ch}
 .body{font:400 18px/1.6 var(--font-text);max-width:68ch}
 .label{font:600 12px/1.3 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
@@ -92,7 +91,6 @@ footer.foot{padding-block:clamp(72px,9vw,128px);background:var(--brand-black);co
   .grid{grid-template-columns:1fr}
   .card.wide,.card{grid-column:1/-1}
   .headline{font-size:48px;font-weight:700;margin-top:clamp(16px,6vw,32px)}
-  .headline br.mobile-break{display:block}
   .navlist{display:none}
 }
 /* custom cursor (fine pointers only; JS creates it and adds .cc to <html>): a dot in the opposite of the section color, a circle with an arrow over case images */
@@ -177,7 +175,7 @@ footer.foot .body{color:var(--brand-white);max-width:30em;font:400 17px/1.5 var(
   <section class="band intro">
     <div class="wrap intro-grid">
       <div>
-        <h1 class="headline">Selected<br class="mobile-break">Work</h1>
+        <h1 class="headline">Selected<br>Work</h1>
       </div>
       <div style="display:flex;flex-direction:column;gap:24px">
         <p class="lead">My work crosses innovation, experience design, and creative direction. I am looking to find agencies and project-based work that will allow me to deliver across my wide set of skills and experiences while building teams and deepening relationships with clients.</p>
