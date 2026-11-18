@@ -231,8 +231,11 @@ html.cc,html.cc *{cursor:none!important}
 }
 .pair{display:grid;grid-template-columns:1fr;gap:12px}
 @media (min-width:860px){.pair{grid-template-columns:1fr 1fr}}
-/* Tablet and woman pair: two-up from tablet widths */
-@media (min-width:740px){.pair-tw{grid-template-columns:1fr 1fr}}
+/* Tablet and woman pair: each frame takes its photo's own aspect ratio, so nothing is cropped. Column widths follow the aspect ratios, which makes both tops and bottoms line up. */
+.pair-tw .ph{aspect-ratio:auto;padding:0}
+.pair-tw .ph:first-child{aspect-ratio:512/384}
+.pair-tw .ph:last-child{aspect-ratio:512/327}
+@media (min-width:740px){.pair-tw{grid-template-columns:1.333fr 1.566fr}}
 .badge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;text-align:center}
 @media (min-width:600px){.badge-grid{grid-template-columns:repeat(3,1fr)}}
 .badge-grid img{width:160px;height:160px;margin:0 auto 16px}
