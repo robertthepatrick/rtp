@@ -269,21 +269,12 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
 .pin-h{position:static}
 @media (min-width:740px){.pin-h{position:sticky;top:120px;align-self:start}}
 /* Reader comment: the cover illustration sits in the hero, layered over the existing background image. */
-.hero figure{position:relative}
 /* Reader comment: the overlay's own white backing was spanning the whole figure, blocking the background pattern behind everything except the illustration itself — move the white backing onto just the illustration image so the pattern shows through the rest of the hero, with the headline block sitting directly over those images instead of a blank white rectangle. */
 /* Reader comment: make the stacking order explicit — bg pattern at the base, this illustration above it, headline/subhead text on top. */
 .gaw-hero-overlay{position:absolute;inset:0;z-index:1}
-/* Reader comment: this image is meant to have a transparent background (matching the source), not the white backing we'd given it. */
-/* Reader comment: image at 105% of viewport width, right-aligned, anchored to the bottom of the section so it stays put regardless of hero height. */
-/* Reader comment: moved down 20% of the section height from the bottom-anchored position. */
-.gaw-hero-overlay img{position:absolute;right:0;bottom:-20%;width:105vw;max-width:none;height:auto}
-/* Reader comment: the width freeze (previous attempt) kept the image from climbing but also
-   stopped it scaling full-width at larger viewports, which Robert still wants. Switched approach:
-   keep width:105vw at every size (so it stays full width), but past 1000px switch the vertical
-   anchor from bottom (which keeps the image's BOTTOM edge pinned, so a taller image pushes its
-   TOP edge up into the subhead) to a fixed top position (so the image's TOP edge stays put and
-   any extra height grows downward instead, clipped by the figure's overflow:hidden). */
-@media (min-width:1000px){.gaw-hero-overlay img{bottom:auto;top:38%}}
+/* Illustration sits just below the vertical midline of the hero and stays mostly in frame at every breakpoint. The figure is a size container, so the illustration scales to the figure's height as well as its width: 105% of the figure's width, capped at 180% of its height (about 80% of the height once the image's aspect ratio is applied). The top is at the midline, pulled up by 40% of the image's own height, which puts its centre a little under the middle. */
+.hero figure{position:relative;container-type:size}
+.gaw-hero-overlay img{position:absolute;right:0;top:50%;transform:translateY(-40%);width:min(105cqw,180cqh);max-width:none;height:auto}
 /* Design intent changed: logo/headline/lead moved into the standard text section below the hero
    (they used to sit overlaid on the illustration here). The hero stays taller than the template
    default so the brand pattern + floating illustration still get real presence. */
