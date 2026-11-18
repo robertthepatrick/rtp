@@ -85,8 +85,11 @@ ul{margin:0;padding:0;list-style:none}
 
 /* full-bleed header image, under the fixed header */
 .hero{margin-top:var(--header-h);background:var(--surface-white)}
-.hero figure{margin:0;width:100%;height:26vh;overflow:hidden;background:var(--placeholder)}
-.hero img{width:100%;height:100%;object-fit:cover}
+.hero figure{--hh:31.2vh;position:relative;margin:0;width:100%;height:var(--hh);overflow:hidden;background:var(--placeholder)}
+/* the photo is drawn at twice the frame height, so its face (a quarter of the way down the image)
+   sits at the vertical middle of the frame at every width. Explicit offsets, not transform, because
+   the image entrance animation sets transform on .clip images. */
+.hero img{position:absolute;top:0;left:calc(50% - var(--hh) * 1.715);max-width:none;height:calc(var(--hh) * 2);width:calc(var(--hh) * 3.43);object-fit:cover}
 /* image motion, as on home: every real image takes class "clip". Image wipes in top to bottom, then settles from 1.28. */
 .js .clip{clip-path:inset(0 0 100% 0)}
 .js .clip.in{clip-path:inset(0 0 0 0);transition:clip-path 1400ms cubic-bezier(.77,0,.18,1) var(--d,0ms)}
@@ -102,9 +105,9 @@ ul{margin:0;padding:0;list-style:none}
 /* full-width image bands carry their own vertical padding */
 .band.full{padding-block:clamp(32px,4.03vw,55px)}
 /* full width always; the height grows with the viewport, never past 50% of its height */
-@media (min-width:860px){ .hero figure{height:39vh} }
-@media (min-width:1280px){ .hero figure{height:52vh} }
-@media (min-width:1700px){ .hero figure{height:65vh} }
+@media (min-width:860px){ .hero figure{--hh:46.8vh} }
+@media (min-width:1280px){ .hero figure{--hh:62.4vh} }
+@media (min-width:1700px){ .hero figure{--hh:78vh} }
 
 /* full-width white bands: a single bleed image, and a three-column row with padding */
 .band{background:var(--surface-white)}
