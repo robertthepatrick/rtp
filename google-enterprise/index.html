@@ -86,7 +86,7 @@ ul{margin:0;padding:0;list-style:none}
 /* full-bleed header image, under the fixed header */
 .hero{margin-top:var(--header-h);background:var(--surface-white)}
 .hero figure{margin:0;width:100%;height:26vh;overflow:hidden;background:var(--placeholder)}
-.hero img{width:100%;height:100%;object-fit:cover}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 0;transform-origin:50% 0}
 /* image motion, as on home: every real image takes class "clip". Image wipes in top to bottom, then settles from 1.28. */
 .js .clip{clip-path:inset(0 0 100% 0)}
 .js .clip.in{clip-path:inset(0 0 0 0);transition:clip-path 1400ms cubic-bezier(.77,0,.18,1) var(--d,0ms)}
