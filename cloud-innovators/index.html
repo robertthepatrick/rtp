@@ -231,6 +231,8 @@ html.cc,html.cc *{cursor:none!important}
 }
 .pair{display:grid;grid-template-columns:1fr;gap:12px}
 @media (min-width:860px){.pair{grid-template-columns:1fr 1fr}}
+/* Tablet and woman pair: two-up from tablet widths */
+@media (min-width:740px){.pair-tw{grid-template-columns:1fr 1fr}}
 .badge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;text-align:center}
 @media (min-width:600px){.badge-grid{grid-template-columns:repeat(3,1fr)}}
 .badge-grid img{width:160px;height:160px;margin:0 auto 16px}
@@ -340,7 +342,7 @@ html.cc,html.cc *{cursor:none!important}
 
   <section class="sec sec-white" aria-label="Project images">
     <div class="wrap">
-      <div class="pair">
+      <div class="pair pair-tw">
         <div class="ph contain clip"><img src="img/ci2-device.jpg" alt="Innovators event schedule mockup" style="object-position:50% 50%"></div>
         <div class="ph contain clip"><img src="img/ci2-photo1.png" alt="Community member at a shared table" style="object-position:0% 0%"></div>
       </div>
