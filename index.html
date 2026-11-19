@@ -2,7 +2,7 @@
 </style></head><body>
 <title>ROBERT the PATRICK - Home</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<link rel="preload" as="image" href="assets/img/texture-black.png" fetchpriority="high"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
 <style>
 /* ROBERT the PATRICK site, v2. One look by design: yellow, cream and black are the brand, so there is no dark scheme.
    Registers: landing (yellow, heavy), about (cream, light), night (black). Role tokens only below this block.
@@ -155,7 +155,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .hero-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-6);margin-top:clamp(32px,4vw,var(--space-8));padding-top:var(--space-5)}
 .hero-meta .audience{max-width:26em;text-align:right;font-size:21px;margin-left:auto}
 .hero .d1.all .ln{max-width:7em}
-.hero .d1{font-size:clamp(56px,min(8.4vw,calc((75svh - 392px) / 3.46)),120px)}
+.hero .d1{font-size:clamp(56px,min(10.5vw,16svh),160px)}
 /* below 600px the floor above (56px) is too big for this headline's own words to fit one .ln
    per line; each .ln would wrap internally, tripping the JS "all" class and compounding into
    uneven multi-line spacing. Shrink the floor so each .ln fits its own line again. */
@@ -309,8 +309,6 @@ html.cc,html.cc *{cursor:none!important}
 .js .logos li{opacity:0;transition:opacity 900ms var(--ease-out) var(--d,0ms)}
 .js .logos.in li{opacity:1}
 @keyframes drift{from{transform:translate3d(0,0,0) scale(1.04)}to{transform:translate3d(-2.5%,-2%,0) scale(1.04)}}
-@keyframes sharpen{from{filter:blur(14px);opacity:0}to{filter:blur(0);opacity:var(--o)}}
-.js .hero .tex{animation:sharpen 1600ms var(--ease-out) both,drift 48s var(--ease) 1600ms infinite alternate}
 .js .bridge .tex{animation:drift 56s var(--ease) infinite alternate}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0ms!important;scroll-behavior:auto!important}

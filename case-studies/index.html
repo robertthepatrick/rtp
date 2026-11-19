@@ -51,7 +51,7 @@ ul{margin:0;padding:0;list-style:none}
 .intro::before{content:"";position:absolute;inset:0;background:url("../assets/img/texture-black.png") center/cover no-repeat;opacity:.32;pointer-events:none}
 .intro .wrap{position:relative}
 .intro-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:32px clamp(32px,6vw,96px);align-items:end}
-.headline{font:700 clamp(44px,8vw,120px)/1 var(--font-display);letter-spacing:-.03em;color:var(--ink)}
+.headline{font:800 clamp(56px,10vw,160px)/1 var(--font-display);letter-spacing:-.03em;color:var(--ink)}
 .headline .echo{display:block;font-style:italic;color:var(--ink-soft)}
 .lead{font:500 clamp(20px,1.8vw,26px)/1.4 var(--font-text);max-width:68ch}
 .body{font:400 18px/1.6 var(--font-text);max-width:68ch}
@@ -64,6 +64,8 @@ ul{margin:0;padding:0;list-style:none}
 .fig{position:relative;overflow:hidden;background:var(--surface-raised);aspect-ratio:16/9}
 a.fig{display:block}
 .fig img{width:100%;height:100%;object-fit:cover}
+.fig-ago{aspect-ratio:32/9}
+@media (max-width:600px){.fig-ago{aspect-ratio:32/11.7}}
 /* no image yet: a bold field with the texture, never a thumbnail */
 .fig.field{background:var(--brand-black);display:flex;align-items:flex-end;padding:24px}
 .fig.field::before{content:"";position:absolute;inset:-4%;background:url("../assets/img/texture-white.png") center/cover no-repeat;opacity:.35}
@@ -94,7 +96,7 @@ footer.foot{padding-block:clamp(72px,9vw,128px);background:var(--brand-black);co
 @media (max-width:600px){
   .grid{grid-template-columns:1fr}
   .card.wide,.card{grid-column:1/-1}
-  .headline{font-size:48px;font-weight:700;margin-top:clamp(16px,6vw,32px)}
+  .headline{font-size:56px;font-weight:800;margin-top:clamp(16px,6vw,32px)}
   .navlist{display:none}
 }
 /* custom cursor (fine pointers only; JS creates it and adds .cc to <html>): a dot in the opposite of the section color, a circle with an arrow over case images */
@@ -234,7 +236,7 @@ footer.foot .body{color:var(--brand-white);max-width:30em;font:400 17px/1.5 var(
         </article>
 
         <article class="card wide">
-          <a class="fig" href="/ago/" aria-hidden="true" tabindex="-1" style="aspect-ratio:32/9"><img src="img/case-ago.jpg" width="1218" height="697" alt="Collage of portraits from the field and from boats" loading="lazy"></a>
+          <a class="fig fig-ago" href="/ago/" aria-hidden="true" tabindex="-1"><img src="img/case-ago.jpg" width="1218" height="697" alt="Collage of portraits from the field and from boats" loading="lazy"></a>
           <div class="meta">
             <h2 class="title"><a href="/ago/">ArticleGroup.org: Building a Human Impact Agency</a></h2>
             <ul class="activities">
@@ -272,7 +274,7 @@ footer.foot .body{color:var(--brand-white);max-width:30em;font:400 17px/1.5 var(
         <article class="card wide">
           <a class="fig" href="/honda/" aria-hidden="true" tabindex="-1" style="aspect-ratio:64/27"><img src="img/case-honda.jpg" width="1920" height="1080" alt="Aerial view of a freeway interchange at night, traffic lit in long trails" loading="lazy"></a>
           <div class="meta">
-            <h2 class="title"><a href="/honda/">Product &amp; Service Innovation for Honda</a></h2>
+            <h2 class="title"><a href="/honda/">Honda: Product &amp; Service Innovation</a></h2>
             <ul class="activities">
               <li>Social and economic research synthesis</li>
               <li>Cross-functional facilitation design</li>

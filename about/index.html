@@ -1,5 +1,5 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.site .bar,.site nav{background:inherit}
-</style></head><body>
+<!doctype html><html><head><link rel="preload" as="image" href="img/helsinki.jpg" fetchpriority="high"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.site .bar,.site nav{background:inherit}
+.hero img.clip{clip-path:none!important;transition:none!important}.hero img.clip,.hero img.clip.in{transform:none!important;transition:none!important}</style></head><body>
 <!doctype html>
 <html lang="en">
 <head>
@@ -249,7 +249,7 @@ html.cc,html.cc *{cursor:none!important}
 .about-main{padding-top:clamp(56px,7vw,96px)}
 .about-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--space-8) clamp(32px,6vw,96px);align-items:start}
 .about-left{position:sticky;top:calc(var(--header-h) + var(--space-6))}
-.about-h{font:500 clamp(36px,8vw,110px)/1 var(--font-display);letter-spacing:-.03em;color:var(--ink)}
+.about-h{font:800 clamp(56px,10vw,160px)/1 var(--font-display);letter-spacing:-.03em;color:var(--ink)}
 .about-h .echo{display:block}
 .about-right{min-width:0}
 .intro-copy{display:flex;flex-direction:column;gap:var(--space-5);max-width:var(--measure);padding-bottom:calc(var(--space-9) / 2)}
@@ -293,8 +293,6 @@ html.cc,html.cc *{cursor:none!important}
 .js .logos li{opacity:0;transition:opacity 900ms var(--ease-out) var(--d,0ms)}
 .js .logos.in li{opacity:1}
 @keyframes drift{from{transform:translate3d(0,0,0) scale(1.04)}to{transform:translate3d(-2.5%,-2%,0) scale(1.04)}}
-@keyframes sharpen{from{filter:blur(14px);opacity:0}to{filter:blur(0);opacity:var(--o)}}
-.js .hero .tex{animation:sharpen 1600ms var(--ease-out) both,drift 48s var(--ease) 1600ms infinite alternate}
 .js .bridge .tex{animation:drift 56s var(--ease) infinite alternate}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0ms!important;scroll-behavior:auto!important}
@@ -344,7 +342,7 @@ html.cc,html.cc *{cursor:none!important}
   .logos img{max-height:32px}
   .about-grid{grid-template-columns:1fr}
   .about-left{position:static}
-  .about-h{font-size:48px}
+  .about-h{font-size:56px}
 }
 @media (max-width:480px){
   .btn-row{flex-direction:column;gap:var(--space-4)}
