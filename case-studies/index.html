@@ -2,7 +2,7 @@
 </style></head><body>
 <title>Case Studies</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
 <style>
 /* Innovation work index, case register: white ground, gray-50 cards, hairlines.
    Order and card rhythm follow the live page (wide, pair, pair, wide). Role tokens only. */
@@ -97,7 +97,7 @@ footer.foot{padding-block:clamp(72px,9vw,128px);background:var(--brand-black);co
 @media (max-width:600px){
   .grid{grid-template-columns:1fr}
   .card.wide,.card{grid-column:1/-1}
-  .headline{font-size:56px;font-weight:800;margin-top:clamp(16px,6vw,32px)}
+  .headline{font-size:clamp(56px,16vw,64px);font-weight:800;margin-top:clamp(40px,12vw,72px)}
   .navlist{display:none}
 }
 /* custom cursor (fine pointers only; JS creates it and adds .cc to <html>): a dot in the opposite of the section color, a circle with an arrow over case images */
@@ -495,7 +495,11 @@ footer.foot .body{color:var(--brand-white);max-width:30em;font:400 17px/1.5 var(
 
 </script>
 <script>(function(){var d=document,tog=d.querySelector('.nav-toggle'),site=d.querySelector('.site');
-tog.addEventListener('click',function(){var o=tog.getAttribute('aria-expanded')!=='true';tog.setAttribute('aria-expanded',o);site.classList.toggle('nav-open',o);});})();
+tog.addEventListener('click',function(){var o=tog.getAttribute('aria-expanded')!=='true';tog.setAttribute('aria-expanded',o);site.classList.toggle('nav-open',o);});
+  function closeNav(){if(site.classList.contains('nav-open')){tog.setAttribute('aria-expanded','false');site.classList.remove('nav-open');}}
+  var navY=0;tog.addEventListener('click',function(){navY=window.scrollY;});
+  d.addEventListener('click',function(e){if(site.classList.contains('nav-open')&&!site.contains(e.target))closeNav();});
+  window.addEventListener('scroll',function(){if(site.classList.contains('nav-open')&&Math.abs(window.scrollY-navY)>8)closeNav();},{passive:true});})();
 </script>
 <script>(function(){var d=document,site=d.querySelector('.site'),W=window,lastY=0,ticking=false;
 function frame(){ticking=false;var y=W.pageYOffset||d.documentElement.scrollTop;

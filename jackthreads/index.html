@@ -388,6 +388,10 @@ html.cc,html.cc *{cursor:none!important}
   var d=document,site=d.getElementById('top');
   var tog=d.querySelector('.nav-toggle');
   tog.addEventListener('click',function(){var o=tog.getAttribute('aria-expanded')!=='true';tog.setAttribute('aria-expanded',o);site.classList.toggle('nav-open',o);});
+  function closeNav(){if(site.classList.contains('nav-open')){tog.setAttribute('aria-expanded','false');site.classList.remove('nav-open');}}
+  var navY=0;tog.addEventListener('click',function(){navY=window.scrollY;});
+  d.addEventListener('click',function(e){if(site.classList.contains('nav-open')&&!site.contains(e.target))closeNav();});
+  window.addEventListener('scroll',function(){if(site.classList.contains('nav-open')&&Math.abs(window.scrollY-navY)>8)closeNav();},{passive:true});
   var lastY=0;
   function onScroll(){
     var y=window.pageYOffset||0;

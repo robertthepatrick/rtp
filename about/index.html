@@ -342,7 +342,7 @@ html.cc,html.cc *{cursor:none!important}
   .logos img{max-height:32px}
   .about-grid{grid-template-columns:1fr}
   .about-left{position:static}
-  .about-h{font-size:56px}
+  .about-h{font-size:clamp(56px,16vw,64px);font-weight:800}
 }
 @media (max-width:480px){
   .btn-row{flex-direction:column;gap:var(--space-4)}
@@ -401,8 +401,8 @@ body{--page-bg:var(--brand-cream)}
         <div class="arow rd">
           <h2 class="h35 rv">Resumé</h2>
           <div class="btn-row rv" style="--d:100ms">
-            <a class="btn btn-outline" href="https://drive.google.com/file/d/1VrlQNcuyJkOWnnSeNCyhCDg4Q5yDDAVW/view?usp=sharing"><span>Innovation &amp; Creative</span></a>
-            <a class="btn btn-outline" href="https://drive.google.com/file/d/1AHuJQ3W4ONL3SQ1BaHU6Do0UYDefzNuP/view?usp=sharing"><span>Impact Org</span></a>
+            <a class="btn btn-outline" href="https://drive.google.com/file/d/139tGkFv7bJxgs6lOoumk7kGrxGk4aVCC/view?usp=sharing"><span>Brand creative</span></a>
+            <a class="btn btn-outline" href="https://drive.google.com/file/d/1j8b3MXC0VgY39yjEpKP5Mc7jRGOOsp_Z/view?usp=sharing"><span>Social impact</span></a>
           </div>
         </div>
 
@@ -502,6 +502,10 @@ body{--page-bg:var(--brand-cream)}
   /* menus */
   var tog=d.querySelector('.nav-toggle');
   tog.addEventListener('click',function(){var o=tog.getAttribute('aria-expanded')!=='true';tog.setAttribute('aria-expanded',o);site.classList.toggle('nav-open',o);});
+  function closeNav(){if(site.classList.contains('nav-open')){tog.setAttribute('aria-expanded','false');site.classList.remove('nav-open');}}
+  var navY=0;tog.addEventListener('click',function(){navY=window.scrollY;});
+  d.addEventListener('click',function(e){if(site.classList.contains('nav-open')&&!site.contains(e.target))closeNav();});
+  window.addEventListener('scroll',function(){if(site.classList.contains('nav-open')&&Math.abs(window.scrollY-navY)>8)closeNav();},{passive:true});
   var wb=d.querySelector('.work-btn'),hm=wb&&wb.parentNode;
   function setW(o){if(!wb)return;wb.setAttribute('aria-expanded',o?'true':'false');hm.classList.toggle('open',o);}
   if(wb)wb.addEventListener('click',function(){setW(wb.getAttribute('aria-expanded')!=='true');});
