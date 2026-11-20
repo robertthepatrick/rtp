@@ -159,10 +159,11 @@ ul,ol{margin:0;padding:0;list-style:none}
 /* below 600px the floor above (56px) is too big for this headline's own words to fit one .ln
    per line; each .ln would wrap internally, tripping the JS "all" class and compounding into
    uneven multi-line spacing. Shrink the floor so each .ln fits its own line again. */
-@media (max-width:600px){.hero{padding-top:calc(var(--header-h) + 56px)}.hero .d1{font-size:clamp(56px,16vw,64px);font-weight:800}.hero .d1 .ln{white-space:normal}}
+@media (max-width:600px){.hero{--d1:clamp(56px,16vw,64px);padding-top:calc(var(--header-h) + 2.264 * var(--d1))}.hero .d1{font-size:var(--d1);font-weight:800}.hero .d1 .ln{white-space:normal}}
 .hero .d1 .ln{display:block;white-space:nowrap}
 .hero .d1 .ln+.ln{margin-top:.384em}
 @media (orientation:portrait) and (max-width:900px){.hero{min-height:50svh}}
+@media (min-width:841px){.hero{--d1:clamp(56px,min(10.5vw,16svh),160px);max-height:none;padding-top:calc(var(--header-h) + 2.264 * var(--d1))}.hero .d1{font-size:var(--d1)}}
 .cue{font:500 28px/1 var(--font-display);color:var(--ink)}
 
 /* ---------- Home: what I bring ---------- */
