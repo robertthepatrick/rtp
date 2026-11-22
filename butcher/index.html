@@ -91,6 +91,7 @@ ul{margin:0;padding:0;list-style:none}
 .js .clip{clip-path:inset(0 0 100% 0)}
 .js .clip.in{clip-path:inset(0 0 0 0);transition:clip-path 1400ms cubic-bezier(.77,0,.18,1) var(--d,0ms)}
 .bleed.clip,.ph.clip{overflow:hidden}
+.js .ph.clip,.js .ph.paper.clip,.js .bleed.clip{background:transparent}
 .js .clip img,.js img.clip{transform:scale(1.28)}
 .js .clip.in img,.js img.clip.in{transform:none;transition:transform 2000ms cubic-bezier(.16,1,.3,1) var(--d,0ms)}
 /* real images fill their frame; a bleed with an image takes the image's own ratio inline (overrides the 21/9 and mobile 4/3 placeholder ratios) */
@@ -281,16 +282,16 @@ html.cc,html.cc *{cursor:none!important}
   <section class="sec sec-white" aria-label="Photographs">
     <div class="wrap">
       <div class="gallery-pair">
-        <div class="ph clip"><img src="img/butcher-storefont.jpg" alt="A butcher, storefont"></div>
-        <div class="ph clip"><img src="img/butcher-counter.jpg" alt="A butcher, counter"></div>
-        <div class="ph clip"><img src="img/butcher-relaxed.jpg" alt="A butcher, relaxed"></div>
-        <div class="ph clip"><img src="img/butcher-accordian.jpg" alt="A butcher, accordian"></div>
-        <div class="ph clip"><img src="img/butcher-aprin.jpg" alt="A butcher, aprin"></div>
-        <div class="ph clip"><img src="img/butcher-knives.jpg" alt="A butcher, knives"></div>
-        <div class="ph clip"><img src="img/butcher-oversholder.jpg" alt="A butcher, oversholder"></div>
-        <div class="ph clip"><img src="img/butcher-pots.jpg" alt="A butcher, pots"></div>
-        <div class="ph clip"><img src="img/butcher-shopcat.jpg" alt="A butcher, shopcat"></div>
-        <div class="ph clip"><img src="img/butcher-window.jpg" alt="A butcher, window"></div>
+        <div class="ph clip"><img src="img/butcher-storefont.jpg" alt="A butcher, storefont" width="550" height="550" loading="lazy"></div>
+        <div class="ph clip"><img src="img/butcher-counter.jpg" alt="A butcher, counter" width="550" height="550" loading="lazy"></div>
+        <div class="ph clip"><img src="img/butcher-relaxed.jpg" alt="A butcher, relaxed" width="550" height="550" loading="lazy"></div>
+        <div class="ph clip"><img src="img/butcher-accordian.jpg" alt="A butcher, accordian" width="550" height="550" loading="lazy"></div>
+        <div class="ph clip"><img src="img/butcher-aprin.jpg" alt="A butcher, aprin" width="550" height="550" loading="lazy"></div>
+        <div class="ph clip"><img src="img/butcher-knives.jpg" alt="A butcher, knives" width="550" height="550" loading="lazy"></div>
+        <div class="ph clip"><img src="img/butcher-oversholder.jpg" alt="A butcher, oversholder" width="550" height="550" loading="lazy"></div>
+        <div class="ph clip"><img src="img/butcher-pots.jpg" alt="A butcher, pots" width="550" height="550" loading="lazy"></div>
+        <div class="ph clip"><img src="img/butcher-shopcat.jpg" alt="A butcher, shopcat" width="550" height="550" loading="lazy"></div>
+        <div class="ph clip"><img src="img/butcher-window.jpg" alt="A butcher, window" width="550" height="550" loading="lazy"></div>
       </div>
     </div>
   </section>

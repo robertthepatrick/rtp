@@ -91,6 +91,7 @@ ul{margin:0;padding:0;list-style:none}
 .js .clip{clip-path:inset(0 0 100% 0)}
 .js .clip.in{clip-path:inset(0 0 0 0);transition:clip-path 1400ms cubic-bezier(.77,0,.18,1) var(--d,0ms)}
 .bleed.clip,.ph.clip{overflow:hidden}
+.js .ph.clip,.js .ph.paper.clip,.js .bleed.clip{background:transparent}
 .js .clip img,.js img.clip{transform:scale(1.28)}
 .js .clip.in img,.js img.clip.in{transform:none;transition:transform 2000ms cubic-bezier(.16,1,.3,1) var(--d,0ms)}
 /* real images fill their frame; a bleed with an image takes the image's own ratio inline (overrides the 21/9 and mobile 4/3 placeholder ratios) */
@@ -437,7 +438,7 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
   <section class="gaw-band" style="background:#4285F4;position:relative;overflow:hidden">
     <div class="gaw-mobility-accent" style="background:url('img/gaw-mobility-bg.png') center/contain no-repeat;position:absolute;inset:0;margin:auto;width:100%;max-width:none;aspect-ratio:677/182"></div>
     <div class="wrap" style="position:relative;z-index:1">
-      <img class="clip" src="img/gaw-mobility-laptop.webp" alt="Laptop mockup: The way we work and live is blending together, Google Cloud presentation slide">
+      <img class="clip" src="img/gaw-mobility-laptop.webp" alt="Laptop mockup: The way we work and live is blending together, Google Cloud presentation slide" width="2500" height="1479" loading="lazy">
     </div>
   </section>
 
@@ -459,8 +460,8 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
         <p class="body">The campaign struck a balance between pragmatic and transformative, with ads that placed feature-rich language (read: buzzwords) inside real world scenarios that would make the audience feel as though we understood their world (we do!) and cared about their problems (again, we do!). The product came off as a solution that could be implemented easily today, show positive results tomorrow, and evolve with the customer’s organization to provide value for years to come.</p>
       </div>
       <div class="gaw-split-imgs">
-        <div class="gaw-fit gaw-fit-desktop"><img src="img/gaw-identity-desktop.webp" alt="Cloud Identity website mockup: Stay ahead of threats with user security powered by machine learning"></div>
-        <div class="gaw-fit gaw-fit-phone"><img src="img/gaw-identity-phone.webp" alt="Cloud Identity social media mockup on a phone"></div>
+        <div class="gaw-fit gaw-fit-desktop"><img src="img/gaw-identity-desktop.webp" alt="Cloud Identity website mockup: Stay ahead of threats with user security powered by machine learning" width="2500" height="1303" loading="lazy"></div>
+        <div class="gaw-fit gaw-fit-phone"><img src="img/gaw-identity-phone.webp" alt="Cloud Identity social media mockup on a phone" width="979" height="1169" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -468,9 +469,9 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
   <section class="gaw-band gaw-drive-sec" style="background:#fff;position:relative;overflow:hidden">
     <div class="gaw-yellow-strip" style="background:#FABB04 url('img/gaw-drive-bg.webp') center/cover;position:absolute;inset:0;margin:auto;width:100%;height:182px"></div>
     <div class="wrap gaw-row3" style="max-width:1220px;padding:13px 32px;margin:0 auto;position:relative;z-index:1">
-        <img class="clip" src="img/gaw-drive-phone.png" alt="Drive Enterprise phone mockup: Work in Excel, find files faster with Google-powered AI">
-        <img class="clip" src="img/gaw-drive-desktop.webp" alt="Drive Enterprise desktop mockup: Run on Microsoft, win with Google">
-        <img class="clip" src="img/gaw-drive-tablet.webp" alt="Drive Enterprise tablet mockup: Artificial intelligence is already beginning to transform the nature of work">
+        <img class="clip" src="img/gaw-drive-phone.png" alt="Drive Enterprise phone mockup: Work in Excel, find files faster with Google-powered AI" width="594" height="1134" loading="lazy">
+        <img class="clip" src="img/gaw-drive-desktop.webp" alt="Drive Enterprise desktop mockup: Run on Microsoft, win with Google" width="1165" height="1024" loading="lazy">
+        <img class="clip" src="img/gaw-drive-tablet.webp" alt="Drive Enterprise tablet mockup: Artificial intelligence is already beginning to transform the nature of work" width="862" height="1054" loading="lazy">
       </div>
   </section>
 
@@ -486,7 +487,7 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
   <section class="gaw-band" style="background:#F8F9FA">
     <div class="wrap" style="overflow:visible">
       <div class="gaw-video-spot" aria-label="Chrome Enterprise interactive assessment tool, recorded in use">
-        <img src="img/gaw-chrome-desktop.webp" alt="Chrome Enterprise interactive assessment tool mockup: What’s more important to you in a browser?">
+        <img src="img/gaw-chrome-desktop.webp" alt="Chrome Enterprise interactive assessment tool mockup: What’s more important to you in a browser?" width="2160" height="1582" loading="lazy">
         <video class="gaw-screen-video" src="img/gaw-chrome-assessment.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
       </div>
     </div>
@@ -502,11 +503,11 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
       </div>
       <div class="gaw-split-imgs gaw-split-content gaw-collateral-stack">
         <p class="gaw-collateral-label">Display ads</p>
-        <img src="img/gaw-chrome-ad-mobile.png" alt="Chrome Enterprise display ad: Better for site isolation, safe browsing and sleep at night" style="width:100%;height:auto;border:1px solid #d0d0d0;border-radius:4px">
+        <img src="img/gaw-chrome-ad-mobile.png" alt="Chrome Enterprise display ad: Better for site isolation, safe browsing and sleep at night" style="width:100%;height:auto;border:1px solid #d0d0d0;border-radius:4px" width="1600" height="412" loading="lazy">
         <p class="gaw-collateral-label">Info one sheets</p>
-        <img src="img/gaw-ebook1.png" alt="Chrome Enterprise info sheet: A better browser starts here" style="width:80%;height:auto;border:1px solid #d0d0d0;border-radius:4px">
+        <img src="img/gaw-ebook1.png" alt="Chrome Enterprise info sheet: A better browser starts here" style="width:80%;height:auto;border:1px solid #d0d0d0;border-radius:4px" width="468" height="603" loading="lazy">
         <p class="gaw-collateral-label">Ebooks</p>
-        <img src="img/gaw-ebook2.png" alt="Chrome Enterprise ebook: 7 Answers to Enterprise Questions about Chrome Browser" style="width:80%;height:auto;border:1px solid #d0d0d0;border-radius:4px">
+        <img src="img/gaw-ebook2.png" alt="Chrome Enterprise ebook: 7 Answers to Enterprise Questions about Chrome Browser" style="width:80%;height:auto;border:1px solid #d0d0d0;border-radius:4px" width="572" height="740" loading="lazy">
       </div>
     </div>
   </section>
@@ -523,7 +524,7 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
   </section>
 
   <section class="gaw-results-full" style="background:#fff">
-    <img src="img/gaw-results-illustration.png" alt="Illustration of two people collaborating with abstract shapes and app icons">
+    <img src="img/gaw-results-illustration.png" alt="Illustration of two people collaborating with abstract shapes and app icons" width="1563" height="605" loading="lazy">
   </section>
 
   <section class="sec" aria-label="More work">

@@ -92,6 +92,7 @@ ul{margin:0;padding:0;list-style:none}
 .js .clip{clip-path:inset(0 0 100% 0)}
 .js .clip.in{clip-path:inset(0 0 0 0);transition:clip-path 1400ms cubic-bezier(.77,0,.18,1) var(--d,0ms)}
 .bleed.clip,.ph.clip{overflow:hidden}
+.js .ph.clip,.js .ph.paper.clip,.js .bleed.clip{background:transparent}
 .js .clip img,.js img.clip{transform:scale(1.28)}
 .js .clip.in img,.js img.clip.in{transform:none;transition:transform 2000ms cubic-bezier(.16,1,.3,1) var(--d,0ms)}
 /* real images fill their frame; a bleed with an image takes the image's own ratio inline (overrides the 21/9 and mobile 4/3 placeholder ratios) */
@@ -225,7 +226,7 @@ html.cc,html.cc *{cursor:none!important}
 
 /* GE case study additions */
 .pattern-band{background:var(--surface-white);overflow:hidden}
-.pattern-band .strip{height:160px;background-image:url("img/geprocess-pattern-band.png");background-repeat:no-repeat;background-position:center top;background-size:100% auto;opacity:.8}
+.pattern-band .strip{height:160px;background-image:url("img/geprocess-pattern-band.webp");background-repeat:no-repeat;background-position:center top;background-size:100% auto;opacity:.8}
 @media (max-width:600px){.pattern-band .strip{height:110px}}
 .credits-rail{display:flex;flex-direction:column;gap:32px}
 @media (min-width:740px){.credits-rail{flex-direction:row;gap:64px}.credits-rail>.stack{flex:1 1 0}}
@@ -332,15 +333,15 @@ html.cc,html.cc *{cursor:none!important}
   </section>
 
   <section class="band full" aria-label="Full-width image" style="padding-block:0">
-    <div class="bleed clip"><img src="img/geprocess-event-01.jpg" alt="Photo of visitors at the Transforming Rio interactive display" style="object-position:center"></div>
+    <div class="bleed clip"><img src="img/geprocess-event-01.webp" alt="Photo of visitors at the Transforming Rio interactive display" style="object-position:center" width="2500" height="1663" loading="lazy"></div>
   </section>
 
   <section class="band tri" aria-label="Detail photography">
     <div class="wrap">
       <div class="tri-grid">
-        <div class="ph clip"><img src="img/geprocess-event-05.jpg" alt="Detail photo of an exhibit component"></div>
-        <div class="ph clip"><img src="img/geprocess-event-06.jpg" alt="Detail photo of visitors at a kiosk"></div>
-        <div class="ph clip"><img src="img/geprocess-event-07.jpg" alt="Detail photo of the Canoe Sprint game"></div>
+        <div class="ph clip"><img src="img/geprocess-event-05.jpg" alt="Detail photo of an exhibit component" width="689" height="1004" loading="lazy"></div>
+        <div class="ph clip"><img src="img/geprocess-event-06.jpg" alt="Detail photo of visitors at a kiosk" width="1004" height="668" loading="lazy"></div>
+        <div class="ph clip"><img src="img/geprocess-event-07.jpg" alt="Detail photo of the Canoe Sprint game" width="1004" height="668" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -349,10 +350,10 @@ html.cc,html.cc *{cursor:none!important}
     <div class="wrap">
       <p class="label">Initial ideation drawings.</p>
       <div class="pair pair-asym" style="margin-top:24px;width:84.5%;margin-inline:auto">
-        <div class="ph paper" style="aspect-ratio:2500/982"><img src="img/geprocess-sketch-01.jpg" alt="Hand-drawn ideation sketches of exhibit concepts, numbered panels"></div>
-        <div class="ph paper" style="aspect-ratio:1360/1129;width:40%;margin-inline:auto"><img src="img/geprocess-sketch-kayak.jpg" alt="Hand-drawn sketch of a canoe training simulation concept"></div>
+        <div class="ph paper clip" style="aspect-ratio:2500/982"><img src="img/geprocess-sketch-01.jpg" alt="Hand-drawn ideation sketches of exhibit concepts, numbered panels" width="2500" height="982" loading="lazy"></div>
+        <div class="ph paper clip" style="aspect-ratio:1360/1129;width:40%;margin-inline:auto"><img src="img/geprocess-sketch-kayak.jpg" alt="Hand-drawn sketch of a canoe training simulation concept" width="1360" height="1129" loading="lazy"></div>
       </div>
-      <div class="ph paper" style="margin-top:24px;aspect-ratio:2500/663"><img src="img/geprocess-sketch-02.jpg" alt="Hand-drawn ideation sketches of presentation and briefing concepts"></div>
+      <div class="ph paper clip" style="margin-top:24px;aspect-ratio:2500/663"><img src="img/geprocess-sketch-02.jpg" alt="Hand-drawn ideation sketches of presentation and briefing concepts" width="2500" height="663" loading="lazy"></div>
       <p class="caption" style="margin-top:16px;text-align:right">Drawings by Lucas Chung</p>
     </div>
   </section>
@@ -361,18 +362,18 @@ html.cc,html.cc *{cursor:none!important}
     <div class="wrap">
       <p class="label" style="margin-bottom:24px">Early spacial concepts</p>
       <div class="render-2up">
-        <div class="ph contain"><img src="img/geprocess-concept-render-01.jpg" alt="Early grayscale 3D render of the exhibit entrance and seating area"></div>
-        <div class="ph contain"><img src="img/geprocess-concept-render-02.jpg" alt="Early grayscale 3D render of the Canoe Training zone"></div>
+        <div class="ph contain clip"><img src="img/geprocess-concept-render-01.jpg" alt="Early grayscale 3D render of the exhibit entrance and seating area" width="2079" height="1606" loading="lazy"></div>
+        <div class="ph contain clip"><img src="img/geprocess-concept-render-02.jpg" alt="Early grayscale 3D render of the Canoe Training zone" width="2500" height="1309" loading="lazy"></div>
       </div>
-      <div class="ph contain" style="margin-top:12px;aspect-ratio:1734/1340;max-width:700px;margin-inline:auto"><img src="img/geprocess-concept-render-03.jpg" alt="Early grayscale 3D render of the ceiling and lighting structure"></div>
+      <div class="ph contain clip" style="margin-top:12px;aspect-ratio:1734/1340;max-width:700px;margin-inline:auto"><img src="img/geprocess-concept-render-03.jpg" alt="Early grayscale 3D render of the ceiling and lighting structure" width="1734" height="1340" loading="lazy"></div>
     </div>
   </section>
 
   <section class="sec" aria-label="Zoning and space planning">
     <div class="wrap">
       <p class="label">Zoning &amp; space planning</p>
-      <div class="ph contain" style="margin-top:24px;aspect-ratio:1100/850">
-        <img src="img/geprocess-floorplan.png" alt="Architectural floor plan showing zoning and space planning for the exhibit">
+      <div class="ph contain clip" style="margin-top:24px;aspect-ratio:1100/850">
+        <img src="img/geprocess-floorplan.png" alt="Architectural floor plan showing zoning and space planning for the exhibit" width="1100" height="850" loading="lazy">
       </div>
     </div>
   </section>
@@ -386,39 +387,39 @@ html.cc,html.cc *{cursor:none!important}
   <section class="band" aria-label="Full scale model renders" style="background:var(--surface-white);padding-top:0">
     <div class="wrap">
       <div class="render-grid">
-        <div class="ph"><img src="img/geprocess-render-elevation.jpg" alt="3D render elevation view of the full exhibit structure"></div>
-        <div class="ph"><img src="img/geprocess-render-billions-tunnel.jpg" alt="3D render of the Billions Connected tunnel walkway"></div>
-        <div class="ph"><img src="img/geprocess-render-canoe-top.jpg" alt="3D render top-down view of the Canoe Training zone"></div>
-        <div class="ph"><img src="img/geprocess-render-view1.jpg" alt="3D render view of the exhibit interior"></div>
-        <div class="ph"><img src="img/geprocess-render-canoe-training.jpg" alt="3D render of the Canoe Training kiosks"></div>
-        <div class="ph"><img src="img/geprocess-render-vr-1.jpg" alt="3D render of a visitor using a VR headset at the exhibit"></div>
+        <div class="ph clip"><img src="img/geprocess-render-elevation.jpg" alt="3D render elevation view of the full exhibit structure" width="2500" height="1932" loading="lazy"></div>
+        <div class="ph clip"><img src="img/geprocess-render-billions-tunnel.webp" alt="3D render of the Billions Connected tunnel walkway" width="2500" height="1932" loading="lazy"></div>
+        <div class="ph clip"><img src="img/geprocess-render-canoe-top.webp" alt="3D render top-down view of the Canoe Training zone" width="2500" height="1932" loading="lazy"></div>
+        <div class="ph clip"><img src="img/geprocess-render-view1.jpg" alt="3D render view of the exhibit interior" width="2500" height="1932" loading="lazy"></div>
+        <div class="ph clip"><img src="img/geprocess-render-canoe-training.webp" alt="3D render of the Canoe Training kiosks" width="2500" height="1932" loading="lazy"></div>
+        <div class="ph clip"><img src="img/geprocess-render-vr-1.jpg" alt="3D render of a visitor using a VR headset at the exhibit" width="2500" height="1932" loading="lazy"></div>
       </div>
     </div>
   </section>
 
   <section class="band full" aria-label="Full-width image" style="padding-top:0">
-    <div class="bleed clip"><img src="img/geprocess-event-02.jpg" alt="Photo of a visitor speaking with GE staff at the exhibit" style="object-position:center"></div>
+    <div class="bleed clip"><img src="img/geprocess-event-02.webp" alt="Photo of a visitor speaking with GE staff at the exhibit" style="object-position:center" width="2500" height="1664" loading="lazy"></div>
   </section>
 
   <section class="band full" aria-label="Full-width image" style="padding-block:0">
-    <div class="bleed clip" style="aspect-ratio:2400/1400"><img src="img/geprocess-event-hero-01.jpg" alt="Wide photo of visitors exploring the finished GE exhibit on the factory floor"></div>
+    <div class="bleed clip" style="aspect-ratio:2400/1400"><img src="img/geprocess-event-hero-01.webp" alt="Wide photo of visitors exploring the finished GE exhibit on the factory floor"></div>
   </section>
 
   <section class="band full" aria-label="Full-width image">
-    <div class="bleed clip" style="aspect-ratio:2500/1226"><img src="img/geprocess-event-03.jpg" alt="Wide photo of a delegation touring the GE exhibit"></div>
+    <div class="bleed clip" style="aspect-ratio:2500/1226"><img src="img/geprocess-event-03.webp" alt="Wide photo of a delegation touring the GE exhibit" width="2500" height="1226" loading="lazy"></div>
   </section>
 
   <section class="band" style="background:var(--surface-white)">
     <div class="wrap">
       <div class="pair">
-        <div class="ph clip" style="aspect-ratio:16/9"><img src="img/geprocess-event-slider-01.jpg" alt="Photo of the Canoe Sprint game in use"></div>
-        <div class="ph clip" style="aspect-ratio:16/9"><img src="img/geprocess-event-slider-02.jpg" alt="Photo of visitors enjoying the Canoe Sprint game"></div>
+        <div class="ph clip" style="aspect-ratio:16/9"><img src="img/geprocess-event-slider-01.jpg" alt="Photo of the Canoe Sprint game in use" width="1600" height="928" loading="lazy"></div>
+        <div class="ph clip" style="aspect-ratio:16/9"><img src="img/geprocess-event-slider-02.jpg" alt="Photo of visitors enjoying the Canoe Sprint game" width="1600" height="928" loading="lazy"></div>
       </div>
     </div>
   </section>
 
   <section class="band full" aria-label="Full-width image" style="padding-bottom:0">
-    <div class="bleed clip" style="aspect-ratio:2500/1664"><img src="img/geprocess-event-04.jpg" alt="Wide closing photo of the finished exhibit structure"></div>
+    <div class="bleed clip" style="aspect-ratio:2500/1664"><img src="img/geprocess-event-04.webp" alt="Wide closing photo of the finished exhibit structure" width="2500" height="1664" loading="lazy"></div>
   </section>
 
   <section class="sec" aria-label="More work">

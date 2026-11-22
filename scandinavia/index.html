@@ -91,6 +91,7 @@ ul{margin:0;padding:0;list-style:none}
 .js .clip{clip-path:inset(0 0 100% 0)}
 .js .clip.in{clip-path:inset(0 0 0 0);transition:clip-path 1400ms cubic-bezier(.77,0,.18,1) var(--d,0ms)}
 .bleed.clip,.ph.clip{overflow:hidden}
+.js .ph.clip,.js .ph.paper.clip,.js .bleed.clip{background:transparent}
 .js .clip img,.js img.clip{transform:scale(1.28)}
 .js .clip.in img,.js img.clip.in{transform:none;transition:transform 2000ms cubic-bezier(.16,1,.3,1) var(--d,0ms)}
 /* real images fill their frame; a bleed with an image takes the image's own ratio inline (overrides the 21/9 and mobile 4/3 placeholder ratios) */
@@ -298,31 +299,31 @@ html.cc,html.cc *{cursor:none!important}
   <section class="sec sec-white" aria-label="Sketchbook pages">
     <div class="wrap">
       <div class="gallery-grid">
-        <div class="ph clip ph-contain"><img src="img/scand-sketch-01.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 1"></div>
-        <div class="ph clip"><img src="img/scand-sketch-02.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 2"></div>
-        <div class="ph clip"><img src="img/scand-sketch-03.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 3"></div>
-        <div class="ph clip"><img src="img/scand-sketch-04.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 4"></div>
-        <div class="ph clip"><img src="img/scand-sketch-05.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 5"></div>
-        <div class="ph clip"><img src="img/scand-sketch-06.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 6"></div>
-        <div class="ph clip ph-contain"><img src="img/scand-sketch-07.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 7"></div>
-        <div class="ph clip"><img src="img/scand-sketch-08.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 8"></div>
-        <div class="ph clip"><img src="img/scand-sketch-09.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 9"></div>
-        <div class="ph clip"><img src="img/scand-sketch-10.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 10"></div>
-        <div class="ph clip"><img src="img/scand-sketch-11.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 11"></div>
-        <div class="ph clip"><img src="img/scand-sketch-12.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 12"></div>
-        <div class="ph clip"><img src="img/scand-sketch-13.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 13"></div>
-        <div class="ph clip"><img src="img/scand-sketch-14.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 14"></div>
-        <div class="ph clip"><img src="img/scand-sketch-15.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 15"></div>
-        <div class="ph clip"><img src="img/scand-sketch-16.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 16"></div>
-        <div class="ph clip"><img src="img/scand-sketch-17.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 17"></div>
-        <div class="ph clip"><img src="img/scand-sketch-18.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 18"></div>
-        <div class="ph clip"><img src="img/scand-sketch-19.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 19"></div>
-        <div class="ph clip"><img src="img/scand-sketch-20.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 20"></div>
-        <div class="ph clip"><img src="img/scand-sketch-21.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 21"></div>
-        <div class="ph clip"><img src="img/scand-sketch-22.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 22"></div>
-        <div class="ph clip"><img src="img/scand-sketch-23.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 23"></div>
-        <div class="ph clip"><img src="img/scand-sketch-24.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 24"></div>
-        <div class="ph clip"><img src="img/scand-sketch-25.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 25"></div>
+        <div class="ph clip ph-contain"><img src="img/scand-sketch-01.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 1" width="566" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-02.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 2" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-03.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 3" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-04.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 4" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-05.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 5" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-06.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 6" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip ph-contain"><img src="img/scand-sketch-07.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 7" width="600" height="755" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-08.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 8" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-09.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 9" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-10.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 10" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-11.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 11" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-12.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 12" width="600" height="473" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-13.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 13" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-14.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 14" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-15.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 15" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-16.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 16" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-17.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 17" width="600" height="465" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-18.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 18" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-19.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 19" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-20.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 20" width="600" height="462" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-21.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 21" width="600" height="466" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-22.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 22" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-23.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 23" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-24.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 24" width="600" height="450" loading="lazy"></div>
+        <div class="ph clip"><img src="img/scand-sketch-25.jpg" alt="Sketchbook spread from a summer in Scandinavia, page 25" width="600" height="457" loading="lazy"></div>
       </div>
     </div>
   </section>
