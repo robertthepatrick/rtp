@@ -228,13 +228,13 @@ html.cc,html.cc *{cursor:none!important}
 .lede{font-size:clamp(22px,2.3vw,28px);line-height:1.45;font-weight:500}
 .credits-rail{display:flex;flex-direction:column;gap:32px}
 .credits-side{display:flex;flex-direction:column;gap:32px}
-/* mobile: Services sits beside Collaborators; Agency runs full width beneath */
+/* mobile: Services sits on the left; Agency sits above Collaborators in the right column */
 @media (max-width:739px){
   .credits-rail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px 24px;align-items:start}
   .credits-side{display:contents}
-  .credits-rail .services{order:1}
-  .credits-rail .collab{order:2}
-  .credits-rail .agency{order:3;grid-column:1/-1}
+  .credits-rail .services{order:1;grid-column:1;grid-row:1/span 2}
+  .credits-rail .agency{order:2;grid-column:2;grid-row:1}
+  .credits-rail .collab{order:3;grid-column:2;grid-row:2}
 }
 @media (min-width:740px){
   .credits-rail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}
@@ -333,7 +333,7 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
   .gaw-fit-desktop{aspect-ratio:2081/1130}
   .gaw-fit-desktop img{width:120.13%;left:-18.88%;top:-9.29%}
   .gaw-fit-phone{aspect-ratio:505/1106;width:54%;margin:0 auto}
-  .gaw-fit-phone img{width:193.8%;left:-4.70%;top:-4.43%}
+  .gaw-fit-phone img{width:193.8%;left:-28.2%;top:-4.43%}
 }
 @media (min-width:740px){.gaw-fit{display:contents}.gaw-fit img{width:auto;max-width:100%;height:auto;margin:0 auto}}
 @media (min-width:740px){
@@ -396,7 +396,7 @@ section[aria-label="Google Enterprise Mobility"] .body,section[aria-label="Googl
         <p class="body">To compete with entrenched brands, Google needed more than better technology&mdash;they needed powerful messaging and effective marketing that spoke to the fears and ambitions of their enterprise audience.</p>
         <p class="body">That&rsquo;s where we came in.</p>
         <p class="body">We began working across Google&rsquo;s enterprise products to create messaging rooted in their buyer&rsquo;s journey. That work has required us to connect the dots between internal orgs and across go-to-market strategies to make Google&rsquo;s enterprise marketing smarter, more human, and more effective.</p>
-        <p class="subhead" style="margin:56px 0 48px;font-size:clamp(31.5px,3.2625vw,49.5px)">Five years, one partnership, and +250% increase in paid business accounts.</p>
+        <p class="subhead" style="margin:56px 0 48px;font-size:clamp(31.5px,3.2625vw,49.5px)">Based on our diverse work there was a +250% increase in paid business accounts.</p>
         <div class="credits-rail" style="margin-top:8px">
           <div class="stack services">
             <p class="label">Services</p>
