@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta name="description" content="Cloud Innovators brand design: a look and feel for program badges that signify technical accomplishment. By Robert the Patrick."><link rel="canonical" href="https://robertthepatrick.com/cloud-innovators/"><meta property="og:site_name" content="Robert the Patrick"><meta property="og:type" content="website"><meta property="og:title" content="Cloud Innovators brand design | Robert the Patrick"><meta property="og:description" content="Cloud Innovators brand design: a look and feel for program badges that signify technical accomplishment. By Robert the Patrick."><meta property="og:url" content="https://robertthepatrick.com/cloud-innovators/"><link rel="preload" as="image" href="img/ci2-hero.gif" fetchpriority="high"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.site .bar,.site nav{background:inherit}
 .hero img.clip{clip-path:none!important;transition:none!important}.hero img.clip,.hero img.clip.in{transform:none!important;transition:none!important}</style></head><body>
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js');</script></head><body>
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js');</script>
 <title>Cloud Innovators brand design | Robert the Patrick</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -86,7 +86,7 @@ ul{margin:0;padding:0;list-style:none}
 /* full-bleed header image, under the fixed header */
 .hero{margin-top:var(--header-h);background:var(--surface-white)}
 .hero figure{margin:0;width:100%;height:26vh;overflow:hidden;background:var(--placeholder)}
-.hero img{width:100%;height:100%;object-fit:cover}
+.hero img,.hero video{width:100%;height:100%;object-fit:cover;display:block}
 /* image motion, as on home: every real image takes class "clip". Image wipes in top to bottom, then settles from 1.28. */
 .js .clip{clip-path:inset(0 0 100% 0)}
 .js .clip.in{clip-path:inset(0 0 0 0);transition:clip-path 1400ms cubic-bezier(.77,0,.18,1) var(--d,0ms)}
@@ -238,6 +238,7 @@ html.cc,html.cc *{cursor:none!important}
 @media (min-width:740px){.pair-tw{grid-template-columns:1.333fr 1.566fr}}
 .badge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;text-align:center}
 @media (min-width:600px){.badge-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:599px){.badge-grid>div:last-child{grid-column:1/-1;justify-self:center}}
 .badge-grid img{width:160px;height:160px;margin:0 auto 16px}
 .badge-grid p{font-weight:600;margin:0}
 /* Reader comment: hero 20% shorter, background top-justified */
@@ -277,7 +278,7 @@ html.cc,html.cc *{cursor:none!important}
 
 <section class="hero" aria-label="Header image">
   <figure>
-    <img class="clip" src="img/ci2-hero.gif" width="1920" height="1080" alt="Google Cloud Innovators brand pattern animation" style="object-position:top">
+    <video src="img/ci2-hero.mp4" poster="img/ci2-hero-poster.jpg" width="1920" height="1080" autoplay muted loop playsinline aria-label="Google Cloud Innovators brand pattern animation" style="object-position:top"></video>
   </figure>
 </section>
 
@@ -595,4 +596,4 @@ setTimeout(function(){clips.forEach(function(c){if(!c.classList.contains('in')){
 })();</script>
 </body></html>
 
-</body></html>
+

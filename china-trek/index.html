@@ -1,6 +1,7 @@
 <!doctype html><html lang="en"><head><meta name="description" content="China Trek case study by Robert the Patrick."><link rel="canonical" href="https://robertthepatrick.com/china-trek/"><meta property="og:site_name" content="Robert the Patrick"><meta property="og:type" content="website"><meta property="og:title" content="China Trek | Robert the Patrick"><meta property="og:description" content="China Trek case study by Robert the Patrick."><meta property="og:url" content="https://robertthepatrick.com/china-trek/"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.site .bar,.site nav{background:inherit}
-</style></head><body>
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js');</script></head><body>
+</style><link rel="stylesheet" href="../assets/css/lightbox.css">
+</head><body>
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js');</script>
 <title>China Trek | Robert the Patrick</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -238,17 +239,7 @@ html.cc,html.cc *{cursor:none!important}
    viewer with prev/next, keyboard and swipe navigation, looping at the ends, and
    a counter. Closing returns to this same mosaic view, scroll position intact. */
 .ph.clip{cursor:zoom-in}
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:300;display:none;align-items:center;justify-content:center;opacity:0;transition:opacity 200ms ease}
-.lightbox.open{display:flex}
-.lightbox.on{opacity:1}
-.lightbox-img{max-width:92vw;max-height:82vh;object-fit:contain;user-select:none}
-.lightbox-close,.lightbox-prev,.lightbox-next{position:fixed;background:none;border:none;color:#fff;cursor:pointer;padding:14px;line-height:0;-webkit-tap-highlight-color:transparent}
-.lightbox-close{top:12px;right:12px}
-.lightbox-prev{left:4px;top:50%;transform:translateY(-50%)}
-.lightbox-next{right:4px;top:50%;transform:translateY(-50%)}
-.lightbox-close svg,.lightbox-prev svg,.lightbox-next svg{width:26px;height:26px;display:block}
-.lightbox-count{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);color:#fff;font:13px/1 -apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.04em}
-@media (max-width:600px){.lightbox-prev,.lightbox-next{padding:10px}}
+
 </style>
 
 <a class="skip" href="#page">Skip to content</a>
@@ -526,66 +517,7 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInter
 clips.forEach(function(c){var p=c.parentNode;if(!p._clips){p._clips=[];io.observe(p);}p._clips.push(c);});
 setTimeout(function(){clips.forEach(function(c){if(!c.classList.contains('in')){var r=c.parentNode.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0)show(c);}});},1500);
 })();</script>
-<script>(function(){
-  var d=document;
-  var imgs=[].slice.call(d.querySelectorAll('.gallery-pair .ph img, .gallery-grid3 .ph img, .gallery-grid .ph img'));
-  if(!imgs.length)return;
-  var idx=0;
-  var lb=d.createElement('div');
-  lb.className='lightbox';
-  lb.setAttribute('role','dialog');
-  lb.setAttribute('aria-modal','true');
-  lb.setAttribute('aria-hidden','true');
-  lb.innerHTML=
-    '<button class="lightbox-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>'+
-    '<button class="lightbox-prev" aria-label="Previous photograph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>'+
-    '<button class="lightbox-next" aria-label="Next photograph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>'+
-    '<img class="lightbox-img" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==">'+
-    '<div class="lightbox-count"></div>';
-  d.body.appendChild(lb);
-  var img=lb.querySelector('.lightbox-img'),cnt=lb.querySelector('.lightbox-count');
-  var lastFocus=null;
-  function render(){
-    var el=imgs[idx];
-    img.src=el.currentSrc||el.src;
-    img.alt=el.alt||'';
-    cnt.textContent=(idx+1)+' / '+imgs.length;
-  }
-  function open(i){
-    idx=i;lastFocus=d.activeElement;render();
-    lb.classList.add('open');lb.setAttribute('aria-hidden','false');
-    requestAnimationFrame(function(){lb.classList.add('on');});
-    d.documentElement.style.overflow='hidden';
-    lb.querySelector('.lightbox-close').focus();
-  }
-  function close(){
-    lb.classList.remove('on');lb.setAttribute('aria-hidden','true');
-    d.documentElement.style.overflow='';
-    setTimeout(function(){lb.classList.remove('open');},200);
-    if(lastFocus)lastFocus.focus();
-  }
-  function next(){idx=(idx+1)%imgs.length;render();}
-  function prev(){idx=(idx-1+imgs.length)%imgs.length;render();}
-  imgs.forEach(function(el,i){el.addEventListener('click',function(){open(i);});});
-  lb.querySelector('.lightbox-close').addEventListener('click',close);
-  lb.querySelector('.lightbox-next').addEventListener('click',next);
-  lb.querySelector('.lightbox-prev').addEventListener('click',prev);
-  lb.addEventListener('click',function(e){if(e.target===lb)close();});
-  d.addEventListener('keydown',function(e){
-    if(!lb.classList.contains('open'))return;
-    if(e.key==='Escape')close();
-    else if(e.key==='ArrowRight')next();
-    else if(e.key==='ArrowLeft')prev();
-  });
-  var touchX=null;
-  lb.addEventListener('touchstart',function(e){touchX=e.touches[0].clientX;},{passive:true});
-  lb.addEventListener('touchend',function(e){
-    if(touchX===null)return;
-    var dx=e.changedTouches[0].clientX-touchX;
-    if(Math.abs(dx)>40){dx<0?next():prev();}
-    touchX=null;
-  },{passive:true});
-})();</script>
+
+<script src="../assets/js/lightbox.js"></script>
 </body></html>
 
-</body></html>
