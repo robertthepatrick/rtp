@@ -873,42 +873,32 @@ var F=function(v){return v.toFixed(2);}, P=function(x,y){return F(x)+","+F(y);};
 function stadium(lc,rc,r){
   return "M"+P(lc,CY-r)+" L"+P(rc,CY-r)+" A"+F(r)+","+F(r)+" 0 0,1 "+P(rc,CY+r)+" L"+P(lc,CY+r)+" A"+F(r)+","+F(r)+" 0 0,1 "+P(lc,CY-r)+" Z";
 }
-/* two bulbs (centre x, half straight length h, radius r) joined by a pinched neck; b1 is the left one */
-function shape(b1,b2){
-  if(b1.r<0.6&&b1.r<b2.r) return stadium(b2.x-b2.h,b2.x+b2.h,b2.r);
-  if(b2.r<0.6&&b2.r<b1.r) return stadium(b1.x-b1.h,b1.x+b1.h,b1.r);
-  if(b1.x-b1.h-b1.r>=b2.x-b2.h-b2.r) return stadium(b2.x-b2.h,b2.x+b2.h,b2.r);
-  if(b2.x+b2.h+b2.r<=b1.x+b1.h+b1.r) return stadium(b1.x-b1.h,b1.x+b1.h,b1.r);
-  var ax=b1.x+b1.h, bx=b2.x-b2.h, r1=b1.r, r2=b2.r, dd=bx-ax;
-  if(dd<=0.5){
-    var L1=b1.x-b1.h, L2=b2.x-b2.h, R1=b1.x+b1.h, R2=b2.x+b2.h;
-    var lc=Math.min(L1,L2), rl=L1<=L2?r1:r2, rc=Math.max(R1,R2), rr=R2>=R1?r2:r1;
-    return "M"+P(lc,CY-rl)+" L"+P(rc,CY-rr)+" A"+F(rr)+","+F(rr)+" 0 0,1 "+P(rc,CY+rr)+" L"+P(lc,CY+rl)+" A"+F(rl)+","+F(rl)+" 0 0,1 "+P(lc,CY-rl)+" Z";
-  }
-  var s=smooth(0,26,dd), phi=(89-39*s)*Math.PI/180, sn=Math.sin(phi), cs=Math.cos(phi);
-  var n=Math.min(r1,r2)*0.95*(1-s)+2*s;
-  var L=cs>0.05?(0.5*sn*(r1+r2)-n)/(0.75*cs):dd/3;
-  L=Math.max(0,Math.min(L,dd*0.45));
-  var p1t=[ax+r1*cs,CY-r1*sn], p1b=[ax+r1*cs,CY+r1*sn], p2t=[bx-r2*cs,CY-r2*sn], p2b=[bx-r2*cs,CY+r2*sn];
-  var q=function(p){return P(p[0],p[1]);};
-  return "M"+q(p1t)+" C"+P(p1t[0]+L*sn,p1t[1]+L*cs)+" "+P(p2t[0]-L*sn,p2t[1]+L*cs)+" "+q(p2t)+
-    " A"+F(r2)+","+F(r2)+" 0 0,1 "+P(bx,CY-r2)+" L"+P(b2.x+b2.h,CY-r2)+" A"+F(r2)+","+F(r2)+" 0 0,1 "+P(b2.x+b2.h,CY+r2)+" L"+P(bx,CY+r2)+" A"+F(r2)+","+F(r2)+" 0 0,1 "+q(p2b)+
-    " C"+P(p2b[0]-L*sn,p2b[1]-L*cs)+" "+P(p1b[0]+L*sn,p1b[1]-L*cs)+" "+q(p1b)+
-    " A"+F(r1)+","+F(r1)+" 0 0,1 "+P(ax,CY+r1)+" L"+P(b1.x-b1.h,CY+r1)+" A"+F(r1)+","+F(r1)+" 0 0,1 "+P(b1.x-b1.h,CY-r1)+" L"+P(ax,CY-r1)+" A"+F(r1)+","+F(r1)+" 0 0,1 "+q(p1t)+" Z";
+/* One continuous outline, no seams: a round cap at each end (centre x, radius r), a flat run h from each cap
+   toward the middle, and top/bottom edges that sweep from the ends into a waist with horizontal tangents
+   everywhere they meet. As the ends pull apart the waist thins, so the pill's own edge carries the stretch. */
+function blob(L,R){
+  var iL=L.x+L.h, iR=R.x-R.h;
+  if(iR<iL){ var m=Math.min(R.x,Math.max(L.x,(iL+iR)/2)); iL=iR=m; }
+  var gap=iR-iL, mid=(iL+iR)/2, mn=Math.min(L.r,R.r), avg=(L.r+R.r)/2;
+  var w=avg+(Math.min(1.4,mn)-avg)*smooth(4,40,gap), k=0.55;
+  var a1=iL+k*(mid-iL), a2=mid-k*(mid-iL), b1=mid+k*(iR-mid), b2=iR-k*(iR-mid);
+  return "M"+P(L.x,CY-L.r)+" L"+P(iL,CY-L.r)+" C"+P(a1,CY-L.r)+" "+P(a2,CY-w)+" "+P(mid,CY-w)+" C"+P(b1,CY-w)+" "+P(b2,CY-R.r)+" "+P(iR,CY-R.r)+" L"+P(R.x,CY-R.r)+
+    " A"+F(R.r)+","+F(R.r)+" 0 0,1 "+P(R.x,CY+R.r)+" L"+P(iR,CY+R.r)+" C"+P(b2,CY+R.r)+" "+P(b1,CY+w)+" "+P(mid,CY+w)+" C"+P(a2,CY+w)+" "+P(a1,CY+L.r)+" "+P(iL,CY+L.r)+" L"+P(L.x,CY+L.r)+
+    " A"+F(L.r)+","+F(L.r)+" 0 0,1 "+P(L.x,CY-L.r)+" Z";
 }
 function placeInd(i){ indPath.setAttribute("d",stadium(C(i)-OH,C(i)+OH,OR)); }
 function moveInd(from,to){
   if(rm()){placeInd(to);return Promise.resolve();}
-  var a=C(from), b=C(to), D=820, t0=W.performance.now(), landed=false;
+  var a=C(from), b=C(to), dir=b>a?1:-1, D=820, t0=W.performance.now(), landed=false;
   var ease=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;};
   return new Promise(function(res){
     var step=function(now){
       var t=clamp01((now-t0)/D);
-      var hp=ease(clamp01(t/0.68)), tp=ease(clamp01((t-0.38)/0.62)), bump=Math.sin(Math.PI*hp);
-      var head={x:a+(b-a)*hp, r:OR*(1-0.55*bump), h:OH*(1-0.85*bump)};
-      var tailK=(1-0.8*smooth(0,0.3,tp))*(1-0.55*smooth(0.6,1,tp));
-      var tail={x:a+(b-a)*tp, r:OR*tailK, h:OH*(1-smooth(0,0.22,tp))};
-      indPath.setAttribute("d",head.x>=tail.x?shape(tail,head):shape(head,tail));
+      var hp=ease(clamp01(t/0.62)), tp=ease(clamp01((t-0.32)/0.68));
+      var sh=Math.sin(Math.PI*hp), st=Math.sin(Math.PI*tp);
+      var lead={x:a+dir*OH+(b-a)*hp, r:OR*(1-0.45*sh), h:OH*(1-0.9*sh)};   /* slims in transit, full pill end on arrival */
+      var trail={x:a-dir*OH+(b-a)*tp, r:OR*(1-0.8*st), h:OH*(1-0.9*st)};  /* holds, drains to a tiny round tip, refills as it lands */
+      indPath.setAttribute("d",dir>0?blob(trail,lead):blob(lead,trail));
       if(hp>0.85&&!landed){landed=true;status();}
       if(t<1) W.requestAnimationFrame(step); else {placeInd(to);res();}
     };
