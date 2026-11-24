@@ -72,6 +72,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 .band{position:relative;background:var(--surface);color:var(--ink);padding-block:clamp(56px,7vw,96px)}
 .band>.wrap{position:relative}
 .band.raised{background:var(--surface-raised)}
+.about-cta .wrap{display:flex;justify-content:center}
+.about-cta .about-cta-btn{min-height:0;padding:var(--space-4) var(--space-6);line-height:1.35;text-align:center}
 .tex{--o:.35;position:absolute;inset:-4%;pointer-events:none;opacity:var(--o);background:url("../assets/img/texture-black.webp") center/cover no-repeat}
 .hero .tex{--o:.2}
 .statement .tex{--o:.84}
@@ -470,6 +472,12 @@ body{--page-bg:var(--brand-cream)}
         <p class="body rv" style="--d:100ms">Shooting photos has afforded me an excuse to pry, something to offer, and a persistent means to get outside my comfort zone.</p>
         <div class="rv" style="--d:200ms"><a class="btn" href="/photography/"><span>View galleries</span></a></div>
       </div>
+    </div>
+  </section>
+
+  <section class="band about-cta" data-reg="landing" aria-label="Professional work">
+    <div class="wrap">
+      <div class="rv"><a class="btn about-cta-btn" href="/case-studies/"><span>See my professional<br>case studies</span></a></div>
     </div>
   </section>
 </main>
