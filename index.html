@@ -1049,14 +1049,22 @@ placeInd(0); status();
     rows.forEach(function(r){ var x=(((cur*REV*r.P+r.shift+manual)%r.P)+r.P)%r.P; r.ul.style.transform="translate3d("+(-x).toFixed(2)+"px,0,0)"; });
     if(ul1.classList.contains("in")) ul2.classList.add("in");
   };
-  var frame=function(){
-    cur+=(target-cur)*0.12;
+  /* speed limit: the band never moves faster than SPEED logos a second, so a fast scroll can't blur it.
+     Past the limit it lags behind the scroll and catches up after you stop. Dragging stays 1:1. */
+  var SPEED=2.5, lastF=0;
+  var maxPx=function(){ return SPEED*ul1.children[0].offsetWidth; };      /* px per second */
+  var frame=function(now){
+    var dt=lastF?Math.min(32,now-lastF):16; lastF=now;
+    var step=(target-cur)*0.12, cap=maxPx()*dt/1000/(REV*rows[0].P);       /* cap in progress units */
+    cur+=Math.max(-cap,Math.min(cap,step));
     if(Math.abs(target-cur)<0.0002) cur=target;
-    if(!dragging){ manual+=vel; vel*=0.94; if(Math.abs(vel)<0.05) vel=0; }   /* glide after release */
+    if(!dragging){                                                        /* glide after release, same limit */
+      var vcap=maxPx()*dt/1000; manual+=Math.max(-vcap,Math.min(vcap,vel*dt/16)); vel*=Math.pow(0.94,dt/16); if(Math.abs(vel)<0.05) vel=0;
+    }
     paint();
-    if((cur!==target||vel!==0||dragging)&&visible) requestAnimationFrame(frame); else running=false;
+    if((cur!==target||vel!==0||dragging)&&visible) requestAnimationFrame(frame); else { running=false; lastF=0; }
   };
-  var kick=function(){ if(!running){ running=true; requestAnimationFrame(frame); } };
+  var kick=function(){ if(!running){ running=true; lastF=0; requestAnimationFrame(frame); } };
   var progress=function(){ var r=band.getBoundingClientRect(), vh=window.innerHeight; return Math.min(1,Math.max(0,(vh-r.top)/(vh+r.height))); };
   var onScroll=function(){ target=progress(); if(visible) kick(); };
   /* trackpad: a mostly-sideways two-finger swipe moves the band, and is claimed so it can't trigger the browser's back gesture here */
