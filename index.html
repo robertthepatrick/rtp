@@ -980,6 +980,23 @@ placeInd(0); status();
 })();
 </script>
 <script>
+/* warm the About hero: once Home has finished loading and the browser is idle, fetch the leaves image at the
+   size the About page will ask for, so it is already in cache when someone clicks through. Skipped on Data Saver
+   and slow connections. */
+(function(){
+  var c=navigator.connection||{};
+  if(c.saveData||/2g/.test(c.effectiveType||"")) return;
+  var go=function(){
+    var need=window.innerWidth*(window.devicePixelRatio||1), sizes=[960,1440,1920], f="helsinki.webp";
+    for(var i=0;i<sizes.length;i++){ if(sizes[i]>=need){ f="helsinki-"+sizes[i]+".webp"; break; } }
+    var l=document.createElement("link"); l.rel="prefetch"; l.as="image"; l.href="/about/img/"+f;
+    document.head.appendChild(l);
+  };
+  var idle=function(){ (window.requestIdleCallback||function(cb){setTimeout(cb,1500);})(go,{timeout:4000}); };
+  if(document.readyState==="complete") idle(); else window.addEventListener("load",idle);
+})();
+</script>
+<script>
 /* hover states only after the mouse actually moves: scrolling clears them, real movement restores them.
    Browsers send a synthetic mousemove after a scroll at the same coordinates; those are ignored. */
 (function(){
