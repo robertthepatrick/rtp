@@ -205,7 +205,7 @@ html.cc,html.cc *{cursor:none!important}
 .project:last-child{border-bottom:1px solid var(--rule,#ccc)}
 .project .btn{align-self:flex-start}
 @media (max-width:600px){.pair{grid-template-columns:1fr}}
-@media (max-width:600px){.ph.chart{aspect-ratio:auto;padding:0;width:100vw;margin-inline:0;left:50%;transform:translateX(-50%);overflow:hidden}.ph.chart img{position:relative;inset:auto;left:50%;transform:translateX(-50%);width:102%;height:auto;max-width:none}}
+@media (max-width:600px){.ph.chart{aspect-ratio:auto;padding:0;width:100vw;margin-inline:0;left:50%;transform:translateX(-50%);overflow:hidden}.ph.chart img{position:relative;inset:auto;left:auto;width:102%;margin-left:-1%;height:auto;max-width:none}} /* centred with margin, not transform: the reveal animation overwrites transform */
 .tri-grid>*{min-width:0}
 .project .ph{position:relative;width:100%;aspect-ratio:8/9;overflow:hidden}
 .project .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
