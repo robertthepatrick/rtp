@@ -254,7 +254,7 @@ html.cc,html.cc *{cursor:none!important}
 /* logo band: one row that slides right to left as the page scrolls (set up by script; without it, or with
    reduced motion, the grid above stays). The set repeats every 12 slots, and 12 slots are wider than the
    screen (slot >= 9vw), so the same logo never shows twice at once. */
-.marquee-on .clients{overflow:hidden}
+.marquee-on .clients{overflow:hidden;touch-action:pan-y;-webkit-user-select:none;user-select:none;overscroll-behavior-x:contain}
 .marquee-on .clients .wrap{max-width:none;padding-left:0;padding-right:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
 .marquee-on .logos{--slot:max(180px,9vw);display:flex;width:max-content;max-width:none;margin:0;will-change:transform;background:var(--surface-raised)} /* the moving row is its own layer, so it carries the band colour for the logos' multiply blend */
 .marquee-on .logos li{flex:0 0 var(--slot);width:var(--slot);min-height:clamp(96px,9vw,140px)}
@@ -1017,6 +1017,7 @@ placeInd(0); status();
   var root=document.documentElement, items=[].slice.call(ul1.children), mq=window.matchMedia("(max-width:600px)");
   var ul2=document.createElement("ul"); ul2.className="logos logos-2"; ul2.setAttribute("aria-hidden","false");
   var rows=[], cur=0, target=0, running=false, visible=false, band=ul1.closest(".clients"), REV=1.05;
+  var manual=0, vel=0, dragging=false; /* sideways nudges: trackpad swipe, touch or mouse drag; adds to the scroll position */
   root.classList.add("marquee-on");
   var fill=function(ul,list){
     ul.textContent="";
@@ -1041,17 +1042,40 @@ placeInd(0); status();
     });
   };
   var paint=function(){
-    rows.forEach(function(r){ var x=(((cur*REV*r.P+r.shift)%r.P)+r.P)%r.P; r.ul.style.transform="translate3d("+(-x).toFixed(2)+"px,0,0)"; });
+    rows.forEach(function(r){ var x=(((cur*REV*r.P+r.shift+manual)%r.P)+r.P)%r.P; r.ul.style.transform="translate3d("+(-x).toFixed(2)+"px,0,0)"; });
     if(ul1.classList.contains("in")) ul2.classList.add("in");
   };
   var frame=function(){
     cur+=(target-cur)*0.12;
     if(Math.abs(target-cur)<0.0002) cur=target;
+    if(!dragging){ manual+=vel; vel*=0.94; if(Math.abs(vel)<0.05) vel=0; }   /* glide after release */
     paint();
-    if(cur!==target&&visible) requestAnimationFrame(frame); else running=false;
+    if((cur!==target||vel!==0||dragging)&&visible) requestAnimationFrame(frame); else running=false;
   };
+  var kick=function(){ if(!running){ running=true; requestAnimationFrame(frame); } };
   var progress=function(){ var r=band.getBoundingClientRect(), vh=window.innerHeight; return Math.min(1,Math.max(0,(vh-r.top)/(vh+r.height))); };
-  var onScroll=function(){ target=progress(); if(visible&&!running){ running=true; requestAnimationFrame(frame); } };
+  var onScroll=function(){ target=progress(); if(visible) kick(); };
+  /* trackpad: a mostly-sideways two-finger swipe moves the band, and is claimed so it can't trigger the browser's back gesture here */
+  band.addEventListener("wheel",function(e){
+    if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)) return;
+    e.preventDefault(); manual+=e.deltaX*(e.deltaMode===1?16:1); vel=0; kick();
+  },{passive:false});
+  /* touch and mouse drag; touch-action:pan-y keeps vertical page scrolling native */
+  var lastX=0, lastT=0;
+  band.addEventListener("pointerdown",function(e){
+    if(e.pointerType==="mouse"&&e.button!==0) return;
+    dragging=true; vel=0; lastX=e.clientX; lastT=e.timeStamp; band.classList.add("dragging");
+    try{ band.setPointerCapture(e.pointerId); }catch(_){}
+    kick();
+  });
+  band.addEventListener("pointermove",function(e){
+    if(!dragging) return;
+    var dx=e.clientX-lastX, dt=Math.max(1,e.timeStamp-lastT);
+    manual-=dx; vel=-dx/dt*16; lastX=e.clientX; lastT=e.timeStamp;
+  });
+  var release=function(){ if(!dragging) return; dragging=false; band.classList.remove("dragging"); vel=Math.max(-60,Math.min(60,vel)); kick(); };
+  band.addEventListener("pointerup",release); band.addEventListener("pointercancel",release); band.addEventListener("lostpointercapture",release);
+  band.addEventListener("dragstart",function(e){ e.preventDefault(); });
   new IntersectionObserver(function(es){ visible=es[0].isIntersecting; if(visible){ onScroll(); paint(); } },{rootMargin:"100px 0px"}).observe(band);
   addEventListener("scroll",onScroll,{passive:true});
   addEventListener("resize",function(){ measure(); paint(); });
