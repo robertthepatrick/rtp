@@ -38,6 +38,7 @@ CSS = """<style id="next-case-css">
 .nc-acts{font:400 15px/1.5 var(--font-text);color:#595959}
 .nc-go{margin-top:6px;font:600 14px/1.3 var(--font-display);letter-spacing:.06em;text-transform:uppercase;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
 .nc-go span{display:inline-block;transition:transform 300ms var(--ease-out,ease)}
+.nc-fig--contain img{object-fit:contain;object-position:right center;transform-origin:right center}
 @media (hover:hover){.nc-card:hover .nc-fig img{transform:scale(1.04)}.nc-card:hover .nc-go span{transform:translateX(6px)}}
 .nc-card:focus-visible{outline:3px solid var(--brand-black,#000);outline-offset:6px}
 .nc-all{margin:clamp(28px,3vw,40px) 0 0;font:600 13px/1.3 var(--font-display);letter-spacing:.08em;text-transform:uppercase}
@@ -64,12 +65,24 @@ def read_order():
 
 
 def make_thumb(case):
+    """Small copy for the module. Opaque images are centre-cropped to 3:2. Images with
+    transparency keep it and are fitted whole (no crop); the module sets them right-aligned
+    in the frame (nc-fig--contain) so a cut-out never gets a black box behind it."""
     from PIL import Image
     os.makedirs(THUMBS, exist_ok=True)
     out = os.path.join(THUMBS, case["slug"] + ".webp")
+    im = Image.open(os.path.join(ROOT, "case-studies", case["img"]))
+    case["transparent"] = im.mode in ("RGBA", "LA", "P") and im.convert("RGBA").getextrema()[3][0] < 255
     if os.path.exists(out):
+        done = Image.open(out)
+        if (done.mode == "RGBA") == case["transparent"]:
+            return
+    if case["transparent"]:
+        im = im.convert("RGBA")
+        im.thumbnail((TW, TH), Image.LANCZOS)
+        im.save(out, "WEBP", quality=85, method=6)
         return
-    im = Image.open(os.path.join(ROOT, "case-studies", case["img"])).convert("RGB")
+    im = im.convert("RGB")
     r = TW / TH
     w, h = im.size
     if w / h > r:
@@ -88,7 +101,7 @@ def block(nxt):
         '  <section class="next-case" aria-labelledby="next-case-h">\n'
         '    <div class="wrap">\n'
         f'      <a class="nc-card" href="{nxt["href"]}">\n'
-        f'        <span class="nc-fig"><img src="/case-studies/img/next/{nxt["slug"]}.webp" width="{TW}" height="{TH}" alt="" loading="lazy" decoding="async"></span>\n'
+        f'        <span class="nc-fig{" nc-fig--contain" if nxt.get("transparent") else ""}"><img src="/case-studies/img/next/{nxt["slug"]}.webp" width="{TW}" height="{TH}" alt="" loading="lazy" decoding="async"></span>\n'
         '        <span class="nc-text">\n'
         '          <span class="nc-label" id="next-case-h">Next case study</span>\n'
         f'          <span class="nc-title">{e(nxt["title"])}</span>\n'
