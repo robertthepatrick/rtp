@@ -207,7 +207,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(56px,7vw,var(--space-10)) var(--space-5);counter-reset:case}
 .card{position:relative;display:flex;flex-direction:column;gap:var(--space-5);min-width:0;counter-increment:case;transition:opacity 500ms var(--ease)}
 .card.wide{grid-column:1/-1}
-@media (hover:hover){.grid:has(.card:hover) .card:not(:hover){opacity:.4}}
+/* card hover states wait for real mouse movement (.pointer-live), so scrolling under a resting cursor does not trigger them */
+@media (hover:hover){.pointer-live .grid:has(.card:hover) .card:not(:hover){opacity:.4}}
 .fig{position:relative;display:block;overflow:hidden;background:var(--surface-raised);aspect-ratio:var(--ar,16/9)}
 .fig.bare{background:transparent}
 .pxl{position:absolute;left:0;top:0;width:100%;height:100%}
@@ -225,12 +226,12 @@ ul,ol{margin:0;padding:0;list-style:none}
 .card .t a::after{content:"";position:absolute;inset:0;z-index:1}
 .card .t a:focus-visible{outline:none}
 .card .t a:focus-visible::after{outline:3px solid var(--focus);outline-offset:6px}
-.card:hover .t a,.card .t a:focus-visible{text-decoration-color:currentColor}
+.pointer-live .card:hover .t a,.card .t a:focus-visible{text-decoration-color:currentColor}
 .card .out{grid-column:1;font:400 17px/1.5 var(--font-text);letter-spacing:.01em;color:var(--ink-muted);max-width:34em}
 .wide .out{grid-column:2;grid-row:1;padding-top:.7em}
 .card .arrow{grid-column:2;grid-row:1;justify-self:end;font:500 24px/1.2 var(--font-display);color:var(--ink);transition:transform 420ms var(--ease-out)}
 .wide .arrow{grid-column:3}
-.card:hover .arrow,.card:has(.t a:focus-visible) .arrow{transform:translateX(10px)}
+.pointer-live .card:hover .arrow,.card:has(.t a:focus-visible) .arrow{transform:translateX(10px)}
 .lock{display:inline-block;vertical-align:-3px;margin-left:var(--space-3);width:22px;height:22px}
 .work-more{display:flex;justify-content:center;margin-top:var(--space-10)}
 
@@ -316,7 +317,7 @@ html.cc,html.cc *{cursor:none!important}
 .feature-text{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-5);max-width:var(--measure)}
 .feature-text h3{font:400 clamp(36px,3.8vw,56px)/1 var(--font-display);letter-spacing:-.02em}
 .feature-text h3 a{color:inherit;text-decoration:none}
-.feature-text h3 a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.12em}
+.pointer-live .feature-text h3 a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.12em}
 
 /* ---------- motion (JS adds .js only when the visitor has not asked for reduced motion) ---------- */
 .js [data-split]:not(.sp){visibility:hidden}
@@ -990,6 +991,18 @@ var rz; W.addEventListener("resize",function(){W.clearTimeout(rz);rz=W.setTimeou
 
 placeInd(0); status();
 (d.fonts&&d.fonts.ready?d.fonts.ready:Promise.resolve()).then(function(){fitHero();intro();startTimer();});
+})();
+</script>
+<script>
+/* hover states only after the mouse actually moves: scrolling clears them, real movement restores them.
+   Browsers send a synthetic mousemove after a scroll at the same coordinates; those are ignored. */
+(function(){
+  var r=document.documentElement, x=-1, y=-1;
+  addEventListener("scroll",function(){ r.classList.remove("pointer-live"); },{passive:true});
+  addEventListener("pointermove",function(e){
+    if(e.pointerType!=="mouse"||(e.clientX===x&&e.clientY===y)) return;
+    x=e.clientX; y=e.clientY; r.classList.add("pointer-live");
+  },{passive:true});
 })();
 </script>
 <script>
