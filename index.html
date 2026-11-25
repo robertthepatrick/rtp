@@ -179,11 +179,10 @@ ul,ol{margin:0;padding:0;list-style:none}
 .vp-dots{position:relative;display:flex;height:26px}
 .vp-dot{position:relative;width:56px;height:26px;border:0;background:none;padding:0;cursor:pointer}
 .vp-dot::after{content:"";position:absolute;left:0;right:0;top:-4px;bottom:-14px}
-.vp-dot::before{content:"";position:absolute;left:21px;top:10px;width:14px;height:6px;border-radius:3px;background:rgba(0,0,0,.28);transition:background .2s}
+.vp-dot::before{content:"";position:absolute;left:20px;top:9px;width:16px;height:8px;border-radius:4px;background:rgba(0,0,0,.28);transition:background .2s}
 .vp-dot:hover::before{background:rgba(0,0,0,.5)}
-.vp-pf{position:absolute;left:21px;top:10px;width:14px;height:6px;border-radius:3px;background:rgba(0,0,0,.45);clip-path:inset(0 100% 0 0 round 3px)}
 .vp-ind{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.vp-ind path{fill:none;stroke:rgba(0,0,0,.28);stroke-width:1.25;stroke-linejoin:round}
+.vp-ind path{fill:rgba(0,0,0,.45);stroke:none}
 .vp-sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .cue{font:500 28px/1 var(--font-display);color:var(--ink)}
 
@@ -439,7 +438,7 @@ body{--page-bg:var(--brand-yellow)}
   <section class="vp-band" aria-label="Value propositions and next steps">
     <div class="wrap">
       <div class="vp-control" id="vp-control" hidden>
-        <button class="vp-more" id="vp-more" type="button"><span>Man of Many Value Props</span></button>
+        <button class="vp-more" id="vp-more" type="button"><span>A Man of Many Value Props</span></button>
         <div class="vp-dots" id="vp-dots" role="group" aria-label="Choose a value proposition"><svg class="vp-ind" id="vp-ind" aria-hidden="true"><path></path></svg></div>
       </div>
       <div class="btn-row">
@@ -864,66 +863,74 @@ function fitHero(){
   wrap.style.paddingTop=Math.max(floor,Math.min(desired,limit-content))+"px";
 }
 
-/* ---- indicator: pills; a pill-shaped outline sits around the active one and pours to the next ---- */
-var PITCH=56, CY=13, OR=7, OH=4, indPath=ind.querySelector("path");
+/* ---- indicator: pills. The progress itself is the indicator: it fills the active pill over the dwell,
+   then slinkies out of the pill's right end, stretches thin across the gap, and gathers into the next pill
+   as a round dot just as the words change, ready to fill again. One SVG path, filled. ---- */
+var PITCH=56, CY=13, PW=16, PR=4, indPath=ind.querySelector("path");
 var C=function(i){return i*PITCH+PITCH/2;};
+var Lc=function(i){return C(i)-PW/2+PR;}, Rc=function(i){return C(i)+PW/2-PR;};
 var clamp01=function(x){return Math.min(1,Math.max(0,x));};
 var smooth=function(e0,e1,v){var t=clamp01((v-e0)/(e1-e0));return t*t*(3-2*t);};
 var F=function(v){return v.toFixed(2);}, P=function(x,y){return F(x)+","+F(y);};
 function stadium(lc,rc,r){
   return "M"+P(lc,CY-r)+" L"+P(rc,CY-r)+" A"+F(r)+","+F(r)+" 0 0,1 "+P(rc,CY+r)+" L"+P(lc,CY+r)+" A"+F(r)+","+F(r)+" 0 0,1 "+P(lc,CY-r)+" Z";
 }
-/* One continuous outline, no seams: a round cap at each end (centre x, radius r), a flat run h from each cap
-   toward the middle, and top/bottom edges that sweep from the ends into a waist with horizontal tangents
-   everywhere they meet. As the ends pull apart the waist thins, so the pill's own edge carries the stretch. */
+/* one continuous shape: a round cap at each end (centre x, radius r), a flat run h from each cap toward the
+   middle, and edges that sweep into a waist with horizontal tangents wherever they meet. Far apart, the waist
+   thins to a thread; close together, it is a straight taper. */
 function blob(L,R){
   var iL=L.x+L.h, iR=R.x-R.h;
   if(iR<iL){ var m=Math.min(R.x,Math.max(L.x,(iL+iR)/2)); iL=iR=m; }
   var gap=iR-iL, mid=(iL+iR)/2, mn=Math.min(L.r,R.r), avg=(L.r+R.r)/2;
-  var w=avg+(Math.min(1.4,mn)-avg)*smooth(4,40,gap), k=0.55;
+  var w=avg+(Math.min(1,mn)-avg)*smooth(3,30,gap), k=0.55;
   var a1=iL+k*(mid-iL), a2=mid-k*(mid-iL), b1=mid+k*(iR-mid), b2=iR-k*(iR-mid);
   return "M"+P(L.x,CY-L.r)+" L"+P(iL,CY-L.r)+" C"+P(a1,CY-L.r)+" "+P(a2,CY-w)+" "+P(mid,CY-w)+" C"+P(b1,CY-w)+" "+P(b2,CY-R.r)+" "+P(iR,CY-R.r)+" L"+P(R.x,CY-R.r)+
     " A"+F(R.r)+","+F(R.r)+" 0 0,1 "+P(R.x,CY+R.r)+" L"+P(iR,CY+R.r)+" C"+P(b2,CY+R.r)+" "+P(b1,CY+w)+" "+P(mid,CY+w)+" C"+P(a2,CY+w)+" "+P(a1,CY+L.r)+" "+P(iL,CY+L.r)+" L"+P(L.x,CY+L.r)+
     " A"+F(L.r)+","+F(L.r)+" 0 0,1 "+P(L.x,CY-L.r)+" Z";
 }
-function placeInd(i){ indPath.setAttribute("d",stadium(C(i)-OH,C(i)+OH,OR)); }
+var prog=0, mode="idle", lastT=0;
+function drawBar(i,p){ indPath.setAttribute("d",stadium(Lc(i),Lc(i)+(Rc(i)-Lc(i))*p,PR)); }
+function placeInd(i){ prog=rm()?1:0; drawBar(i,prog); }
 function moveInd(from,to){
-  if(rm()){placeInd(to);return Promise.resolve();}
-  var a=C(from), b=C(to), dir=b>a?1:-1, D=820, t0=W.performance.now(), landed=false;
+  if(rm()){ prog=1; drawBar(to,1); return Promise.resolve(); }
+  var lc0=Lc(from), rc0=lc0+(Rc(from)-lc0)*prog, tc=Lc(to), dir=to>from?1:-1, h0=(rc0-lc0)/2;
+  var ls=dir>0?rc0:lc0, ts=dir>0?lc0:rc0;                 /* the leading end is the one facing the next pill */
+  var D=760*1, t0=W.performance.now(), landed=false;
   var ease=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;};
   return new Promise(function(res){
     var step=function(now){
       var t=clamp01((now-t0)/D);
-      var hp=ease(clamp01(t/0.62)), tp=ease(clamp01((t-0.32)/0.68));
-      var sh=Math.sin(Math.PI*hp), st=Math.sin(Math.PI*tp);
-      var lead={x:a+dir*OH+(b-a)*hp, r:OR*(1-0.45*sh), h:OH*(1-0.9*sh)};   /* slims in transit, full pill end on arrival */
-      var trail={x:a-dir*OH+(b-a)*tp, r:OR*(1-0.8*st), h:OH*(1-0.9*st)};  /* holds, drains to a tiny round tip, refills as it lands */
+      var hp=ease(clamp01(t/0.6)), tp=ease(clamp01((t-0.22)/0.78));
+      var lead={x:ls+(tc-ls)*hp, r:PR*(1-0.35*Math.sin(Math.PI*hp)), h:h0*(1-hp)};
+      var trail={x:ts+(tc-ts)*tp, r:PR*(1-0.45*Math.sin(Math.PI*tp)), h:h0*(1-tp)};
       indPath.setAttribute("d",dir>0?blob(trail,lead):blob(lead,trail));
       if(hp>0.85&&!landed){landed=true;status();}
-      if(t<1) W.requestAnimationFrame(step); else {placeInd(to);res();}
+      if(t<1) W.requestAnimationFrame(step); else {prog=0;drawBar(to,0);res();}
     };
     W.requestAnimationFrame(step);
   });
 }
-for(var i=0;i<N;i++)(function(i){
-  var b=d.createElement("button"); b.type="button"; b.className="vp-dot";
+for(var di=0;di<N;di++)(function(i){
+  var b=document.createElement("button"); b.type="button"; b.className="vp-dot";
   b.setAttribute("aria-label","Value prop "+(i+1)+" of "+N);
-  var pf=d.createElement("span"); pf.className="vp-pf"; pf.setAttribute("aria-hidden","true"); b.appendChild(pf);
   b.addEventListener("click",function(){go(i,true);}); dotsEl.appendChild(b);
-})(i);
+})(di);
 dotsEl.style.width=(N*PITCH)+"px";
 
-/* ---- timer: fills the active pill ---- */
-var pfOf=function(i){return dotsEl.querySelectorAll(".vp-pf")[i];};
-function startTimer(){
-  stopTimer();
-  if(rm()) return;
-  fillAnim=pfOf(cur).animate([{clipPath:"inset(0 100% 0 0 round 3px)"},{clipPath:"inset(0 0% 0 0 round 3px)"}],{duration:DWELL,easing:"linear",fill:"forwards"});
-  fillAnim.onfinish=function(){go((cur+1)%N,false);};
-  syncPause();
+/* ---- timer: the progress bar grows inside the active pill; pauses on hover and keyboard focus ---- */
+function startTimer(){ mode=rm()?"idle":"dwell"; prog=rm()?1:0; lastT=0; drawBar(cur,prog); }
+function stopTimer(){ mode="idle"; }
+function syncPause(){}
+function tick(now){
+  if(mode==="dwell"){
+    var dt=lastT?Math.min(100,now-lastT):0;
+    if(!(hover||focusP)) prog=Math.min(1,prog+dt/DWELL);
+    drawBar(cur,prog);
+    if(prog>=1){ mode="idle"; go((cur+1)%N,false); }
+  }
+  lastT=now; W.requestAnimationFrame(tick);
 }
-function stopTimer(){ if(fillAnim){fillAnim.onfinish=null;fillAnim.cancel();fillAnim=null;} }
-function syncPause(){ if(fillAnim){ (hover||focusP)?fillAnim.pause():fillAnim.play(); } }
+W.requestAnimationFrame(tick);
 function status(){
   more.setAttribute("aria-label","Next value prop, "+((cur+1)%N+1)+" of "+N);
   [].forEach.call(dotsEl.querySelectorAll(".vp-dot"),function(b,i){b.setAttribute("aria-current",i===cur?"true":"false");});
