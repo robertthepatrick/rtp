@@ -1007,14 +1007,16 @@ placeInd(0); status();
 </script>
 <script>
 /* client logos as a scroll-linked band: moves right to left while the page scrolls down (and back on the way up),
-   at half the scroll distance, eased so trackpad jitter doesn't stutter it. Each row loops with one cloned set.
+   eased so trackpad jitter doesn't stutter it. Motion is tied to the section's trip through the window: it starts
+   as the band enters at the bottom and, by the time it leaves at the top, each row has travelled 1.05 of its set,
+   so every logo passes by. Each row loops with one cloned set.
    Phones get two offset rows of six (the second shifted half a slot); larger screens get one row of twelve. */
 (function(){
   var ul1=document.querySelector(".clients .logos");
   if(!ul1||window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   var root=document.documentElement, items=[].slice.call(ul1.children), mq=window.matchMedia("(max-width:600px)");
   var ul2=document.createElement("ul"); ul2.className="logos logos-2"; ul2.setAttribute("aria-hidden","false");
-  var rows=[], cur=0, target=0, running=false, visible=false;
+  var rows=[], cur=0, target=0, running=false, visible=false, band=ul1.closest(".clients"), REV=1.05;
   root.classList.add("marquee-on");
   var fill=function(ul,list){
     ul.textContent="";
@@ -1039,21 +1041,22 @@ placeInd(0); status();
     });
   };
   var paint=function(){
-    rows.forEach(function(r){ var x=(((cur+r.shift)%r.P)+r.P)%r.P; r.ul.style.transform="translate3d("+(-x).toFixed(2)+"px,0,0)"; });
+    rows.forEach(function(r){ var x=(((cur*REV*r.P+r.shift)%r.P)+r.P)%r.P; r.ul.style.transform="translate3d("+(-x).toFixed(2)+"px,0,0)"; });
     if(ul1.classList.contains("in")) ul2.classList.add("in");
   };
   var frame=function(){
     cur+=(target-cur)*0.12;
-    if(Math.abs(target-cur)<0.1) cur=target;
+    if(Math.abs(target-cur)<0.0002) cur=target;
     paint();
     if(cur!==target&&visible) requestAnimationFrame(frame); else running=false;
   };
-  var onScroll=function(){ target=window.scrollY*0.5; if(visible&&!running){ running=true; requestAnimationFrame(frame); } };
-  new IntersectionObserver(function(es){ visible=es[0].isIntersecting; if(visible){ onScroll(); paint(); } },{rootMargin:"100px 0px"}).observe(ul1.closest(".clients"));
+  var progress=function(){ var r=band.getBoundingClientRect(), vh=window.innerHeight; return Math.min(1,Math.max(0,(vh-r.top)/(vh+r.height))); };
+  var onScroll=function(){ target=progress(); if(visible&&!running){ running=true; requestAnimationFrame(frame); } };
+  new IntersectionObserver(function(es){ visible=es[0].isIntersecting; if(visible){ onScroll(); paint(); } },{rootMargin:"100px 0px"}).observe(band);
   addEventListener("scroll",onScroll,{passive:true});
   addEventListener("resize",function(){ measure(); paint(); });
   if(mq.addEventListener) mq.addEventListener("change",function(){ build(); paint(); });
-  build(); target=cur=window.scrollY*0.5; paint();
+  build(); target=cur=progress(); paint();
   window.addEventListener("load",function(){ measure(); paint(); });
 })();
 </script>
