@@ -72,7 +72,9 @@ ul,ol{margin:0;padding:0;list-style:none}
 .band{position:relative;background:var(--surface);color:var(--ink);padding-block:clamp(56px,7vw,96px)}
 .band>.wrap{position:relative}
 .band.raised{background:var(--surface-raised)}
-.about-cta .wrap{display:flex;justify-content:center}
+.about-cta{position:relative;overflow:hidden}
+.about-cta .tex{--o:.2}
+.about-cta .wrap{position:relative;display:flex;justify-content:center}
 .about-cta .about-cta-btn{min-height:0;padding:var(--space-4) var(--space-6);line-height:1.35;text-align:center}
 .tex{--o:.35;position:absolute;inset:-4%;pointer-events:none;opacity:var(--o);background:url("../assets/img/texture-black.webp") center/cover no-repeat}
 .hero .tex{--o:.2}
@@ -476,6 +478,7 @@ body{--page-bg:var(--brand-cream)}
   </section>
 
   <section class="band about-cta" data-reg="landing" aria-label="Professional work">
+    <div class="tex" aria-hidden="true"></div>
     <div class="wrap">
       <div class="rv"><a class="btn about-cta-btn" href="/case-studies/"><span>See the<br>day job stuff</span></a></div>
     </div>
