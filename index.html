@@ -91,7 +91,11 @@ ul,ol{margin:0;padding:0;list-style:none}
 .scope .label{width:fit-content;padding-bottom:8px;border-bottom:1px solid var(--brand-black);margin-bottom:0;color:var(--brand-black)}
 .scope .lead{font-family:var(--font-display)}
 .scope .lead{font-size:clamp(24px,2.2vw,32px);font-weight:600;color:var(--brand-green)}
+.scope .lead-b{color:var(--brand-black)}
+.scope-cols{display:grid;gap:var(--space-5)}
 @media (min-width:739px){.scope .wrap{max-width:min(80vw,100%);margin-left:0}}
+/* two columns on wide screens: the problem in green, the answer in black, across the full page width */
+@media (min-width:900px){.scope .wrap{max-width:var(--page-max);margin-inline:auto}.scope-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4vw,72px)}}
 .audience{font:600 9px/1.4 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .label{font:600 12px/1.3 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .end{display:inline-block;width:.97em;height:1em;margin-left:.35em;vertical-align:-.3em;fill:var(--ink)}
@@ -488,8 +492,10 @@ body{--page-bg:var(--brand-yellow)}
   <section class="band scope" data-reg="about" aria-label="Why this matters">
     <div class="wrap">
       <p class="label">I've seen it a hundred times.</p>
-      <p class="lead rv">You invest in a great brand. Then it has to work across more touchpoints, more stakeholders, a new product, a retail refresh, an app ecosystem that keeps growing. I bring the system-level thinking and the brand creative that turn that complexity into products, activations, and campaigns that tie business impact to brand opportunity.</p>
-      <p class="body rv" style="--d:120ms">I've spent 15+ years in agencies as an Experience Design Lead and Creative Director, partnering with business leaders and leading brands to make sure the work holds together, from the first idea to the last launch.</p>
+      <div class="scope-cols">
+        <p class="lead rv">You invest in a great brand. Then it has to work across more touchpoints, more stakeholders, a new product, a retail refresh, an app ecosystem that keeps growing.</p>
+        <p class="lead lead-b rv" style="--d:120ms">I bring the system-level thinking and the brand creative that turn that complexity into products, activations, and campaigns that tie business impact to brand opportunity.</p>
+      </div>
     </div>
   </section>
 
