@@ -259,7 +259,7 @@ html.cc,html.cc *{cursor:none!important}
 .marquee-on .logos{--slot:max(180px,9vw);display:flex;width:max-content;max-width:none;margin:0;will-change:transform;background:var(--surface-raised)} /* the moving row is its own layer, so it carries the band colour for the logos' multiply blend */
 .marquee-on .logos li{flex:0 0 var(--slot);width:var(--slot);min-height:clamp(96px,9vw,140px)}
 .marquee-on .logos img{max-width:62%;max-height:48px;transition:filter .5s var(--ease)}
-@media (max-width:600px){.marquee-on .logos{--slot:max(140px,9vw)}.marquee-on .logos img{max-height:36px}}
+@media (max-width:600px){.marquee-on .logos{--slot:144px}.marquee-on .logos li{min-height:84px}.marquee-on .logos img{max-height:34px}}
 
 /* ---------- Home: positioning ---------- */
 .pos-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--space-8) clamp(32px,6vw,96px);align-items:start}
@@ -1007,16 +1007,41 @@ placeInd(0); status();
 </script>
 <script>
 /* client logos as a scroll-linked band: moves right to left while the page scrolls down (and back on the way up),
-   at half the scroll distance, eased so trackpad jitter doesn't stutter it. One cloned set makes the loop. */
+   at half the scroll distance, eased so trackpad jitter doesn't stutter it. Each row loops with one cloned set.
+   Phones get two offset rows of six (the second shifted half a slot); larger screens get one row of twelve. */
 (function(){
-  var ul=document.querySelector(".clients .logos");
-  if(!ul||window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var root=document.documentElement, items=[].slice.call(ul.children);
+  var ul1=document.querySelector(".clients .logos");
+  if(!ul1||window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var root=document.documentElement, items=[].slice.call(ul1.children), mq=window.matchMedia("(max-width:600px)");
+  var ul2=document.createElement("ul"); ul2.className="logos logos-2"; ul2.setAttribute("aria-hidden","false");
+  var rows=[], cur=0, target=0, running=false, visible=false;
   root.classList.add("marquee-on");
-  items.forEach(function(li){ var c=li.cloneNode(true); c.setAttribute("aria-hidden","true"); ul.appendChild(c); });
-  var P=0, cur=0, target=0, running=false, visible=false;
-  var measure=function(){ P=ul.children[items.length].offsetLeft-ul.children[0].offsetLeft; };
-  var paint=function(){ var x=((cur%P)+P)%P; ul.style.transform="translate3d("+(-x).toFixed(2)+"px,0,0)"; };
+  var fill=function(ul,list){
+    ul.textContent="";
+    list.forEach(function(li){ ul.appendChild(li); });
+    list.forEach(function(li){ var c=li.cloneNode(true); c.setAttribute("aria-hidden","true"); ul.appendChild(c); });
+    return {ul:ul,n:list.length,P:0,shift:0};
+  };
+  var build=function(){
+    if(mq.matches){
+      rows=[fill(ul1,items.slice(0,6)),fill(ul2,items.slice(6))];
+      if(!ul2.parentNode) ul1.parentNode.insertBefore(ul2,ul1.nextSibling);
+    } else {
+      rows=[fill(ul1,items)];
+      if(ul2.parentNode) ul2.parentNode.removeChild(ul2);
+    }
+    measure();
+  };
+  var measure=function(){
+    rows.forEach(function(r,i){
+      r.P=r.ul.children[r.n].offsetLeft-r.ul.children[0].offsetLeft;
+      r.shift=i===1?r.ul.children[0].offsetWidth/2:0;
+    });
+  };
+  var paint=function(){
+    rows.forEach(function(r){ var x=(((cur+r.shift)%r.P)+r.P)%r.P; r.ul.style.transform="translate3d("+(-x).toFixed(2)+"px,0,0)"; });
+    if(ul1.classList.contains("in")) ul2.classList.add("in");
+  };
   var frame=function(){
     cur+=(target-cur)*0.12;
     if(Math.abs(target-cur)<0.1) cur=target;
@@ -1024,10 +1049,11 @@ placeInd(0); status();
     if(cur!==target&&visible) requestAnimationFrame(frame); else running=false;
   };
   var onScroll=function(){ target=window.scrollY*0.5; if(visible&&!running){ running=true; requestAnimationFrame(frame); } };
-  new IntersectionObserver(function(es){ visible=es[0].isIntersecting; if(visible) onScroll(); },{rootMargin:"100px 0px"}).observe(ul.closest(".clients"));
+  new IntersectionObserver(function(es){ visible=es[0].isIntersecting; if(visible){ onScroll(); paint(); } },{rootMargin:"100px 0px"}).observe(ul1.closest(".clients"));
   addEventListener("scroll",onScroll,{passive:true});
   addEventListener("resize",function(){ measure(); paint(); });
-  measure(); target=cur=window.scrollY*0.5; paint();
+  if(mq.addEventListener) mq.addEventListener("change",function(){ build(); paint(); });
+  build(); target=cur=window.scrollY*0.5; paint();
   window.addEventListener("load",function(){ measure(); paint(); });
 })();
 </script>
