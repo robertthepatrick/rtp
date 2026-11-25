@@ -235,7 +235,7 @@ html.cc,html.cc *{cursor:none!important}
 .pair-two .ph{aspect-ratio:6/7;position:relative;width:100%;overflow:hidden}
 @media (min-width:600px){.pair-two{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-.out-fig{position:relative;aspect-ratio:1000/1496;margin:0}
+.out-fig{position:relative;aspect-ratio:1000/1496;margin:0;overflow:hidden} /* contains the reveal zoom so it can't widen the page on phones */
 .out-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 @media (min-width:600px){.out-row{align-items:stretch}.out-fig{aspect-ratio:auto}}
 
