@@ -3,7 +3,8 @@
 
 The order, titles, activities and thumbnails come from case-studies/index.html,
 so reordering or adding a card there and re-running this script updates every
-page. The last case study loops back to the first.
+page. The last case study loops back to the first. A case the page already
+links to in its own copy is skipped, so the module never repeats a link.
 
     python3 tools/next-case.py
 
@@ -121,6 +122,18 @@ def write_page(case, nxt):
     open(path, "w", encoding="utf-8").write(s)
 
 
+def pick_next(cases, i):
+    """The next case in order, skipping any the page already links to in its own copy
+    (e.g. AGO links to GoUnicode, so AGO's next is the one after GoUnicode)."""
+    page = open(os.path.join(ROOT, cases[i]["slug"], "index.html"), encoding="utf-8").read()
+    page = re.sub(r"<!-- next-case:start -->.*?<!-- next-case:end -->", "", page, flags=re.S)
+    for k in range(1, len(cases)):
+        cand = cases[(i + k) % len(cases)]
+        if f'href="{cand["href"]}"' not in page and f'href="..{cand["href"]}"' not in page:
+            return cand
+    return cases[(i + 1) % len(cases)]
+
+
 def main():
     cases = read_order()
     if not cases:
@@ -128,7 +141,7 @@ def main():
     for c in cases:
         make_thumb(c)
     for i, c in enumerate(cases):
-        nxt = cases[(i + 1) % len(cases)]
+        nxt = pick_next(cases, i)
         write_page(c, nxt)
         print(f'{c["slug"]:22} -> {nxt["slug"]}')
 
