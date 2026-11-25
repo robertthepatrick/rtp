@@ -255,7 +255,11 @@ html.cc,html.cc *{cursor:none!important}
    reduced motion, the grid above stays). The set repeats every 12 slots, and 12 slots are wider than the
    screen (slot >= 9vw), so the same logo never shows twice at once. */
 .marquee-on .clients{overflow:hidden;touch-action:pan-y;-webkit-user-select:none;user-select:none;overscroll-behavior-x:contain}
-.marquee-on .clients .wrap{max-width:none;padding-left:0;padding-right:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.marquee-on .clients .wrap{position:relative;max-width:none;padding-left:0;padding-right:0}
+/* edge fades are painted on top rather than masked: Safari can drop transformed content inside a masked box */
+.marquee-on .clients .wrap::before,.marquee-on .clients .wrap::after{content:"";position:absolute;top:0;bottom:0;width:7%;z-index:2;pointer-events:none}
+.marquee-on .clients .wrap::before{left:0;background:linear-gradient(90deg,var(--surface-raised),rgba(239,235,225,0))}
+.marquee-on .clients .wrap::after{right:0;background:linear-gradient(270deg,var(--surface-raised),rgba(239,235,225,0))}
 .marquee-on .logos{--slot:max(180px,9vw);display:flex;width:max-content;max-width:none;margin:0;will-change:transform;background:var(--surface-raised)} /* the moving row is its own layer, so it carries the band colour for the logos' multiply blend */
 .marquee-on .logos li{flex:0 0 var(--slot);width:var(--slot);min-height:clamp(96px,9vw,140px)}
 .marquee-on .logos img{max-width:62%;max-height:48px;transition:filter .5s var(--ease)}
