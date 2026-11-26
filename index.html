@@ -90,7 +90,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 /* eyebrow: a fine rule sits directly under the text (the rule spans the text width); the lead sits 100px further down than before */
 .scope .label{width:fit-content;padding-bottom:8px;border-bottom:1px solid var(--brand-black);margin-bottom:0;color:var(--brand-black)}
 .scope .lead{font-family:var(--font-display)}
-.scope .lead{font-size:clamp(20px,1.67vw,24px);font-weight:500;line-height:1.4;color:var(--brand-green)}
+.scope .lead{font-size:clamp(20px,1.67vw,24px);font-weight:600;line-height:1.4;color:var(--brand-green)}
 .scope .lead-b{color:var(--brand-black)}
 .scope-cols{display:grid;gap:var(--space-5)}
 @media (min-width:739px){.scope .wrap{max-width:min(80vw,100%);margin-left:0}}
@@ -275,10 +275,12 @@ html.cc,html.cc *{cursor:none!important}
 .pos-lead{font:600 clamp(20px,1.67vw,24px)/1.4 var(--font-display);letter-spacing:-.005em;color:var(--ink)}
 .pos-lead .g{color:var(--brand-green)}
 .pos-h .g{color:var(--brand-green)}
-.pos-side{display:flex;flex-direction:column;gap:var(--space-5);max-width:28em;padding-top:.7em}
+.pos-side{display:flex;flex-direction:column;gap:var(--space-5);max-width:28em;padding-top:.3em}
 .pos-side p{font:400 17px/1.6 var(--font-text)}
 .pos-h{margin-bottom:clamp(32px,4vw,var(--space-8))}
-.pos-lead,.pos-side,.insight p{width:90%}
+.pos-main,.pos-side,.insight p{width:90%}
+.pos-main{display:flex;flex-direction:column;gap:var(--space-5)}
+.pos-main>p:not(.pos-lead){font:400 17px/1.6 var(--font-text);max-width:28em}
 .insight-wrap{margin-top:clamp(64px,8vw,112px)}
 .insight-more{margin-top:var(--space-9)}
 .insight-list{counter-reset:ins}
@@ -357,7 +359,7 @@ html.cc,html.cc *{cursor:none!important}
 @media (max-width:1100px){
   .foot-grid{grid-template-columns:1fr}
   .pos-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(24px,4vw,48px)}
-  .pos-lead,.pos-side{width:100%}
+  .pos-main,.pos-side{width:100%}
   .insight{grid-template-columns:40px minmax(0,1fr)}
   .insight p{grid-column:2;grid-row:2}
 }
@@ -588,11 +590,13 @@ body{--page-bg:var(--brand-yellow)}
     <div class="wrap">
       <h2 class="d2 pos-h" id="pos-h" data-split>Creative <span class="g">&amp;</span> Insight</h2>
       <div class="pos-top">
-        <p class="pos-lead rv">I design with systems in mind and people at heart. <span class="g">My work lives at the intersection of research, storytelling, experience, and product.</span> I am committed to shaping things that make experiences more compelling, more meaningful, and more equitable.</p>
+        <div class="pos-main">
+          <p class="pos-lead rv">I design with systems in mind and people at heart. <span class="g">My work lives at the intersection of research, storytelling, experience, and product.</span> I am committed to shaping things that make experiences more compelling, more meaningful, and more equitable.</p>
+          <p class="rv" style="--d:120ms">What drives me is solving real problems with clarity, creativity, and care. I've led design strategy and creative direction for global brands, early-stage ventures, NGOs, and civic institutions, moving from insight to impact across physical and digital platforms.</p>
+        </div>
         <div class="pos-side">
-          <p class="rv">What drives me is solving real problems with clarity, creativity, and care. I've led design strategy and creative direction for global brands, early-stage ventures, NGOs, and civic institutions, moving from insight to impact across physical and digital platforms.</p>
-          <p class="rv" style="--d:120ms">Human-centered design, for me, isn't just a method. It's a way to bridge disciplines, pulling together culture, aesthetics, systems logic, and empathy to connect human need to long-term value. Increasingly, that work is accelerated by custom AI-integrated workflows I've built into my practice. Not as a shortcut, but as a way to hold more complexity, move faster between insight and concept, and spend more time on the thinking that actually requires a human.</p>
-          <p class="rv" style="--d:240ms">I thrive in complex collaborative spaces where ideas get tested, strategy gets tangible, and design earns its place by delivering on <span class="nb">business goals.<svg class="end" viewBox="0 0 94 97" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M0 0V97H94ZM10 48.5a37 37 0 1 0 74 0a37 37 0 1 0 -74 0Z"/></svg></span></p>
+          <p class="rv">Human-centered design, for me, isn't just a method. It's a way to bridge disciplines, pulling together culture, aesthetics, systems logic, and empathy to connect human need to long-term value. Increasingly, that work is accelerated by custom AI-integrated workflows I've built into my practice. Not as a shortcut, but as a way to hold more complexity, move faster between insight and concept, and spend more time on the thinking that actually requires a human.</p>
+          <p class="rv" style="--d:120ms">I thrive in complex collaborative spaces where ideas get tested, strategy gets tangible, and design earns its place by delivering on <span class="nb">business goals.<svg class="end" viewBox="0 0 94 97" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M0 0V97H94ZM10 48.5a37 37 0 1 0 74 0a37 37 0 1 0 -74 0Z"/></svg></span></p>
         </div>
       </div>
       <div class="insight-wrap">
