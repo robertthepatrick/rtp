@@ -75,7 +75,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .d1{font:800 clamp(56px,8.4vw,128px)/.94 var(--font-display);letter-spacing:-.045em;color:var(--ink)}
 .d1b{font:700 clamp(40px,7.2vw,112px)/.98 var(--font-display);letter-spacing:-.04em;color:var(--ink)}
 .d2{font:700 clamp(40px,5.6vw,80px)/1.02 var(--font-display);letter-spacing:-.03em;color:var(--ink)}
-.h35{font:600 clamp(24px,2.5vw,35px)/1.14 var(--font-display);letter-spacing:-.015em}
+.h35{font:600 clamp(24px,2.5vw,36px)/1.14 var(--font-display);letter-spacing:-.015em}
 .ln{display:block}
 .echo{font:inherit;letter-spacing:inherit;color:inherit} /* no light italic echo styling anywhere */
 .cta-band .d1b{color:var(--brand-black)}
@@ -90,7 +90,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 /* eyebrow: a fine rule sits directly under the text (the rule spans the text width); the lead sits 100px further down than before */
 .scope .label{width:fit-content;padding-bottom:8px;border-bottom:1px solid var(--brand-black);margin-bottom:0;color:var(--brand-black)}
 .scope .lead{font-family:var(--font-display)}
-.scope .lead{font-size:clamp(24px,2.2vw,32px);font-weight:600;color:var(--brand-green)}
+.scope .lead{font-size:clamp(20px,1.67vw,24px);font-weight:500;line-height:1.4;color:var(--brand-green)}
 .scope .lead-b{color:var(--brand-black)}
 .scope-cols{display:grid;gap:var(--space-5)}
 @media (min-width:739px){.scope .wrap{max-width:min(80vw,100%);margin-left:0}}
@@ -221,14 +221,14 @@ ul,ol{margin:0;padding:0;list-style:none}
 .wide .card-text{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) 32px;column-gap:var(--space-5)}
 .card .idx{display:none;padding-top:1.1em;font:500 12px/1 var(--font-display);letter-spacing:.08em;color:var(--ink-muted);font-variant-numeric:tabular-nums}
 .card .idx::before{content:counter(case,decimal-leading-zero);content:counter(case,decimal-leading-zero) / ""}
-.card .t{font:600 clamp(26px,2.7vw,38px)/1.12 var(--font-display);letter-spacing:-.02em}
+.card .t{font:600 clamp(24px,2.5vw,36px)/1.12 var(--font-display);letter-spacing:-.02em}
 .wide .t{font-size:clamp(30px,3.6vw,52px)}
 .card .t a{color:inherit;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:.14em;text-decoration-thickness:2px;transition:text-decoration-color 320ms var(--ease)}
 .card .t a::after{content:"";position:absolute;inset:0;z-index:1}
 .card .t a:focus-visible{outline:none}
 .card .t a:focus-visible::after{outline:3px solid var(--focus);outline-offset:6px}
 .pointer-live .card:hover .t a,.card .t a:focus-visible{text-decoration-color:currentColor}
-.card .out{grid-column:1;font:400 17px/1.5 var(--font-text);letter-spacing:.01em;color:var(--ink-muted);max-width:34em}
+.card .out{grid-column:1;font:400 17px/1.6 var(--font-text);letter-spacing:.01em;color:var(--ink-muted);max-width:34em}
 .wide .out{grid-column:2;grid-row:1;padding-top:.7em}
 .card .arrow{grid-column:2;grid-row:1;justify-self:end;font:500 24px/1.2 var(--font-display);color:var(--ink);transition:transform 420ms var(--ease-out)}
 .wide .arrow{grid-column:3}
@@ -271,7 +271,8 @@ html.cc,html.cc *{cursor:none!important}
 
 /* ---------- Home: positioning ---------- */
 .pos-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--space-8) clamp(32px,6vw,96px);align-items:start}
-.pos-lead{font:500 clamp(26px,3.3vw,48px)/1.14 var(--font-display);letter-spacing:-.03em;color:var(--ink)}
+/* type toolkit: Lead (sans paragraph) is 24 max / 500 / 1.4, 20 on phones; titles S are 36 max, 24 on phones */
+.pos-lead{font:500 clamp(20px,1.67vw,24px)/1.4 var(--font-display);letter-spacing:-.005em;color:var(--ink)}
 .pos-lead .g{color:var(--brand-green)}
 .pos-h .g{color:var(--brand-green)}
 .pos-side{display:flex;flex-direction:column;gap:var(--space-5);max-width:28em;padding-top:.7em}
@@ -295,7 +296,7 @@ html.cc,html.cc *{cursor:none!important}
 .foot{overflow:hidden;padding-block:clamp(72px,9vw,128px) clamp(48px,6vw,88px)}
 .foot-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:var(--space-8) var(--space-7);align-items:end;padding-top:var(--space-7)}
 .foot .label{margin-bottom:var(--space-6)}
-.email{display:block;font:700 clamp(30px,5vw,72px)/1.02 var(--font-display);letter-spacing:-.04em;color:var(--accent);white-space:nowrap;text-decoration:none}
+.email{display:block;font:700 clamp(30px,5.6vw,80px)/1.02 var(--font-display);letter-spacing:-.04em;color:var(--accent);white-space:nowrap;text-decoration:none}
 .email:hover{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:.12em}
 .foot-side{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-5)}
 .info .foot-cta{margin-top:var(--space-7);color:var(--brand-white);border-color:var(--brand-white)}
@@ -377,21 +378,21 @@ html.cc,html.cc *{cursor:none!important}
   .card-text,.wide .card-text{grid-template-columns:minmax(0,1fr) 32px}
   .wide .out,.card .out{grid-column:1;grid-row:auto;padding-top:0}
   .wide .arrow,.card .arrow{grid-column:2;grid-row:1}
-  .card:not(.wide) .t{font-size:clamp(20px,3vw,26px)}
+  .card:not(.wide) .t{font-size:24px}
   .bring-grid{gap:var(--space-7) var(--space-5)}
-  .bring-col .h35{font-size:clamp(20px,3.2vw,28px);padding-bottom:var(--space-5)}
+  .bring-col .h35{font-size:24px;padding-bottom:var(--space-5)}
   .feature{grid-template-columns:1fr}
   .feature.flip .fig,.feature.flip .feature-text{order:0}
 }
 @media (max-width:600px){
   .grid{grid-template-columns:1fr}
-  .card:not(.wide) .t{font-size:clamp(26px,7vw,32px)}
+  .card:not(.wide) .t{font-size:24px}
   /* Honda thumbnail: the 16/5.4 bar is too short on mobile; give it more height */
   .card .fig:has(img[alt^="Aerial view of a freeway interchange"]){aspect-ratio:16/9}
   /* Article Group thumbnail: a 4:3 frame on phones, filled by the image and anchored right, so the presenter and the slides read at a usable size */
   .card .fig:has(img[alt^="re:MARS banner"]){aspect-ratio:4/3}
   .bring-grid{grid-template-columns:1fr;gap:var(--space-8)}
-  .bring-col .h35{font-size:clamp(24px,6.4vw,30px)}
+  .bring-col .h35{font-size:24px}
   .bring-grid.two .tw{display:inline}
   .logos img{max-height:32px}
   .about-grid{grid-template-columns:1fr}
@@ -584,7 +585,7 @@ body{--page-bg:var(--brand-yellow)}
     <div class="wrap">
       <h2 class="d2 pos-h" id="pos-h" data-split>Creative <span class="g">&amp;</span> Insight</h2>
       <div class="pos-top">
-        <p class="pos-lead" data-split>I design with systems in mind and people at heart. <span class="g">My work lives at the intersection of research, storytelling, experience, and product.</span> I am committed to shaping things that make experiences more compelling, more meaningful, and more equitable.</p>
+        <p class="pos-lead rv">I design with systems in mind and people at heart. <span class="g">My work lives at the intersection of research, storytelling, experience, and product.</span> I am committed to shaping things that make experiences more compelling, more meaningful, and more equitable.</p>
         <div class="pos-side">
           <p class="rv">What drives me is solving real problems with clarity, creativity, and care. I've led design strategy and creative direction for global brands, early-stage ventures, NGOs, and civic institutions, moving from insight to impact across physical and digital platforms.</p>
           <p class="rv" style="--d:120ms">Human-centered design, for me, isn't just a method. It's a way to bridge disciplines, pulling together culture, aesthetics, systems logic, and empathy to connect human need to long-term value. Increasingly, that work is accelerated by custom AI-integrated workflows I've built into my practice. Not as a shortcut, but as a way to hold more complexity, move faster between insight and concept, and spend more time on the thinking that actually requires a human.</p>
