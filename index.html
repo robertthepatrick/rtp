@@ -763,7 +763,7 @@ body{--page-bg:var(--brand-yellow)}
 </script>
 <script>
 /* Home hero: rotating value props. Headline set in 3 even lines as large as fits, word-wave transitions,
-   support line moves as one block, pill indicator with a liquid outline, 12s timer inside the active pill.
+   support line moves as one block, pill indicator whose progress bar (9s) slinkies into the next pill.
    Pauses on hover and keyboard focus. Reduced motion: no auto-advance, plain crossfade. */
 (function(){
 var d=document, W=window;
@@ -774,7 +774,7 @@ var SLIDES=[
   {h:"The Leader You Hire To Grow Your Own Leaders", s:"A track record of building talent and helping people do their best work"},
   {h:"A Great Product Is Just Another Way To Say I Love You", s:"Experience design and creative direction for brands that want customers to feel something"}
 ];
-var N=SLIDES.length, DWELL=12000;
+var N=SLIDES.length, DWELL=9000;
 var EASE_IN="cubic-bezier(0.7,0,0.84,0)", EASE_OUT="cubic-bezier(0.16,1,0.3,1)";
 var $=function(id){return d.getElementById(id);};
 var h1=$("hero-h"), sup=$("vp-sup"), hwrap=$("vp-hwrap"), swrap=$("vp-swrap"), mh=$("vp-mh"), ms=$("vp-ms"), stage=$("vp-stage");
