@@ -258,16 +258,16 @@ html.cc,html.cc *{cursor:none!important}
 /* logo band: one row that slides right to left as the page scrolls (set up by script; without it, or with
    reduced motion, the grid above stays). The set repeats every 12 slots, and 12 slots are wider than the
    screen (slot >= 9vw), so the same logo never shows twice at once. */
-.marquee-on .clients{overflow:hidden;touch-action:pan-y;-webkit-user-select:none;user-select:none;overscroll-behavior-x:contain}
+.marquee-on .clients{padding-block:clamp(41px,5.1vw,68px);overflow:hidden;touch-action:pan-y;-webkit-user-select:none;user-select:none;overscroll-behavior-x:contain}
 .marquee-on .clients .wrap{position:relative;max-width:none;padding-left:0;padding-right:0}
 /* edge fades are painted on top rather than masked: Safari can drop transformed content inside a masked box */
 .marquee-on .clients .wrap::before,.marquee-on .clients .wrap::after{content:"";position:absolute;top:0;bottom:0;width:7%;z-index:2;pointer-events:none}
 .marquee-on .clients .wrap::before{left:0;background:linear-gradient(90deg,var(--surface-raised),rgba(239,235,225,0))}
 .marquee-on .clients .wrap::after{right:0;background:linear-gradient(270deg,var(--surface-raised),rgba(239,235,225,0))}
 .marquee-on .logos{--slot:max(180px,9vw);display:flex;width:max-content;max-width:none;margin:0;will-change:transform;background:var(--surface-raised)} /* the moving row is its own layer, so it carries the band colour for the logos' multiply blend */
-.marquee-on .logos li{flex:0 0 var(--slot);width:var(--slot);min-height:clamp(96px,9vw,140px)}
+.marquee-on .logos li{flex:0 0 var(--slot);width:var(--slot);min-height:clamp(82px,7.65vw,119px)}
 .marquee-on .logos img{max-width:62%;max-height:48px;transition:filter .5s var(--ease)}
-@media (max-width:600px){.marquee-on .logos{--slot:144px}.marquee-on .logos li{min-height:84px}.marquee-on .logos img{max-height:34px}}
+@media (max-width:600px){.marquee-on .logos{--slot:144px}.marquee-on .logos li{min-height:71px}.marquee-on .logos img{max-height:34px}}
 
 /* ---------- Home: positioning ---------- */
 .pos-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--space-8) clamp(32px,6vw,96px);align-items:start}
@@ -1061,9 +1061,13 @@ placeInd(0); status();
   var maxPx=function(){ return SPEED*ul1.children[0].offsetWidth; };      /* px per second */
   var frame=function(now){
     var dt=lastF?Math.min(32,now-lastF):16; lastF=now;
-    var step=(target-cur)*0.12, cap=maxPx()*dt/1000/(REV*rows[0].P);       /* cap in progress units */
+    /* never trail the scroll by more than half a logo: any extra is absorbed into the offset (no visible jump),
+       so when scrolling stops the band settles within a beat instead of catching up for seconds */
+    var unit=REV*rows[0].P, lagPx=(target-cur)*unit, maxLag=0.5*ul1.children[0].offsetWidth;
+    if(Math.abs(lagPx)>maxLag){ var ex=lagPx-(lagPx>0?maxLag:-maxLag); cur+=ex/unit; manual-=ex; }
+    var step=(target-cur)*0.18, cap=maxPx()*dt/1000/unit;                    /* cap in progress units */
     cur+=Math.max(-cap,Math.min(cap,step));
-    if(Math.abs(target-cur)<0.0002) cur=target;
+    if(Math.abs(target-cur)*unit<0.3) cur=target;                          /* within a third of a pixel: done */
     if(!dragging){                                                        /* glide after release, same limit */
       var vcap=maxPx()*dt/1000; manual+=Math.max(-vcap,Math.min(vcap,vel*dt/16)); vel*=Math.pow(0.94,dt/16); if(Math.abs(vel)<0.05) vel=0;
     }
